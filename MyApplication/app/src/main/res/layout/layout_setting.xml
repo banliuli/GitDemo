@@ -13,7 +13,8 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/back"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:id="@+id/Iv_back"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45dp"

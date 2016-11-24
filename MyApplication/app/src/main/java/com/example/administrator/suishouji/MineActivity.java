@@ -25,6 +25,8 @@ public class MineActivity extends Fragment {
     private Button btntext;
     private Button btnpicture;
     private Button btnsatisfy;
+    private Button btnshezhi;
+    private LinearLayout llshoucang;
 
     public Context getContext(){
         return context;
@@ -53,7 +55,8 @@ public class MineActivity extends Fragment {
         btntext = (Button)view.findViewById(R.id.text);
         btnpicture = (Button)view.findViewById(R.id.picture);
         btnsatisfy = (Button)view.findViewById(R.id.satisfy);
-
+        btnshezhi=(Button)view.findViewById(R.id.btnshezhi);
+        llshoucang=(LinearLayout)view.findViewById(R.id.llshoucang);
 
     }
     private void setListener() {
@@ -62,7 +65,7 @@ public class MineActivity extends Fragment {
         btntext.setOnClickListener(listener);
         btnpicture.setOnClickListener(listener);
         btnsatisfy.setOnClickListener(listener);
-
+        llshoucang.setOnClickListener(listener);
 
     }
 
@@ -83,6 +86,12 @@ public class MineActivity extends Fragment {
                     break;
                 case R.id.satisfy:
 
+                    break;
+                case R.id.btnshezhi:
+                    i.setClass(getActivity(),SettingActivity.class);
+                    break;
+                case R.id.llshoucang:
+                    i.setClass(getActivity(),CollectionActivity.class);
                     break;
             }
             startActivity(i);

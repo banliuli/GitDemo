@@ -24,16 +24,18 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".PictureActivity" />
         <activity android:name=".TextActivity" />
-        <activity android:name=".SearchActivity"/> 
+        <activity android:name=".SearchActivity" />
 
- 	<!--×¢²áÒ³Ãæ-->
+        <!-- ×¢ï¿½ï¿½Ò³ï¿½ï¿½ -->
         <activity android:name=".RegisterPage" />
 
-        <!--µÇÂ¼ºóÒ³Ãæ-->
-        <activity android:name=".MyAccounts"/>
+        <!-- ï¿½ï¿½Â¼ï¿½ï¿½Ò³ï¿½ï¿½ -->
+        <activity android:name=".MyAccounts" />
 
-        <!--êÇ³ÆÒ³Ãæ-->
-	<activity android:name=".NickName"/>
+        <!-- ï¿½Ç³ï¿½Ò³ï¿½ï¿½ -->
+        <activity android:name=".NickName" />
+        <activity android:name=".CollectionActivity"/>
+
     </application>
 
 </manifest>
