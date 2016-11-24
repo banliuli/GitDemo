@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:background="@color/colorTitle">
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:id="@+id/Iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="随手记笔记"
+                android:textSize="20dp"
+                android:textColor="@color/colorWhite"/>
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+               android:id="@+id/Iv_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/share" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_collect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/collect2"
+            android:text="收藏"
+            android:textSize="16dp"
+            android:background="@drawable/home_bg"/>
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_move"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/move"
+            android:text="移动到"
+            android:textSize="16dp"
+            android:background="@drawable/home_bg"/>
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/edit"
+            android:text="编辑"
+            android:textSize="16dp"
+            android:background="@drawable/home_bg"/>
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/more"
+            android:text="更多"
+            android:onClick="popupMenu"
+            android:textSize="16dp"
+            android:background="@drawable/home_bg"/>
+
+    </LinearLayout>
+</LinearLayout>
