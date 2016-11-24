@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".EditHomeActivity"/>
+        <activity android:name=".MoveActivity" />
+        <activity android:name=".EditActivity" />
     </application>
 
 </manifest>
