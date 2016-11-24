@@ -85,7 +85,7 @@ public class MineActivity extends Fragment {
                     i.setClass(getActivity(),PictureActivity.class);
                     break;
                 case R.id.satisfy:
-
+                    i.setClass(getActivity(),SearchActivity.class);
                     break;
                 case R.id.btnshezhi:
                     i.setClass(getActivity(),SettingActivity.class);
