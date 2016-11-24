@@ -57,6 +57,7 @@ public class MineActivity extends Fragment {
         btnsatisfy = (Button)view.findViewById(R.id.satisfy);
         btnshezhi=(Button)view.findViewById(R.id.btnshezhi);
         llshoucang=(LinearLayout)view.findViewById(R.id.llshoucang);
+        btnshezhi=(Button)view.findViewById(R.id.btnshezhi);
 
     }
     private void setListener() {
