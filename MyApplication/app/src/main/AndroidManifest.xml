@@ -15,15 +15,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditHomeActivity"/>
+        <activity android:name=".EditHomeActivity" />
         <activity android:name=".MoveActivity" />
         <activity android:name=".EditActivity" />
-        <activity android:name=".SettingActivity">
-
-        </activity>
+        <activity android:name=".SettingActivity" />
         <activity android:name=".ConcealActivity" />
         <activity android:name=".OpinionActivity" />
-
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".PictureActivity" />
+        <activity android:name=".TextActivity" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>
