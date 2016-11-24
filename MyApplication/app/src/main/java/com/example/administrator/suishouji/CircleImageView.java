@@ -1,6 +1,5 @@
 package com.example.administrator.suishouji;
 
-
 import android.widget.ImageView;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -178,4 +177,3 @@ public class CircleImageView  extends ImageView{
         mBitmapShader.setLocalMatrix(mShaderMatrix);
     }
 }
-
