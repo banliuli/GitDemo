@@ -3,16 +3,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <LinearLayout
+=======
     tools:context="activity.MainActivity"
     android:orientation="vertical"
     android:id="@+id/ll">
     <FrameLayout
+>>>>>>> 9284e51a16b820bd2221fbced45b5a6cfe89ffb4
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
-        android:id="@+id/contaner">
-
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#5677fc"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/img"
+                android:background="@drawable/mine"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="随手记"
+                android:textSize="30dp"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/shuaxin"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textSize="16sp"
+                android:text="编辑"
+                android:id="@+id/bianji"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorTitle"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:background="@drawable/tianjia"
+                />
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:queryHint="">
+            </SearchView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Lv">
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -12,11 +12,11 @@ import com.example.administrator.suishouji.R;
 /**
  * Created by lenovo on 2016/11/21.
  */
-public class SuishoujiActivity extends Fragment {
-    @Nullable
+public class SuishoujiActivity extends AppCompatActivity {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_suishouji,container,false);
-
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_mine);
+    
     }
 }

@@ -16,55 +16,43 @@ import com.example.administrator.suishouji.R;
 /**
  * Created by lenovo on 2016/11/18.
  */
-public class MineActivity extends Fragment {
+public class MineActivity extends AppCompatActivity {
 
-    private View view;
-    private Context context;
+    private Button btnshezhi;
     private Button btncollect;
     private Button btntext;
     private Button btnpicture;
     private Button btnsatisfy;
+    private Button btnsuishouji;
     private Button btnshezhi;
     private LinearLayout llshoucang;
 
-    public Context getContext(){
-        return context;
-
-    }
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view =inflater.inflate(R.layout.layout_mine,container,false);
-        initID();
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_mine);
+        InitID();
         setListener();
-        return view;
-
     }
+    private void InitID() {
+        btnshezhi = (Button)findViewById(R.id.btn_mine_shezhi);
+        btncollect = (Button)findViewById(R.id.btn_mine_collect);
+        btntext = (Button)findViewById(R.id.btn_mine_text);
+        btnpicture = (Button)findViewById(R.id.btn_mine_picture);
+        btnsatisfy = (Button)findViewById(R.id.btn_mine_satisfy);
+        btnsuishouji = (Button)findViewById(R.id.btn_mine_suishouji);
 
 
 
-    private void initID() {
-
-        btncollect = (Button) view.findViewById(R.id.collect);
-        btntext = (Button)view.findViewById(R.id.text);
-        btnpicture = (Button)view.findViewById(R.id.picture);
-        btnsatisfy = (Button)view.findViewById(R.id.satisfy);
-        btnshezhi=(Button)view.findViewById(R.id.btnshezhi);
-        llshoucang=(LinearLayout)view.findViewById(R.id.llshoucang);
-        btnshezhi=(Button)view.findViewById(R.id.btnshezhi);
-
-    }
     private void setListener() {
         MyListener listener = new MyListener();
+        btnshezhi.setOnClickListener(listener);
         btncollect.setOnClickListener(listener);
         btntext.setOnClickListener(listener);
         btnpicture.setOnClickListener(listener);
         btnsatisfy.setOnClickListener(listener);
+
+        btnsuishouji.setOnClickListener(listener);
         llshoucang.setOnClickListener(listener);
 
     }
@@ -75,6 +63,8 @@ public class MineActivity extends Fragment {
         public void onClick(View v) {
             Intent i = new Intent();
             switch (v.getId()){
+                case R.id.btn_mine_suishouji:
+
                 case R.id.collect:
 
                     break;
