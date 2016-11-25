@@ -6,40 +6,65 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@color/colorTitle">
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/Iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="随手记笔记"
+            android:textSize="20dp"
+            android:textColor="@color/colorWhite"/>
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/Iv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/share" />
+
+    </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:background="@color/colorTitle">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_marginTop="5dp"
-                android:id="@+id/Iv_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/back" />
             <TextView
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="随手记笔记"
-                android:textSize="20dp"
-                android:textColor="@color/colorWhite"/>
-            <ImageView
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-               android:id="@+id/Iv_share"
+                android:textSize="20dp"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/colorGray"
+                android:layout_margin="5dp"/>
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/share" />
-
+                android:text="随手记笔记内容"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp"/>
         </LinearLayout>
 
     </FrameLayout>
@@ -87,7 +112,6 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/more"
             android:text="更多"
-            android:onClick="popupMenu"
             android:textSize="16dp"
             android:background="@drawable/home_bg"/>
 

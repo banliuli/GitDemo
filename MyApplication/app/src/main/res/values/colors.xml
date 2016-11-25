@@ -8,4 +8,5 @@
     <color name="colorTitle">#5677fc</color>
     <color name="colorExit">#ff7043</color>
     <color name="colorBlack">#4F4F4F</color>
+    <color name="colorGray">#d4d4d2</color>
 </resources>

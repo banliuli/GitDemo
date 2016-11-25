@@ -6,32 +6,67 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@color/colorTitle">
+
+        <ImageView
+            android:layout_weight="0"
+            android:layout_marginTop="5dp"
+            android:id="@+id/Iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="选择移动位置"
+            android:textSize="20dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:background="@color/colorTitle">
-
-            <ImageView
-                android:layout_weight="0"
-                android:layout_marginTop="5dp"
-                android:id="@+id/Iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/Iv_Wenjian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/wenjian"/>
+                <TextView
+                    android:layout_toRightOf="@+id/Iv_Wenjian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="文件夹1"
+                    android:textSize="18dp"/>
+            </RelativeLayout>
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/back" />
-            <TextView
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="选择移动位置"
-                android:textSize="20dp"
-                android:textColor="@color/colorWhite"/>
+                android:text="2016-11-25  22:00"
+                android:textSize="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/colorGray"
+                android:layout_margin="5dp"/>
         </LinearLayout>
 
     </FrameLayout>
