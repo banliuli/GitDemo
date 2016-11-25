@@ -1,18 +1,17 @@
-package com.example.administrator.suishouji;
+package activity;
 
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+
+import com.example.administrator.suishouji.R;
 
 /**
  * Created by lenovo on 2016/11/18.

@@ -1,4 +1,4 @@
-package com.example.administrator.suishouji;
+package activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginPage extends AppCompatActivity {
+import com.example.administrator.suishouji.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     private Button fh;
     private Button login;
@@ -47,10 +49,10 @@ public class LoginPage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==1){
-            Toast.makeText(LoginPage.this,"用户名密码正确",Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,"用户名密码正确",Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(LoginPage.this,"用户名密码错误",Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,"用户名密码错误",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -102,13 +104,13 @@ public class LoginPage extends AppCompatActivity {
             Intent i= new Intent();
             switch (v.getId()){
                 case R.id.btn_login_page_fh:
-                    i.setClass(LoginPage.this,MyAccounts.class);
+                    i.setClass(LoginActivity.this, MyAccountsActivity.class);
                     break;
                 case R.id.btn_login_page_register:
-                    i.setClass(LoginPage.this,RegisterPage.class);
+                    i.setClass(LoginActivity.this, RegisterActivity.class);
                     break;
                 case R.id.btn_login_page_login:
-                    i.setClass(LoginPage.this,MyAccounts.class);
+                    i.setClass(LoginActivity.this, MyAccountsActivity.class);
                     i.putExtra("NAME", etname.getText().toString());
                     i.putExtra("PWD", etpwd.getText().toString());
                     break;

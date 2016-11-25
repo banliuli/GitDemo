@@ -1,4 +1,4 @@
-package com.example.administrator.suishouji;
+package activity;
 
 
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+
+import com.example.administrator.suishouji.R;
 
 
 public class MainActivity extends AppCompatActivity {

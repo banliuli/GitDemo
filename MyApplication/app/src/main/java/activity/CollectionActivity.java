@@ -1,12 +1,12 @@
-package com.example.administrator.suishouji;
+package activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.administrator.suishouji.R;
 
 public class CollectionActivity extends Activity {
     private ImageView mIv_back;

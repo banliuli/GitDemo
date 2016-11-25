@@ -8,33 +8,32 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginPage">
+        <activity android:name="activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditHomeActivity" />
-        <activity android:name=".MoveActivity" />
-        <activity android:name=".EditActivity" />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".ConcealActivity" />
-        <activity android:name=".OpinionActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".PictureActivity" />
-        <activity android:name=".TextActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name="activity.EditHomeActivity" />
+        <activity android:name="activity.MoveActivity" />
+        <activity android:name="activity.EditActivity" />
+        <activity android:name="activity.SettingActivity" />
+        <activity android:name="activity.ConcealActivity" />
+        <activity android:name="activity.OpinionActivity" />
+        <activity android:name="activity.AboutActivity" />
+        <activity android:name="activity.PictureActivity" />
+        <activity android:name="activity.TextActivity" />
+        <activity android:name="activity.SearchActivity" />
 
-        <!-- ע��ҳ�� -->
-        <activity android:name=".RegisterPage" />
+        <activity android:name="activity.RegisterActivity" />
 
         <!-- ��¼��ҳ�� -->
-        <activity android:name=".MyAccounts" />
+        <activity android:name="activity.MyAccountsActivity" />
 
         <!-- �ǳ�ҳ�� -->
-        <activity android:name=".NickName" />
-        <activity android:name=".CollectionActivity"/>
+        <activity android:name="activity.NickNameActivity" />
+        <activity android:name="activity.CollectionActivity"/>
 
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.administrator.suishouji;
+package activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class RegisterPage extends AppCompatActivity {
+import com.example.administrator.suishouji.R;
+
+public class RegisterActivity extends AppCompatActivity {
 
     private Button fh;
     private Button register;
@@ -37,7 +39,7 @@ public class RegisterPage extends AppCompatActivity {
             Intent i= new Intent();
             switch (v.getId()){
                 case R.id.btn_register_page_fh:
-                    i.setClass(RegisterPage.this,LoginPage.class);
+                    i.setClass(RegisterActivity.this, LoginActivity.class);
                     break;
             }
             startActivity(i);

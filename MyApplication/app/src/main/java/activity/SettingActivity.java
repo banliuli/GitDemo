@@ -1,4 +1,4 @@
-package com.example.administrator.suishouji;
+package activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.administrator.suishouji.R;
 
 public class SettingActivity extends Activity {
     private TextView mTv_conceal,mTv_opinion,mTv_about;
@@ -36,7 +38,7 @@ public class SettingActivity extends Activity {
         mTv_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(SettingActivity.this,AboutActivity.class);
+                Intent i=new Intent(SettingActivity.this, AboutActivity.class);
                 startActivity(i);
             }
         });
