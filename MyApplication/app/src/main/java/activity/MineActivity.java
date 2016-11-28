@@ -30,6 +30,7 @@ public class MineActivity extends Activity {
         setContentView(R.layout.layout_mine);
         InitID();
         setListener();
+
     }
     private void InitID() {
         btnshezhi = (Button)findViewById(R.id.btn_mine_shezhi);
@@ -49,9 +50,7 @@ public class MineActivity extends Activity {
         btntext.setOnClickListener(listener);
         btnpicture.setOnClickListener(listener);
         btnsatisfy.setOnClickListener(listener);
-
         btnsuishouji.setOnClickListener(listener);
-        llshoucang.setOnClickListener(listener);
 
     }
 
