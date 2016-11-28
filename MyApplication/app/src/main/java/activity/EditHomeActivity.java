@@ -88,10 +88,20 @@ public class EditHomeActivity extends Activity {
             //获取焦点
             popupWindow.setFocusable(true);
             //弹框位置
-            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,0);
+            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,268);
             //点击外面弹窗消失
             popupWindow.setOutsideTouchable(true);
 
+        }
+        else {
+            //设置popupWindow大小
+            popupWindow = new PopupWindow(view,350, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT);
+            //获取焦点
+            popupWindow.setFocusable(true);
+            //弹框位置
+            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,268);
+            //点击外面弹窗消失
+            popupWindow.setOutsideTouchable(true);
         }
 
 
