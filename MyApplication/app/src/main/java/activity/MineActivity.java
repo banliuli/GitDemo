@@ -1,5 +1,6 @@
 package activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +14,7 @@ import com.example.administrator.suishouji.R;
 /**
  * Created by lenovo on 2016/11/18.
  */
-public class MineActivity extends AppCompatActivity {
+public class MineActivity extends Activity {
 
     private Button btncollect;
     private Button btntext;
@@ -29,6 +30,7 @@ public class MineActivity extends AppCompatActivity {
         setContentView(R.layout.layout_mine);
         InitID();
         setListener();
+
     }
     private void InitID() {
         btnshezhi = (Button)findViewById(R.id.btn_mine_shezhi);
@@ -48,9 +50,7 @@ public class MineActivity extends AppCompatActivity {
         btntext.setOnClickListener(listener);
         btnpicture.setOnClickListener(listener);
         btnsatisfy.setOnClickListener(listener);
-
         btnsuishouji.setOnClickListener(listener);
-        llshoucang.setOnClickListener(listener);
 
     }
 
@@ -62,6 +62,7 @@ public class MineActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.btn_mine_suishouji:
                     i.setClass(MineActivity.this,MainActivity.class);
+                    break;
                 case R.id.btn_mine_collect:
                     i.setClass(MineActivity.this,CollectionActivity.class);
                     break;
