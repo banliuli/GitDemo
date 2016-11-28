@@ -78,7 +78,7 @@
         <Button
             android:layout_weight="1"
             android:id="@+id/btn_collect"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/collect2"
             android:text="收藏"
@@ -88,7 +88,7 @@
         <Button
             android:layout_weight="1"
             android:id="@+id/btn_move"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/move"
             android:text="移动到"
@@ -98,7 +98,7 @@
         <Button
             android:layout_weight="1"
             android:id="@+id/btn_edit"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/edit"
             android:text="编辑"
@@ -108,7 +108,7 @@
         <Button
             android:layout_weight="1"
             android:id="@+id/btn_more"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/more"
             android:text="更多"

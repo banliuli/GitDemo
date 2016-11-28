@@ -1,6 +1,7 @@
 package activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,6 +16,8 @@ public class EditActivity extends Activity {
     private ImageView IvBack;
 
     private ImageButton IBtnSpot,IBtnNumber,IBtnLeft,IBtnRight,IBtnWord;
+
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class EditActivity extends Activity {
 
     private void setListener() {
         EditActivity.MyListener listener = new EditActivity.MyListener();
+        IvBack.setOnClickListener(listener);
+
         IBtnSpot.setOnClickListener(listener);
         IBtnNumber.setOnClickListener(listener);
         IBtnLeft.setOnClickListener(listener);
@@ -51,6 +56,11 @@ public class EditActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                case R.id.Iv_back:         //返回
+                    Intent intent = new Intent();
+                    intent.setClass(getApplication(),EditHomeActivity.class);
+                    startActivity(intent);
+                    break;
                 case R.id.Ibtn_spot:
                     break;
                 case R.id.Ibtn_number:
@@ -63,5 +73,7 @@ public class EditActivity extends Activity {
                     break;
             }
         }
+
+
     }
 }
