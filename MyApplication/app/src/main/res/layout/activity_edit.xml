@@ -98,6 +98,13 @@
             android:layout_height="wrap_content"
             android:src="@drawable/right"/>
         <ImageButton
+            android:id="@+id/Ibtn_picture"
+            android:background="@drawable/btn_change"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/picture"/>
+        <ImageButton
             android:id="@+id/Ibtn_word"
             android:background="@drawable/btn_change"
             android:layout_weight="1"

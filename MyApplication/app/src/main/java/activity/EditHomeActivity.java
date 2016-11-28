@@ -1,4 +1,4 @@
-package com.example.administrator.suishouji;
+package activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+
+import com.example.administrator.suishouji.R;
+
 
 public class EditHomeActivity extends Activity {
 

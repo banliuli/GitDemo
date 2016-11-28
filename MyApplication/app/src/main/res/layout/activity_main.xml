@@ -1,16 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.administrator.suishouji.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    android:orientation="vertical"
+    android:id="@+id/ll">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="9"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#5677fc"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/img"
+                android:background="@drawable/mine"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="随手记"
+                android:textSize="30dp"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/shuaxin"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:textSize="16sp"
+                android:text="编辑"
+                android:id="@+id/bianji"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorTitle"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:background="@drawable/tianjia"
+                />
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:queryHint="">
+            </SearchView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Lv">
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:gravity="center"
+           android:id="@+id/suishouji"
+           android:layout_gravity="center"
+           >
+           <Button
+               android:layout_width="32dp"
+               android:layout_height="32dp"
+               android:id="@+id/suishouji1"
+               android:background="@drawable/suishouji"/>
+           <Button
+               android:layout_width="36dp"
+               android:layout_height="18dp"
+               android:layout_below="@+id/suishouji1"
+               android:gravity="center"
+               android:text="随手记"
+               android:textSize="12sp"
+               android:textColor="@color/colorBlack"
+               android:background="@color/colorWhite"/>
+       </RelativeLayout>
+        <Button
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:id="@+id/bianji1"
+            android:background="@drawable/add"
+            android:layout_gravity="center"/>
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/mine1"
+            android:layout_gravity="center"
+            >
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/mine"
+                android:background="@drawable/mine" />
+            <Button
+                android:layout_width="32dp"
+                android:layout_height="18dp"
+                android:layout_below="@+id/mine"
+                android:gravity="center"
+                android:text="我的"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlack"
+                android:background="@color/colorWhite"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>
