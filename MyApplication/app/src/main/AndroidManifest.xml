@@ -9,7 +9,10 @@
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
         <activity android:name="activity.EditHomeActivity">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 836383a62547711c5a067523ef929415b9e82b26
 =======
         <activity android:name="activity.MainActivity">
 >>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11
@@ -20,6 +23,10 @@
             </intent-filter>
         </activity>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <activity android:name="activity.LoginActivity" />
+>>>>>>> 836383a62547711c5a067523ef929415b9e82b26
 =======
         <activity android:name="activity.EditHomeActivity"/>
         <!--<activity android:name="activity.EditHomeActivity" />-->
@@ -45,8 +52,18 @@
         <activity android:name="activity.NickNameActivity" />
         <activity android:name="activity.CollectionActivity"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name="activity.MainActivity"/>
 
+=======
+        <activity android:name="activity.SexActivity" />
+
+        <activity android:name="activity.MainActivity" />
+        <activity android:name="activity.PersonalIntroduceActivity" />
+        <activity android:name="activity.EditAddActivity" />
+        <activity android:name="activity.RealNameActivity" />
+        <activity android:name="activity.PaperBgActivity"/>
+>>>>>>> 836383a62547711c5a067523ef929415b9e82b26
 =======
         <activity android:name="activity.MineActivity"/>
 >>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11

@@ -13,11 +13,18 @@ import android.widget.ListView;
 
 import com.example.administrator.suishouji.R;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
+=======
+<<<<<<< HEAD
+public class MainActivity extends AppCompatActivity {
+=======
+>>>>>>> 836383a62547711c5a067523ef929415b9e82b26
 
 public class MainActivity extends Activity {
+>>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11
 
     private Button bianji;
     private Button mine;

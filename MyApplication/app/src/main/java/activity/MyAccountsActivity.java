@@ -61,6 +61,15 @@ public class MyAccountsActivity extends AppCompatActivity {
                 case R.id.btn_my_accounts_gd1:
                     i.setClass(MyAccountsActivity.this, NickNameActivity.class);
                     break;
+                case R.id.btn_my_accounts_gd2:
+                    i.setClass(MyAccountsActivity.this,SexActivity.class);
+                    break;
+                case R.id.btn_my_accounts_gd3:
+                    i.setClass(MyAccountsActivity.this, PersonalIntroduceActivity.class);
+                    break;
+                case R.id.btn_my_accounts_gd4:
+                    i.setClass(MyAccountsActivity.this, RealNameActivity.class);
+                    break;
             }
             startActivity(i);
         }
