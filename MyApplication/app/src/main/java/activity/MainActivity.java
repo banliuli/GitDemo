@@ -1,6 +1,7 @@
 package activity;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,12 @@ import android.widget.Button;
 
 import com.example.administrator.suishouji.R;
 
+<<<<<<< HEAD
 public class MainActivity extends AppCompatActivity {
+=======
+
+public class MainActivity extends Activity {
+>>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11
 
     private Button bianji;
     private Button mine;
