@@ -7,13 +7,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activity.EditHomeActivity">
+        <activity android:name="activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="activity.EditHomeActivity"/>
         <!--<activity android:name="activity.EditHomeActivity" />-->
         <activity android:name="activity.MoveActivity" />
         <activity android:name="activity.EditActivity" />
@@ -24,14 +25,11 @@
         <activity android:name="activity.PictureActivity" />
         <activity android:name="activity.TextActivity" />
         <activity android:name="activity.SearchActivity" />
-
         <activity android:name="activity.RegisterActivity" />
-
         <activity android:name="activity.MyAccountsActivity" />
-
         <activity android:name="activity.NickNameActivity" />
         <activity android:name="activity.CollectionActivity"/>
-
+        <activity android:name="activity.MineActivity"/>
     </application>
 
 </manifest>
