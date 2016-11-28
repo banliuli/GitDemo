@@ -11,12 +11,9 @@ import android.widget.Button;
 
 import com.example.administrator.suishouji.R;
 
-<<<<<<< HEAD
-public class MainActivity extends AppCompatActivity {
-=======
 
-public class MainActivity extends Activity {
->>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11
+public class MainActivity extends AppCompatActivity {
+
 
     private Button bianji;
     private Button mine;

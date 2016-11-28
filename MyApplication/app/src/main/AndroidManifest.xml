@@ -7,23 +7,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name="activity.EditHomeActivity">
-=======
+
+
+
         <activity android:name="activity.MainActivity">
->>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity android:name="activity.LoginActivity" />
-=======
-        <activity android:name="activity.EditHomeActivity"/>
-        <!--<activity android:name="activity.EditHomeActivity" />-->
->>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11
+
+
         <activity android:name="activity.MoveActivity" />
         <activity android:name="activity.EditActivity" />
         <activity android:name="activity.SettingActivity" />
@@ -37,17 +35,17 @@
         <activity android:name="activity.MyAccountsActivity" />
         <activity android:name="activity.NickNameActivity" />
         <activity android:name="activity.CollectionActivity"/>
-<<<<<<< HEAD
-        <activity android:name="activity.SexActivity" />
 
-        <activity android:name="activity.MainActivity" />
+        <activity android:name="activity.SexActivity" />
+        <activity android:name="activity.EditHomeActivity"/>
+
         <activity android:name="activity.PersonalIntroduceActivity" />
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
         <activity android:name="activity.PaperBgActivity"/>
-=======
+
         <activity android:name="activity.MineActivity"/>
->>>>>>> 9f13dc2cc2451b5a67c17fc2f49ae77187f94d11
+
     </application>
 
 </manifest>
