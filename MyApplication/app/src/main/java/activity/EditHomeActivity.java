@@ -8,8 +8,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.example.administrator.suishouji.R;
 
@@ -21,9 +21,10 @@ public class EditHomeActivity extends Activity {
     private Button BtnEdit;
     private Button BtnMore;
 
-    private ListView LvPopup;
     private PopupWindow popupWindow;
     private View view;
+
+    private RelativeLayout Rlayout1,Rlayout2,Rlayout3,Rlayout4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class EditHomeActivity extends Activity {
         setListener();
     }
 
-
+    //获取界面控件
     private void getView() {
         BtnCollect = (Button) findViewById(R.id.btn_collect);
         BtnMove = (Button) findViewById(R.id.btn_move);
@@ -44,6 +45,7 @@ public class EditHomeActivity extends Activity {
         BtnMore = (Button) findViewById(R.id.btn_more);
     }
 
+    //注册监听事件
     private void setListener() {
         MyListener listener = new MyListener();
         BtnCollect.setOnClickListener(listener);
@@ -58,17 +60,17 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.btn_move:
+                case R.id.btn_move:      //移动
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(),MoveActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.btn_edit:
+                case R.id.btn_edit:     //编辑
                     Intent intent2 = new Intent();
                     intent2.setClass(getApplicationContext(),EditActivity.class);
                     startActivity(intent2);
                     break;
-                case R.id.btn_more:
+                case R.id.btn_more:      //更多
                     popup();
                     break;
             }
@@ -76,6 +78,7 @@ public class EditHomeActivity extends Activity {
 
     }
 
+    //“更多”弹框
     private void popup() {
 
         if (view == null) {
@@ -104,7 +107,33 @@ public class EditHomeActivity extends Activity {
             popupWindow.setOutsideTouchable(true);
         }
 
+        //获取"更多"弹框里的控件
+        Rlayout1 = (RelativeLayout) view.findViewById(R.id.Rlayout1);
+        Rlayout2 = (RelativeLayout) view.findViewById(R.id.Rlayout2);
+        Rlayout3 = (RelativeLayout) view.findViewById(R.id.Rlayout3);
+        Rlayout4 = (RelativeLayout) view.findViewById(R.id.Rlayout4);
 
+        //获取"更多"弹框里的控件点击事件
+        Rlayout1.setOnClickListener(new Listener());
+        Rlayout2.setOnClickListener(new Listener());
+        Rlayout3.setOnClickListener(new Listener());
+        Rlayout4.setOnClickListener(new Listener());
     }
 
+    //"更多"弹框里的控件点击事件
+    private class Listener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.Rlayout1:     //纸张背景
+                    break;
+                case R.id.Rlayout2:     //阅读密码
+                    break;
+                case R.id.Rlayout3:     //删除
+                    break;
+                case R.id.Rlayout4:     //详细信息
+                    break;
+            }
+        }
+    }
 }

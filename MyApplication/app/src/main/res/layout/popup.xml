@@ -7,6 +7,7 @@
     android:background="@color/colorBlack">
 
     <RelativeLayout
+        android:id="@+id/Rlayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -29,6 +30,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/Rlayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -51,6 +53,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/Rlayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -73,6 +76,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/Rlayout4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
