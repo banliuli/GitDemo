@@ -10,7 +10,6 @@ import android.widget.Button;
 
 import com.example.administrator.suishouji.R;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private Button bianji;
