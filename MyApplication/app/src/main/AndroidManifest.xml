@@ -11,12 +11,12 @@
 
 
         <activity android:name="activity.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <activity android:name="activity.LoginActivity" />
@@ -38,7 +38,6 @@
 
         <activity android:name="activity.SexActivity" />
         <activity android:name="activity.EditHomeActivity"/>
-
         <activity android:name="activity.PersonalIntroduceActivity" />
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
@@ -50,6 +49,7 @@
         <activity android:name="activity.TextListActivity"/>
 
         <activity android:name="activity.AddfiesActivity"/>
+        <activity android:name="activity.SetpwdActivity"/>
 
 
     </application>

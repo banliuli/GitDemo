@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private Button btn_add;
     private Button bianji;
     private Button mine;
     private FileAdapter myadapter;
@@ -54,12 +54,14 @@ public class MainActivity extends AppCompatActivity {
         bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
         edit = (Button)findViewById(R.id.btn_activtiy_main_edit);
+        btn_add=(Button)findViewById(R.id.btn_activtiy_main_add);
     }
     private void setListener() {
         MyListener mylistener = new MyListener();
         bianji.setOnClickListener(mylistener);
         mine.setOnClickListener(mylistener);
         edit.setOnClickListener(mylistener);
+        btn_add.setOnClickListener(mylistener);
     }
     //数据获取
     private void getData() {
