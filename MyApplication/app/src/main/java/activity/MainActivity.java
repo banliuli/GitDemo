@@ -11,28 +11,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.administrator.suishouji.R;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.List;
-=======
->>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
->>>>>>> 69eb3d94983f904f320574ae467880da912cbae1
 
-
-
-
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-
-=======
 public class MainActivity extends AppCompatActivity {
->>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
 
->>>>>>> 69eb3d94983f904f320574ae467880da912cbae1
     private Button btn_add;
     private Button bianji;
     private Button mine;

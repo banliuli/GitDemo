@@ -27,16 +27,7 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
                 android:gravity="center"
-<<<<<<< HEAD
                 android:layout_weight="1" />
-
-
-
-=======
-
-                android:layout_weight="1" />
-                />
->>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
             <Button
                 android:layout_width="28dp"
                 android:layout_height="28dp"
@@ -44,11 +35,8 @@
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 />
-<<<<<<< HEAD
-             <Button
-=======
+
             <Button
->>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:textSize="16sp"
