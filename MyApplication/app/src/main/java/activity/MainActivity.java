@@ -13,24 +13,16 @@ import android.widget.ListView;
 
 import com.example.administrator.suishouji.R;
 
-<<<<<<< HEAD
-
-public class MainActivity extends AppCompatActivity {
-=======
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
-=======
-<<<<<<< HEAD
+
 public class MainActivity extends AppCompatActivity {
-=======
->>>>>>> 836383a62547711c5a067523ef929415b9e82b26
->>>>>>> 2cce64903565a04440b8df0b8e8afdf5686007d1
 
 
     private Button bianji;
     private Button mine;
+    private Button btn_add;
     private FileAdapter myadapter;
     private ListView lv;
     private List<File> lf = new ArrayList<File>();
@@ -61,25 +53,30 @@ public class MainActivity extends AppCompatActivity {
     private void getId() {
         bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
+        btn_add=(Button)findViewById(R.id.btn_activtiy_main_add);
     }
     private void setListener() {
         MyListener mylistener = new MyListener();
         bianji.setOnClickListener(mylistener);
-        mine.setOnClickListener(mylistener);
-    }
-    //数据获取
-    private void getData() {
-        lf.add(new File(0L,"来自手机","2011-02-01"));
-    }
+            mine.setOnClickListener(mylistener);
+            btn_add.setOnClickListener(mylistener);
+        }
+        //数据获取
+        private void getData() {
+            lf.add(new File(0L,"来自手机","2011-02-01"));
+        }
 
-    //更改界面
-    private class MyListener implements View.OnClickListener{
-        @Override
-        public void onClick(View v) {
-            Intent i = new Intent();
+        //更改界面
+        private class MyListener implements View.OnClickListener{
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
             switch (v.getId()){
                 case R.id.btn_activtiy_main_mine:
                     i.setClass(MainActivity.this,MineActivity.class);
+                    break;
+                case R.id.btn_activtiy_main_add:
+                    i.setClass(MainActivity.this,AddfiesActivity.class);
                     break;
             }
             startActivity(i);
