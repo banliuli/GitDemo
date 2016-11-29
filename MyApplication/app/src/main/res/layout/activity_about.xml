@@ -10,7 +10,7 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:id="@+id/iv_back"
+            android:id="@+id/img_activity_about_back"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -61,8 +61,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp" >
+            android:layout_marginBottom="10dp" >
+
             <TextView
                 android:id="@+id/person"
                 android:layout_width="0dp"
@@ -73,10 +73,11 @@
                 android:text="检查更新"
                 android:textColor="#000000"
                 android:textSize="17sp"/>
-            <ImageView
+            <Button
+                android:id="@+id/btn_activity_about_gd1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gengduo"/>
+                android:background="@drawable/gengduo"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -103,10 +104,11 @@
                 android:text="觉得不错？评分支持下吧！"
                 android:textColor="#000000"
                 android:textSize="17sp"/>
-            <ImageView
+            <Button
+                android:id="@+id/btn_activity_about_gd2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gengduo"/>
+                android:background="@drawable/gengduo"/>
         </LinearLayout>
 
     </RelativeLayout>

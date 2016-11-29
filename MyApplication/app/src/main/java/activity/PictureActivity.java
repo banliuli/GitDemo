@@ -19,7 +19,7 @@ public class PictureActivity extends Activity {
         setListener();
     }
     private void getView(){
-        mIv_back=(ImageView)findViewById(R.id.back);
+        mIv_back=(ImageView)findViewById(R.id.img_activity_picture_back);
     }
     private void setListener(){
         MyListener listener=new MyListener();
@@ -29,7 +29,7 @@ public class PictureActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.back:
+                case R.id.img_activity_picture_back:
                     Intent i=new Intent(PictureActivity.this,MineActivity.class);
                     startActivity(i);
                     break;

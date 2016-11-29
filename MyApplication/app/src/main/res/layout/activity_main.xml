@@ -11,16 +11,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#5677fc"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
             <Button
+                android:id="@+id/btn_activtiy_main_login"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:id="@+id/btn_activtiy_main_img"
                 android:background="@drawable/personal"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
-                />
+                android:layout_margin="10dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,9 +27,16 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
                 android:gravity="center"
+<<<<<<< HEAD
+                android:layout_weight="1" />
+
+
+
+=======
 
                 android:layout_weight="1" />
                 />
+>>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
             <Button
                 android:layout_width="28dp"
                 android:layout_height="28dp"
@@ -39,7 +44,11 @@
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 />
+<<<<<<< HEAD
+             <Button
+=======
             <Button
+>>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:textSize="16sp"

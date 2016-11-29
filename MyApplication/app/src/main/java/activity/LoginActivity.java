@@ -104,16 +104,12 @@ public class LoginActivity extends AppCompatActivity {
             Intent i= new Intent();
             switch (v.getId()){
                 case R.id.btn_login_page_fh:
-                    i.setClass(LoginActivity.this, MyAccountsActivity.class);
+                    i.setClass(LoginActivity.this, MainActivity.class);
                     break;
                 case R.id.btn_login_page_register:
                     i.setClass(LoginActivity.this, RegisterActivity.class);
                     break;
-                case R.id.btn_login_page_login:
-                    i.setClass(LoginActivity.this, MyAccountsActivity.class);
-                    i.putExtra("NAME", etname.getText().toString());
-                    i.putExtra("PWD", etpwd.getText().toString());
-                    break;
+
             }
             startActivity(i);
         }

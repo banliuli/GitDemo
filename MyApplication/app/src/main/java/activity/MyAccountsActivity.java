@@ -53,7 +53,7 @@ public class MyAccountsActivity extends AppCompatActivity {
             Intent i= new Intent();
             switch (v.getId()){
                 case R.id.btn_my_accounts_fh:
-                    i.setClass(MyAccountsActivity.this, LoginActivity.class);
+                    i.setClass(MyAccountsActivity.this, MineActivity.class);
                     break;
                 case R.id.btn_my_accounts_qh:
                     i.setClass(MyAccountsActivity.this, MyAccountsActivity.class);
