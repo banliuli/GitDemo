@@ -14,7 +14,7 @@ public class OpinionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_opinion);
-        mIv_back1=(ImageView)findViewById(R.id.Iv_back1);
+        mIv_back1=(ImageView)findViewById(R.id.img_activity_opinion_back);
         mIv_back1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

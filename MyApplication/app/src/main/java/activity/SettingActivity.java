@@ -19,7 +19,7 @@ public class SettingActivity extends Activity {
         mTv_conceal=(TextView)findViewById(R.id.Tv_conceal);
         mTv_opinion=(TextView)findViewById(R.id.Tv_opinion);
         mTv_about=(TextView)findViewById(R.id.Tv_about);
-        mIv_back=(ImageView)findViewById(R.id.Iv_back);
+        mIv_back=(ImageView)findViewById(R.id.img_activity_setting_back);
 
         mTv_conceal.setOnClickListener(new View.OnClickListener() {
             @Override

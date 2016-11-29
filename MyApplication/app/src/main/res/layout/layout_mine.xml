@@ -26,21 +26,23 @@
             <com.example.administrator.suishouji.CircleImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:id="@+id/Iv_layout_mine_img"
+                android:id="@+id/Iv_layout_mine_login1"
                 android:layout_below="@+id/btn_mine_shezhi"
                 android:src="@drawable/img"
                 android:layout_centerInParent="true"
                 />
-            <TextView
+            <Button
+                android:id="@+id/btn_layout_mine_login2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Iv_layout_mine_img"
+                android:layout_below="@+id/Iv_layout_mine_login1"
                 android:text="点我登录"
                 android:textColor="@color/colorWhite"
                 android:textSize="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="40dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:background="@color/colorTitle"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.administrator.suishouji.R;
@@ -22,6 +23,8 @@ public class MineActivity extends Activity {
     private Button btnsatisfy;
     private Button btnsuishouji;
     private Button btnshezhi;
+    private Button login2;
+    private ImageView login1;
 
 
     @Override
@@ -33,6 +36,8 @@ public class MineActivity extends Activity {
 
     }
     private void InitID() {
+        login1 = (ImageView)findViewById(R.id.Iv_layout_mine_login1);
+        login2 = (Button)findViewById(R.id.btn_layout_mine_login2);
         btnshezhi = (Button)findViewById(R.id.btn_mine_shezhi);
         btncollect = (Button)findViewById(R.id.btn_mine_collect);
         btntext = (Button)findViewById(R.id.btn_mine_text);
@@ -45,6 +50,8 @@ public class MineActivity extends Activity {
 
     private void setListener() {
         MyListener listener = new MyListener();
+        login1.setOnClickListener(listener);
+        login2.setOnClickListener(listener);
         btnshezhi.setOnClickListener(listener);
         btncollect.setOnClickListener(listener);
         btntext.setOnClickListener(listener);
@@ -60,6 +67,12 @@ public class MineActivity extends Activity {
         public void onClick(View v) {
             Intent i = new Intent();
             switch (v.getId()){
+                case R.id.Iv_layout_mine_login1:
+                    i.setClass(MineActivity.this,MyAccountsActivity.class);
+                    break;
+                case R.id.btn_layout_mine_login2:
+                    i.setClass(MineActivity.this,LoginActivity.class);
+                    break;
                 case R.id.btn_mine_suishouji:
                     i.setClass(MineActivity.this,MainActivity.class);
                     break;
