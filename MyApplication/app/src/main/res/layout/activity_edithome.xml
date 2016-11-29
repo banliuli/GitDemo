@@ -13,8 +13,8 @@
         android:background="@color/colorTitle">
 
         <ImageView
+            android:id="@+id/Iv_activity_edithome_back"
             android:layout_marginTop="5dp"
-            android:id="@+id/Iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back" />
@@ -28,9 +28,9 @@
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
         <ImageView
+            android:id="@+id/Iv_activity_edithome_share"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:id="@+id/Iv_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/share" />
@@ -77,7 +77,7 @@
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/btn_collect"
+            android:id="@+id/btn_activity_edithome_collect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/collect2"
@@ -87,7 +87,7 @@
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/btn_move"
+            android:id="@+id/btn_activity_edithome_move"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/move"
@@ -97,7 +97,7 @@
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/btn_edit"
+            android:id="@+id/btn_activity_edithome_edit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/edit"
@@ -107,7 +107,7 @@
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/btn_more"
+            android:id="@+id/btn_activity_edithome_more"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/more"

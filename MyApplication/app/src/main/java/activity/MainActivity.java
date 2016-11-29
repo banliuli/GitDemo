@@ -8,12 +8,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
+
 import com.example.administrator.suishouji.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class MainActivity extends AppCompatActivity {
 

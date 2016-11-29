@@ -24,15 +24,17 @@ public class MoveActivity extends AppCompatActivity {
         setListener();
     }
 
+    //获取界面控件
     private void getView() {
-        IvBack = (ImageView) findViewById(R.id.Iv_back);
+        IvBack = (ImageView) findViewById(R.id.Iv_activity_move_back);
     }
 
+    //注册监听事件
     private void setListener() {
         IvBack.setOnClickListener(backListener);
     }
 
-    //“返回”点击事件
+    //“返回”点击事件，跳转页面
     View.OnClickListener backListener = new View.OnClickListener() {
 
         @Override
