@@ -1,31 +1,20 @@
 package activity;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.administrator.suishouji.R;
-<<<<<<< HEAD
 
 
 
-public class MainActivity extends AppCompatActivity {
 
-
-
-=======
-import java.util.ArrayList;
-import java.util.List;
-
->>>>>>> 08300fda08af1c6be2df8046ee25477a55232755
 
 public class MainActivity extends AppCompatActivity {
 
@@ -90,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btn_activtiy_main_edit:
                     i.setClass(MainActivity.this,DeleteFileActivity.class);
                     break;
-                case R.id.btn_activtiy_main_edit1:
-                    i.setClass(MainActivity.this,AddfiesActivity.class);
+                case R.id.btn_activtiy_main_add:
+                    i.setClass(MainActivity.this, AddfilesActivity.class);
                     break;
             }
             startActivity(i);

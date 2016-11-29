@@ -18,7 +18,7 @@ public class CollectionActivity extends Activity {
         setListener();
     }
     private void getView(){
-        mIv_back=(ImageView)findViewById(R.id.Iv_back);
+        mIv_back=(ImageView)findViewById(R.id.img_activity_collection_back);
     }
     private void setListener(){
         MyListener listener=new MyListener();
@@ -28,7 +28,7 @@ public class CollectionActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.Iv_back:
+                case R.id.img_activity_collection_back:
                     Intent i=new Intent(CollectionActivity.this,MineActivity.class);
                     startActivity(i);
                     break;
