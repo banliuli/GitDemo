@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private void getId() {
         bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
-        edit = (Button)findViewById(R.id.btn_activtiy_main_edit);
+        edit = (Button)findViewById(R.id.btn_activtiy_main_edit1);
     }
     private void setListener() {
         MyListener mylistener = new MyListener();
@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_activtiy_main_edit:
                     i.setClass(MainActivity.this,DeleteFileActivity.class);
-                case R.id.btn_activtiy_main_add:
+                    break;
+                case R.id.btn_activtiy_main_edit1:
                     i.setClass(MainActivity.this,AddfiesActivity.class);
                     break;
             }

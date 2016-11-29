@@ -13,7 +13,7 @@
         android:id="@+id/Iv_item_delete_file_img"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/wenjian"
+        android:src="@drawable/file"
         android:layout_toRightOf="@+id/cb_item_delete_file"
         android:layout_margin="5dp"/>
     <LinearLayout
@@ -21,25 +21,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_toRightOf="@+id/Iv_item_delete_file_img"
-        android:layout_marginRight="5dp">
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp">
         <TextView
             android:id="@+id/Tv_item_delete_file_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
             android:background="@drawable/btn_shape_delete"
-            android:textSize="15sp"
+            android:textSize="17sp"
             android:text="删除"
             android:textColor="@color/colorWhite"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/Tv_item_delete_file_Title"/>
 

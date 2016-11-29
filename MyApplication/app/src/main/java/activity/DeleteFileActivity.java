@@ -50,6 +50,13 @@ public class DeleteFileActivity extends AppCompatActivity {
 
     private void getData() {
         lf.add(new File(0L,"来自手机"));
+        lf.add(new File(1L,"来自手机"));
+        lf.add(new File(2L,"来自手机"));
+        lf.add(new File(3L,"来自手机"));
+        lf.add(new File(4L,"来自手机"));
+        lf.add(new File(5L,"来自手机"));
+        lf.add(new File(6L,"来自手机"));
+        lf.add(new File(7L,"来自手机"));
     }
 
 
