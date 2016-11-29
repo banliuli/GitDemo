@@ -10,15 +10,16 @@
         android:background="#5677fc">
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/back"
             android:scaleType="fitXY"
-            android:id="@+id/Iv_back"/>
+            android:id="@+id/Iv_back"
+            android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_weight="5"
+            android:layout_weight="6"
             android:text="我的收藏"
             android:textSize="20sp"
             android:gravity="center"
