@@ -9,8 +9,7 @@
         android:theme="@style/AppTheme">
 
 
-
-        <activity android:name="activity.MainActivity">
+        <activity android:name="activity.EditHomeActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +22,8 @@
 
 
         <activity android:name="activity.MoveActivity" />
-        <activity android:name="activity.EditActivity" />
+        <activity android:name="activity.EditActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name="activity.SettingActivity" />
         <activity android:name="activity.ConcealActivity" />
         <activity android:name="activity.OpinionActivity" />
@@ -37,7 +37,7 @@
         <activity android:name="activity.CollectionActivity"/>
 
         <activity android:name="activity.SexActivity" />
-        <activity android:name="activity.EditHomeActivity"/>
+        <!--<activity android:name="activity.EditHomeActivity"/>-->
 
         <activity android:name="activity.PersonalIntroduceActivity" />
         <activity android:name="activity.EditAddActivity" />
