@@ -22,7 +22,7 @@ public class MineActivity extends Activity {
     private Button btnsatisfy;
     private Button btnsuishouji;
     private Button btnshezhi;
-    private LinearLayout llshoucang;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

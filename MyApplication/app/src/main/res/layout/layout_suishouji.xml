@@ -26,13 +26,7 @@
             android:gravity="center"
             android:layout_weight="1"
             />
-        <Button
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:background="@drawable/shuaxin"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
-            />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="32dp"

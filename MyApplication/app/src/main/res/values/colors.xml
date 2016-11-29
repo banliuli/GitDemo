@@ -9,4 +9,5 @@
     <color name="colorExit">#ff7043</color>
     <color name="colorBlack">#4F4F4F</color>
     <color name="colorGray">#d4d4d2</color>
+    <color name="colorRed">#ff0000</color>
 </resources>

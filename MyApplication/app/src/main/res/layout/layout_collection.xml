@@ -10,15 +10,16 @@
         android:background="#5677fc">
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/back"
             android:scaleType="fitXY"
-            android:id="@+id/Iv_back"/>
+            android:id="@+id/img_activity_collection_back"
+            android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_weight="5"
+            android:layout_weight="6"
             android:text="我的收藏"
             android:textSize="20sp"
             android:gravity="center"
@@ -34,26 +35,24 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#d8d5d5">
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:src="@drawable/sousuo"
-            android:scaleType="fitXY"
-            android:id="@+id/Iv_search"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"/>
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="10"
-            android:hint="搜索"
-            android:gravity="center"
+        android:layout_height="wrap_content"
+        android:background="#e6e3e6"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:background="#ffffff"
-            android:layout_toRightOf="@+id/Iv_search"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginBottom="5dp">
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchView"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

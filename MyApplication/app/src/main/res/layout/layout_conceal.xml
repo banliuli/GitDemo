@@ -9,11 +9,12 @@
         android:layout_height="wrap_content"
         android:background="#5677fc">
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/back"
             android:scaleType="fitXY"
-            android:id="@+id/Iv_back"/>
+            android:id="@+id/img_activity_conceal_back"
+            android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45dp"

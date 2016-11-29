@@ -8,17 +8,20 @@ import android.widget.ImageView;
 
 import com.example.administrator.suishouji.R;
 
-public class ConcealActivity extends Activity {
+/**
+ * Created by lenovo on 2016/11/29.
+ */
+public class AddfilesActivity extends Activity {
     private ImageView mIv_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_conceal);
-        mIv_back=(ImageView)findViewById(R.id.img_activity_conceal_back);
+        setContentView(R.layout.layout_setfiles);
+        mIv_back=(ImageView)findViewById(R.id.img_activity_addfiles_back);
         mIv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(ConcealActivity.this,SettingActivity.class);
+                Intent i=new Intent(AddfilesActivity.this,MainActivity.class);
                 startActivity(i);
             }
         });

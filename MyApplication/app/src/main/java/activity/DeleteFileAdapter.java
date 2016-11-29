@@ -13,39 +13,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lenovo on 2016/11/28.
+ * Created by lenovo on 2016/11/29.
  */
-public class FileAdapter extends BaseAdapter {
+public class DeleteFileAdapter extends BaseAdapter {
     private Context context;
-    private List<File> lfile = new ArrayList<>();
+    private List<File> ldf = new ArrayList<>();
 
-    public FileAdapter(Context context, List<File> lfile) {
+    public DeleteFileAdapter(Context context, List<File> ldf) {
         this.context = context;
-        this.lfile = lfile;
+        this.ldf = ldf;
     }
 
     @Override
     public int getCount() {
-        return lfile.size();
+        return ldf.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return lfile.get(i);
+        return ldf.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return lfile.get(i).getId();
+        return ldf.get(i).getId();
     }
 
     @Override
     public View getView(int i, View view, ViewGroup parent) {
         if (null==view){
-            view = LayoutInflater.from(context).inflate(R.layout.layout_item_suishouji_file,null);
+            view = LayoutInflater.from(context).inflate(R.layout.layout_item_delete_file,null);
         }
-        TextView TvTitle = (TextView) view.findViewById(R.id.Tv_layout_suishouji_file_Title);
-        TvTitle.setText(lfile.get(i).getFilename());
+        TextView TvTitle = (TextView) view.findViewById(R.id.Tv_item_delete_file_Title);
+        TvTitle.setText(ldf.get(i).getFilename());
         return view;
     }
 }
