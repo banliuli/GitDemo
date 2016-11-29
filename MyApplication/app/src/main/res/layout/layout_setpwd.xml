@@ -8,10 +8,10 @@
         android:layout_height="wrap_content"
         android:background="#5677fc">
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/back"
-            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical"
             android:id="@+id/Iv_back"/>
         <TextView
             android:layout_width="280dp"
