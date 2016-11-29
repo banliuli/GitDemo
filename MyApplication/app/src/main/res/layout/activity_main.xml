@@ -29,24 +29,17 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
                 android:gravity="center"
-<<<<<<< HEAD
-                android:layout_weight="1" />
 
-=======
-                android:layout_weight="1"
+                android:layout_weight="1" />
                 />
             <Button
-<<<<<<< HEAD
-=======
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:background="@drawable/refresh"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 />
->>>>>>> 08300fda08af1c6be2df8046ee25477a55232755
             <Button
->>>>>>> 5e92d791431c39167d64f2c247b8c46e883dead0
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:textSize="16sp"

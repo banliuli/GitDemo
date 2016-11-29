@@ -97,12 +97,15 @@ public class EditHomeActivity extends Activity {
 
         }
         else {
+            //装载popup对应的界面布局
+            LayoutInflater inflater = LayoutInflater.from(this);
+            view = inflater.inflate(R.layout.messagemore,null);
             //设置popupWindow大小
-            popupWindow = new PopupWindow(view,350, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT);
+            popupWindow = new PopupWindow(view, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT);
             //获取焦点
             popupWindow.setFocusable(true);
             //弹框位置
-            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,268);
+            popupWindow.showAtLocation(view, Gravity.CENTER|Gravity.CENTER,0,0);
             //点击外面弹窗消失
             popupWindow.setOutsideTouchable(true);
         }
@@ -134,6 +137,7 @@ public class EditHomeActivity extends Activity {
                 case R.id.Rlayout3:     //删除
                     break;
                 case R.id.Rlayout4:     //详细信息
+                    popup();
                     break;
             }
         }
