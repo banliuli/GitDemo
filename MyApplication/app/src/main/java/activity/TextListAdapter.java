@@ -48,8 +48,6 @@ public class TextListAdapter extends BaseAdapter {
         TvTitle.setText(lit.get(i).getTitle());
         TextView TvContent = (TextView) view.findViewById(R.id.Tv_item_textlist_content);
         TvContent.setText(lit.get(i).getContent());
-        TextView TvDate = (TextView) view.findViewById(R.id.Tv_item_textlist_date);
-        TvDate.setText(lit.get(i).getDate());
         return view;
     }
 }

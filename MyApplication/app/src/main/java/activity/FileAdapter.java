@@ -46,8 +46,6 @@ public class FileAdapter extends BaseAdapter {
         }
         TextView TvTitle = (TextView) view.findViewById(R.id.Tv_layout_suishouji_file_Title);
         TvTitle.setText(lfile.get(i).getFilename());
-        TextView TvDate = (TextView) view.findViewById(R.id.Tv_layout_suishouji_file_Date);
-        TvDate.setText(lfile.get(i).getDate());
         return view;
     }
 }

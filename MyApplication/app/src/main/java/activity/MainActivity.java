@@ -12,21 +12,11 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.administrator.suishouji.R;
-
-<<<<<<< HEAD
-
-public class MainActivity extends AppCompatActivity {
-=======
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
-=======
-<<<<<<< HEAD
+
 public class MainActivity extends AppCompatActivity {
-=======
->>>>>>> 836383a62547711c5a067523ef929415b9e82b26
->>>>>>> 2cce64903565a04440b8df0b8e8afdf5686007d1
 
 
     private Button bianji;
@@ -69,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //数据获取
     private void getData() {
-        lf.add(new File(0L,"来自手机","2011-02-01"));
+        lf.add(new File(0L,"来自手机"));
     }
 
     //更改界面
@@ -80,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.btn_activtiy_main_mine:
                     i.setClass(MainActivity.this,MineActivity.class);
+                    break;
+                case R.id.btn_activtiy_main_edit:
+                    i.setClass(MainActivity.this,DeleteFileActivity.class);
                     break;
             }
             startActivity(i);

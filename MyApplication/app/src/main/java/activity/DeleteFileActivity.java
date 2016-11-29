@@ -17,45 +17,53 @@ import java.util.List;
 /**
  * Created by lenovo on 2016/11/28.
  */
-public class TextListActivity extends AppCompatActivity{
-    private Button back;
+public class DeleteFileActivity extends AppCompatActivity {
+    private Button suishouji;
+    private Button mine;
     private Button edit;
-    private List<ItemText> lit = new ArrayList<ItemText>();
-    private TextListAdapter myadapter;
+    private List<File> lf = new ArrayList<File>();
+    private DeleteFileAdapter myadapter;
     private ListView lv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_textlist);
+        setContentView(R.layout.activity_delete_filelist);
         initID();
         setListener();
         getData();
-        myadapter = new TextListAdapter(this,lit);
-        lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
+        myadapter = new DeleteFileAdapter(this,lf);
+        lv = (ListView)findViewById(R.id.Lv_delete_item_file);
         lv.setAdapter(myadapter);
-        //给ListView设置item点击监听器，实现点击效果
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 String j = String.valueOf(i);
-
+                if (null!= j){
+                    Intent k = new Intent();
+                    k.setClass(DeleteFileActivity.this,TextListActivity.class);
+                    startActivity(k);
+                }
             }
         });
     }
 
     private void getData() {
-        lit.add(new ItemText(0L,"来自手机","来自手机"));
+        lf.add(new File(0L,"来自手机"));
     }
 
+
     private void initID() {
-        back = (Button)findViewById(R.id.btn_activtiy_textlist_return);
-        edit = (Button)findViewById(R.id.btn_activtiy_textlist_edit);
+        suishouji = (Button)findViewById(R.id.btn_delete_filelist_suishouji1);
+        mine = (Button)findViewById(R.id.btn_delete_filelist_mine);
+        edit = (Button)findViewById(R.id.btn_delete_filelist_edit1);
     }
     private void setListener() {
         MyListener listener = new MyListener();
-        back.setOnClickListener(listener);
+        suishouji.setOnClickListener(listener);
+        mine.setOnClickListener(listener);
         edit.setOnClickListener(listener);
+
     }
 
     private class MyListener implements View.OnClickListener{
@@ -63,11 +71,14 @@ public class TextListActivity extends AppCompatActivity{
         public void onClick(View v) {
             Intent i = new Intent();
             switch (v.getId()){
-                case R.id.btn_activtiy_textlist_return:
-                    i.setClass(TextListActivity.this,MainActivity.class);
+                case R.id.btn_delete_filelist_suishouji1:
+                    i.setClass(DeleteFileActivity.this,MainActivity.class);
                     break;
-                case R.id.btn_activtiy_textlist_edit:
-                    i.setClass(TextListActivity.this,MainActivity.class);
+                case R.id.btn_delete_filelist_edit1:
+                    i.setClass(DeleteFileActivity.this,EditAddActivity.class);
+                    break;
+                case R.id.btn_delete_filelist_mine:
+                    i.setClass(DeleteFileActivity.this,MineActivity.class);
                     break;
             }
             startActivity(i);

@@ -7,11 +7,9 @@ public class ItemText {
     private Long id;
     private String title;
     private String content;
-    private String date;
 
-    public ItemText(Long id,String title,String content, String date) {
+    public ItemText(Long id,String title,String content) {
         this.content = content;
-        this.date = date;
         this.id = id;
         this.title = title;
     }
@@ -22,14 +20,6 @@ public class ItemText {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public Long getId() {
