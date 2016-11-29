@@ -14,7 +14,7 @@ public class ConcealActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_conceal);
-        mIv_back=(ImageView)findViewById(R.id.Iv_back);
+        mIv_back=(ImageView)findViewById(R.id.img_activity_conceal_back);
         mIv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -17,7 +17,7 @@ public class SetpwdActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_setpwd);
-        mIv_back=(ImageView)findViewById(R.id.Iv_back);
+        mIv_back=(ImageView)findViewById(R.id.img_activity_setpwd_back);
         mIv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

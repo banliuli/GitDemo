@@ -1,28 +1,31 @@
 package activity;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.administrator.suishouji.R;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
+=======
+>>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
 
 
 
+
+
+<<<<<<< HEAD
+
+=======
 public class MainActivity extends AppCompatActivity {
-
-
-
-
+>>>>>>> f98e0b6d55d46f88f20afc919b55300939a1cd11
 
     private Button btn_add;
     private Button bianji;
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         login=(Button)findViewById(R.id.btn_activtiy_main_login);
         bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
-        edit = (Button)findViewById(R.id.btn_activtiy_main_edit);
+        edit = (Button)findViewById(R.id.btn_activtiy_main_edit1);
         btn_add=(Button)findViewById(R.id.btn_activtiy_main_add);
 
     }
@@ -91,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_activtiy_main_edit:
                     i.setClass(MainActivity.this,DeleteFileActivity.class);
+                    break;
                 case R.id.btn_activtiy_main_add:
-                    i.setClass(MainActivity.this,AddfiesActivity.class);
+                    i.setClass(MainActivity.this, AddfilesActivity.class);
                     break;
             }
             startActivity(i);

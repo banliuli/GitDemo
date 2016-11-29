@@ -5,8 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -32,30 +31,33 @@
                 android:layout_weight="1"
                 />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:background="#e6e3e6">
             <Button
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
                 android:id="@+id/btn_activtiy_main_add"
                 android:background="@drawable/tianjia"
+                android:layout_marginLeft="10dp"
                 />
-            <SearchView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:queryHint="">
-            </SearchView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="9">
+                android:layout_height="40dp"
+                android:background="#ffffff"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <SearchView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/searchView"
+                    android:layout_below="@+id/linearLayout"
+                    android:layout_centerHorizontal="true" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
@@ -81,12 +83,12 @@
             android:layout_weight="1"
             />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/btn_shape_delete"
             android:text="删除"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:textColor="@color/colorWhite"
             android:layout_gravity="right"
             android:gravity="center"
@@ -96,22 +98,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
             <Button
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/btn_delete_filelist_suishouji1"
                 android:background="@drawable/suishouji"/>
-            <Button
-                android:layout_width="36dp"
+            <TextView
+                android:layout_width="40dp"
                 android:layout_height="18dp"
                 android:layout_below="@+id/btn_delete_filelist_suishouji1"
                 android:gravity="center"
@@ -131,14 +131,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_gravity="center"
-            >
+            android:layout_gravity="center">
             <Button
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:id="@+id/btn_delete_filelist_mine"
                 android:background="@drawable/mine" />
-            <Button
+            <TextView
                 android:layout_width="32dp"
                 android:layout_height="18dp"
                 android:layout_below="@+id/btn_delete_filelist_mine"
