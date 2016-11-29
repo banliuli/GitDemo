@@ -13,19 +13,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.administrator.suishouji.R;
-<<<<<<< HEAD
 
 
-
-public class MainActivity extends AppCompatActivity {
-
-
-
-=======
-import java.util.ArrayList;
-import java.util.List;
-
->>>>>>> 08300fda08af1c6be2df8046ee25477a55232755
 
 public class MainActivity extends AppCompatActivity {
 
