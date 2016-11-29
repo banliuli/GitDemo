@@ -30,15 +30,8 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_weight="1"
-                />
-            <Button
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/shuaxin"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                />
+                android:layout_weight="1" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
@@ -48,8 +41,7 @@
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:textColor="@color/colorWhite"
-                android:background="@color/colorTitle"
-                />
+                android:background="@color/colorTitle" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,7 +70,7 @@
 
         </LinearLayout>
     </LinearLayout>
-  <LinearLayout
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_weight="1">
@@ -86,7 +78,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:id="@+id/Lv_activtiy_main"></ListView>
-  </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

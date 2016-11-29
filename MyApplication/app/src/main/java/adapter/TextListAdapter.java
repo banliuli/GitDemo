@@ -1,4 +1,4 @@
-package activity;
+package adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,9 +12,8 @@ import com.example.administrator.suishouji.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lenovo on 2016/11/28.
- */
+import activity.ItemText;
+
 public class TextListAdapter extends BaseAdapter {
     private Context context;
     private List<ItemText> lit = new ArrayList<>();
@@ -48,8 +47,6 @@ public class TextListAdapter extends BaseAdapter {
         TvTitle.setText(lit.get(i).getTitle());
         TextView TvContent = (TextView) view.findViewById(R.id.Tv_item_textlist_content);
         TvContent.setText(lit.get(i).getContent());
-        TextView TvDate = (TextView) view.findViewById(R.id.Tv_item_textlist_date);
-        TvDate.setText(lit.get(i).getDate());
         return view;
     }
 }
