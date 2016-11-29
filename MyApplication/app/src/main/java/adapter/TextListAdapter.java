@@ -1,4 +1,4 @@
-package activity;
+package adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,9 +12,8 @@ import com.example.administrator.suishouji.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lenovo on 2016/11/28.
- */
+import activity.ItemText;
+
 public class TextListAdapter extends BaseAdapter {
     private Context context;
     private List<ItemText> lit = new ArrayList<>();

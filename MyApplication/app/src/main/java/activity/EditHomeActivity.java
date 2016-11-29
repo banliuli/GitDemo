@@ -127,7 +127,9 @@ public class EditHomeActivity extends Activity {
             switch (v.getId()) {
                 case R.id.Rlayout1:     //纸张背景
                     break;
-                case R.id.Rlayout2:     //阅读密码
+                case R.id.Rlayout2://阅读密码
+                    Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
+                    startActivity(i);
                     break;
                 case R.id.Rlayout3:     //删除
                     break;
