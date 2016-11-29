@@ -13,21 +13,16 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.administrator.suishouji.R;
-<<<<<<< HEAD
-
-
-
-public class MainActivity extends AppCompatActivity {
-
-
-
-=======
 import java.util.ArrayList;
 import java.util.List;
 
->>>>>>> 08300fda08af1c6be2df8046ee25477a55232755
+
 
 public class MainActivity extends AppCompatActivity {
+
+
+
+
 
     private Button btn_add;
     private Button bianji;
@@ -36,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     private List<File> lf = new ArrayList<File>();
     private Button edit;
+    private Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +58,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getId() {
+        login=(Button)findViewById(R.id.btn_activtiy_main_login);
         bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
         edit = (Button)findViewById(R.id.btn_activtiy_main_edit);
         btn_add=(Button)findViewById(R.id.btn_activtiy_main_add);
+
     }
     private void setListener() {
         MyListener mylistener = new MyListener();
+        login.setOnClickListener(mylistener);
         bianji.setOnClickListener(mylistener);
         mine.setOnClickListener(mylistener);
         edit.setOnClickListener(mylistener);
@@ -84,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent();
             switch (v.getId()){
+                case R.id.btn_activtiy_main_login:
+                    i.setClass(MainActivity.this,LoginActivity.class);
+                    break;
                 case R.id.btn_activtiy_main_mine:
                     i.setClass(MainActivity.this,MineActivity.class);
                     break;
