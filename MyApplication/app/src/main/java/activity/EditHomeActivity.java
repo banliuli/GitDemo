@@ -86,8 +86,8 @@ public class EditHomeActivity extends Activity {
             LayoutInflater inflater = LayoutInflater.from(this);
             view = inflater.inflate(R.layout.popup,null);
 
-            //设置popupWindow大小
-            popupWindow = new PopupWindow(view,350, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT);
+           //设置popupWindow大小
+            popupWindow = new PopupWindow(view, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT);
             //获取焦点
             popupWindow.setFocusable(true);
             //弹框位置
@@ -127,7 +127,9 @@ public class EditHomeActivity extends Activity {
             switch (v.getId()) {
                 case R.id.Rlayout1:     //纸张背景
                     break;
-                case R.id.Rlayout2:     //阅读密码
+                case R.id.Rlayout2://阅读密码
+                    Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
+                    startActivity(i);
                     break;
                 case R.id.Rlayout3:     //删除
                     break;

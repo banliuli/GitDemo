@@ -1,104 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorWhite">
+    android:layout_width="270dp"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:layout_marginLeft="56dp">
 
-    <RelativeLayout
-        android:layout_width="270dp"
+
+
+    <TextView
+        android:id="@+id/messagemore"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:layout_marginLeft="56dp">
-
-        <TextView
-            android:id="@+id/messagemore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="详细信息"
-            android:layout_marginLeft="88dp"
-            android:layout_marginTop="3dp"
-            android:textSize="23dp"
-            android:textColor="@color/colorBlack"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/colorBlack"
-            android:layout_marginTop="7dp"
-            android:layout_below="@+id/messagemore"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="文件夹：根目录"
-            android:layout_below="@+id/messagemore"
-            android:layout_marginTop="17dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorBlack"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/colorBlack"
-            android:layout_below="@+id/messagemore"
-            android:layout_marginTop="55dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="更新时间：2016-11-15 16:00"
-            android:layout_below="@+id/messagemore"
-            android:layout_marginTop="67dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorBlack"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/colorBlack"
-            android:layout_marginTop="107dp"
-            android:layout_below="@+id/messagemore"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="创建时间：2016-11-14 16:00"
-            android:layout_below="@+id/messagemore"
-            android:layout_marginTop="120dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorBlack"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/colorBlack"
-            android:layout_marginTop="157dp"
-            android:layout_below="@+id/messagemore"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="大小：300B"
-            android:layout_below="@+id/messagemore"
-            android:layout_marginTop="170dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorBlack"/>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/colorBlack"
-            android:layout_marginTop="204dp"
-            android:layout_below="@+id/messagemore"/>
-        <TextView
-            android:id="@+id/close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="关闭"
-            android:layout_below="@+id/messagemore"
-            android:layout_marginTop="237dp"
-            android:textSize="23dp"
-            android:textColor="@color/colorTitle"
-            android:layout_marginLeft="107dp"/>
+        android:text="详细信息"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="3dp"
+        android:textSize="23dp"
+        android:textColor="@color/colorBlack"/>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/messagemore"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件夹：根目录"
+        android:layout_below="@+id/messagemore"
+        android:layout_marginTop="17dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"/>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"
+        android:layout_below="@+id/messagemore"
+        android:layout_marginTop="55dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="更新时间：2016-11-15 16:00"
+        android:layout_below="@+id/messagemore"
+        android:layout_marginTop="67dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"/>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"
+        android:layout_marginTop="107dp"
+        android:layout_below="@+id/messagemore"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建时间：2016-11-14 16:00"
+        android:layout_below="@+id/messagemore"
+        android:layout_marginTop="120dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"/>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"
+        android:layout_marginTop="157dp"
+        android:layout_below="@+id/messagemore"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="大小：300B"
+        android:layout_below="@+id/messagemore"
+        android:layout_marginTop="170dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"/>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"
+        android:layout_marginTop="204dp"
+        android:layout_below="@+id/messagemore"/>
+    <TextView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关闭"
+        android:layout_below="@+id/messagemore"
+        android:layout_marginTop="237dp"
+        android:textSize="23dp"
+        android:textColor="@color/colorTitle"
+        android:layout_marginLeft="107dp"/>
 
 
-
-
-    </RelativeLayout>
 
 
 </RelativeLayout>
+

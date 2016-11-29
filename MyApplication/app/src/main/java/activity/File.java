@@ -6,20 +6,10 @@ package activity;
 public class File {
     private Long id;
     private String filename;
-    private String date;
 
-    public File( Long id, String filename,String date) {
-        this.date = date;
+    public File( Long id, String filename) {
         this.filename = filename;
         this.id = id;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public String getFilename() {

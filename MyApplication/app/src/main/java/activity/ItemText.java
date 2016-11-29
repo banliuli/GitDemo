@@ -22,7 +22,10 @@ public class ItemText {
         this.content = content;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 08300fda08af1c6be2df8046ee25477a55232755
     public Long getId() {
         return id;
     }
