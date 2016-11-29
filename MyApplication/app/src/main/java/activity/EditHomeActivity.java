@@ -39,10 +39,10 @@ public class EditHomeActivity extends Activity {
 
     //获取界面控件
     private void getView() {
-        BtnCollect = (Button) findViewById(R.id.btn_collect);
-        BtnMove = (Button) findViewById(R.id.btn_move);
-        BtnEdit = (Button) findViewById(R.id.btn_edit);
-        BtnMore = (Button) findViewById(R.id.btn_more);
+        BtnCollect = (Button) findViewById(R.id.btn_activity_edithome_collect);
+        BtnMove = (Button) findViewById(R.id.btn_activity_edithome_move);
+        BtnEdit = (Button) findViewById(R.id.btn_activity_edithome_edit);
+        BtnMore = (Button) findViewById(R.id.btn_activity_edithome_more);
     }
 
     //注册监听事件
@@ -60,17 +60,17 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.btn_move:      //移动
+                case R.id.btn_activity_edithome_move:      //移动
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(),MoveActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.btn_edit:     //编辑
+                case R.id.btn_activity_edithome_edit:     //编辑
                     Intent intent2 = new Intent();
                     intent2.setClass(getApplicationContext(),EditActivity.class);
                     startActivity(intent2);
                     break;
-                case R.id.btn_more:      //更多
+                case R.id.btn_activity_edithome_more:      //更多
                     popup();
                     break;
             }
@@ -108,10 +108,10 @@ public class EditHomeActivity extends Activity {
         }
 
         //获取"更多"弹框里的控件
-        Rlayout1 = (RelativeLayout) view.findViewById(R.id.Rlayout1);
-        Rlayout2 = (RelativeLayout) view.findViewById(R.id.Rlayout2);
-        Rlayout3 = (RelativeLayout) view.findViewById(R.id.Rlayout3);
-        Rlayout4 = (RelativeLayout) view.findViewById(R.id.Rlayout4);
+        Rlayout1 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup1);
+        Rlayout2 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup2);
+        Rlayout3 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup3);
+        Rlayout4 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup4);
 
         //获取"更多"弹框里的控件点击事件
         Rlayout1.setOnClickListener(new Listener());
@@ -125,13 +125,13 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.Rlayout1:     //纸张背景
+                case R.id.Rlayout_popup1:     //纸张背景
                     break;
-                case R.id.Rlayout2:     //阅读密码
+                case R.id.Rlayout_popup2:     //阅读密码
                     break;
-                case R.id.Rlayout3:     //删除
+                case R.id.Rlayout_popup3:     //删除
                     break;
-                case R.id.Rlayout4:     //详细信息
+                case R.id.Rlayout_popup4:     //详细信息
                     break;
             }
         }

@@ -1,33 +1,21 @@
 package activity;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.administrator.suishouji.R;
 
-<<<<<<< HEAD
-
-public class MainActivity extends AppCompatActivity {
-=======
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
-=======
-<<<<<<< HEAD
-public class MainActivity extends AppCompatActivity {
-=======
->>>>>>> 836383a62547711c5a067523ef929415b9e82b26
->>>>>>> 2cce64903565a04440b8df0b8e8afdf5686007d1
 
+public class MainActivity extends AppCompatActivity {
 
     private Button bianji;
     private Button mine;

@@ -7,21 +7,21 @@
     android:background="@color/colorBlack">
 
     <RelativeLayout
-        android:id="@+id/Rlayout1"
+        android:id="@+id/Rlayout_popup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/Iv_paperbg"
+            android:id="@+id/Iv_popup_paperbg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/paper_bg"/>
 
         <TextView
-            android:id="@+id/Tv_paperbg"
+            android:id="@+id/Tv_popup_paperbg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/Iv_paperbg"
+            android:layout_toRightOf="@+id/Iv_popup_paperbg"
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:text="纸张背景"
@@ -30,21 +30,21 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/Rlayout2"
+        android:id="@+id/Rlayout_popup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/Iv_readpwd"
+            android:id="@+id/Iv_popup_readpwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/read_password"/>
 
         <TextView
-            android:id="@+id/Tv_readpwd"
+            android:id="@+id/Tv_popup_readpwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/Iv_readpwd"
+            android:layout_toRightOf="@+id/Iv_popup_readpwd"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:text="阅读密码"
@@ -53,21 +53,21 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/Rlayout3"
+        android:id="@+id/Rlayout_popup3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/Iv_delete"
+            android:id="@+id/Iv_popup_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/delete"/>
 
         <TextView
-            android:id="@+id/Tv_delete"
+            android:id="@+id/Tv_popup_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/Iv_delete"
+            android:layout_toRightOf="@+id/Iv_popup_delete"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:text="删除"
@@ -76,21 +76,21 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/Rlayout4"
+        android:id="@+id/Rlayout_popup4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/Iv_detail"
+            android:id="@+id/Iv_popup_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/detail"/>
 
         <TextView
-            android:id="@+id/Tv_detail"
+            android:id="@+id/Tv_popup_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/Iv_detail"
+            android:layout_toRightOf="@+id/Iv_popup_detail"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:text="详细信息"

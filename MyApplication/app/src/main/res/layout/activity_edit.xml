@@ -12,14 +12,14 @@
         android:background="@color/colorTitle">
 
         <ImageView
+            android:id="@+id/Iv_activity_edit_back"
             android:layout_weight="0.1"
             android:layout_marginTop="5dp"
-            android:id="@+id/Iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/back" />
         <TextView
-            android:id="@+id/Tv_finish"
+            android:id="@+id/Tv_activity_edit_finish"
             android:layout_weight="0.9"
             android:gravity="right"
             android:layout_gravity="center_vertical"
@@ -42,6 +42,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/Ed_activity_edit_title"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
@@ -54,6 +55,7 @@
                 android:background="@color/colorGray"
                 android:layout_margin="5dp"/>
             <EditText
+                android:id="@+id/Ed_activity_edit_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="随手记笔记内容"
@@ -70,53 +72,47 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/Ibtn_spot"
+            android:id="@+id/Ibtn_activity_edit_spot"
             android:background="@drawable/btn_change"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/spot"/>
         <ImageButton
-            android:id="@+id/Ibtn_number"
+            android:id="@+id/Ibtn_activity_edit_number"
             android:background="@drawable/btn_change"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/number"/>
         <ImageButton
-            android:id="@+id/Ibtn_left"
+            android:id="@+id/Ibtn_activity_edit_left"
             android:background="@drawable/btn_change"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/left"/>
         <ImageButton
-            android:id="@+id/Ibtn_right"
+            android:id="@+id/Ibtn_activity_edit_right"
             android:background="@drawable/btn_change"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/right"/>
         <ImageButton
-            android:id="@+id/Ibtn_picture"
+            android:id="@+id/Ibtn_activity_edit_picture"
             android:background="@drawable/btn_change"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/picture"/>
         <ImageButton
-            android:id="@+id/Ibtn_word"
+            android:id="@+id/Ibtn_activity_edit_word"
             android:background="@drawable/btn_change"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/word"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
     </LinearLayout>
 
 </LinearLayout>
