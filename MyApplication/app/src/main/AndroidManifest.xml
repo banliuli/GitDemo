@@ -45,8 +45,12 @@
         <activity android:name="activity.PaperBgActivity"/>
 
         <activity android:name="activity.MineActivity"/>
+
         <activity android:name="activity.DeleteFileActivity"/>
         <activity android:name="activity.TextListActivity"/>
+
+        <activity android:name="activity.AddfiesActivity"/>
+
 
     </application>
 

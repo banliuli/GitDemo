@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <CheckBox
+        android:id="@+id/cb_item_delete_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp"
+        />
+    <ImageView
+        android:id="@+id/Iv_item_delete_file_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/wenjian"
+        android:layout_toRightOf="@+id/cb_item_delete_file"
+        android:layout_margin="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/Iv_item_delete_file_img"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:id="@+id/Tv_item_delete_file_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="5dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:background="@drawable/btn_shape_delete"
+            android:textSize="15sp"
+            android:text="删除"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/Tv_item_delete_file_Title"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/xian"
+        android:layout_below="@+id/Iv_item_delete_file_img"
+        android:layout_marginTop="5dp"/>
+</RelativeLayout>
