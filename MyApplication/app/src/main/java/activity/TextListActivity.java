@@ -41,6 +41,9 @@ public class TextListActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 String j = String.valueOf(i);
+                Intent ii=new Intent(TextListActivity.this,EditHomeActivity.class);
+                startActivity(ii);
+
 
             }
         });
@@ -69,8 +72,9 @@ public class TextListActivity extends AppCompatActivity{
                     i.setClass(TextListActivity.this,MainActivity.class);
                     break;
                 case R.id.btn_activtiy_textlist_edit:
-                    i.setClass(TextListActivity.this,MainActivity.class);
+                    i.setClass(TextListActivity.this,DeleteTextListActivity.class);
                     break;
+
             }
             startActivity(i);
         }

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         login=(Button)findViewById(R.id.btn_activtiy_main_login);
         bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
-        edit = (Button)findViewById(R.id.btn_activtiy_main_edit1);
+        edit = (Button)findViewById(R.id.btn_activity_main_edit1);
         btn_add=(Button)findViewById(R.id.btn_activtiy_main_add);
 
     }
@@ -88,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_activtiy_main_add:
                     i.setClass(MainActivity.this, AddfilesActivity.class);
+                    break;
+                case R.id.btn_activity_main_edit1:
+                    i.setClass(MainActivity.this,EditAddActivity.class);
                     break;
             }
             startActivity(i);

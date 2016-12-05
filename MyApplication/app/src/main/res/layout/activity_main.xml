@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="随手记"
-                android:textSize="30dp"
+                android:textSize="25sp"
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -115,7 +115,7 @@
         <Button
             android:layout_width="52dp"
             android:layout_height="52dp"
-            android:id="@+id/btn_activtiy_main_edit1"
+            android:id="@+id/btn_activity_main_edit1"
             android:background="@drawable/add"
             android:layout_gravity="center"/>
         <RelativeLayout

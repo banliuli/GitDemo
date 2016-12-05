@@ -51,6 +51,9 @@
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
         <activity android:name="activity.PaperBgActivity"/>
+        <activity android:name="activity.DeleteFileActivity"/>
+        <activity android:name="activity.SetpwdActivity"/>
+
 
     </application>
 

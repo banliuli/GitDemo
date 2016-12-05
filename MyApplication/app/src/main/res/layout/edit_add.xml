@@ -24,9 +24,9 @@
             android:layout_weight="3"
             android:layout_height="match_parent"
             android:text="登录到随手记"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:textColor="#ffffff"
-            android:gravity="center" />
+            android:gravity="center"/>
     </LinearLayout>
 
     <!--中间内容部分-->

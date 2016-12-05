@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
@@ -20,6 +21,7 @@ public class EditHomeActivity extends Activity {
     private Button BtnMove;
     private Button BtnEdit;
     private Button BtnMore;
+    private ImageView mIv_back;
 
     private PopupWindow popupWindow;
     private View view;
@@ -43,6 +45,7 @@ public class EditHomeActivity extends Activity {
         BtnMove = (Button) findViewById(R.id.btn_activity_edithome_move);
         BtnEdit = (Button) findViewById(R.id.btn_activity_edithome_edit);
         BtnMore = (Button) findViewById(R.id.btn_activity_edithome_more);
+        mIv_back=(ImageView)findViewById(R.id.Iv_activity_edithome_back);
     }
 
     //注册监听事件
@@ -52,6 +55,7 @@ public class EditHomeActivity extends Activity {
         BtnMove.setOnClickListener(listener);
         BtnEdit.setOnClickListener(listener);
         BtnMore.setOnClickListener(listener);
+        mIv_back.setOnClickListener(listener);
     }
     
 
@@ -72,6 +76,10 @@ public class EditHomeActivity extends Activity {
                     break;
                 case R.id.btn_activity_edithome_more:      //更多
                     popup();
+                    break;
+                case R.id.Iv_activity_edithome_back:
+                    Intent i=new Intent(EditHomeActivity.this,TextListActivity.class);
+                    startActivity(i);
                     break;
             }
         }
@@ -128,7 +136,9 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.Rlayout_popup1:     //纸张背景
+                case R.id.Rlayout_popup1://纸张背景
+                    Intent i1=new Intent(EditHomeActivity.this,PaperBgActivity.class);
+                    startActivity(i1);
                     break;
 
                 case R.id.Rlayout_popup2:     //阅读密码
