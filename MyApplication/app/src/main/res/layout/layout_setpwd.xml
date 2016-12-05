@@ -12,13 +12,13 @@
             android:layout_height="wrap_content"
             android:src="@drawable/back"
             android:layout_gravity="center_vertical"
-            android:id="@+id/img_activity_addfiles_back"/>
+            android:id="@+id/img_activity_setpwd_back"/>
         <TextView
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:text="设置阅读密码"
             android:textSize="20sp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:textColor="#ffffff"/>
     </LinearLayout>
     <LinearLayout

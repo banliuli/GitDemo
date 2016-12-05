@@ -34,12 +34,20 @@
             android:layout_height="40dp"
             android:text="密码保护"
             android:textSize="16sp"
-            android:gravity="center_vertical"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/keybord"
-            android:layout_alignParentRight="true"/>
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"/>
+        <ToggleButton
+            android:id="@+id/mTogBtn"
+            android:layout_width="46dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/switch_off"
+            android:checked="false"
+            android:text=""
+            android:textOff=""
+            android:textOn=""
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -51,7 +59,8 @@
             android:layout_height="40dp"
             android:text="修改“密码保护”的密码"
             android:textSize="16sp"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -12,14 +12,14 @@
             android:layout_height="wrap_content"
             android:src="@drawable/back"
             android:scaleType="fitXY"
-            android:id="@+id/img_activity_setpwd_back"
+            android:id="@+id/img_activity_addfiles_back"
             android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="280dp"
             android:layout_height="45dp"
             android:text="新建文件夹"
             android:textSize="20sp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:textColor="#ffffff"/>
     </LinearLayout>
     <ImageView
