@@ -24,14 +24,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="随手记"
-                android:textSize="25sp"
+                android:textSize="22sp"
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_weight="6" />
+                android:layout_weight="5" />
             <Button
                 android:layout_width="0dp"
-                android:layout_height="28dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/refresh"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
@@ -41,7 +41,7 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:text="编辑"
                 android:id="@+id/btn_activtiy_main_edit"
                 android:layout_margin="10dp"

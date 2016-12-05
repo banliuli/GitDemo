@@ -113,7 +113,7 @@ public class EditHomeActivity extends Activity {
             //获取焦点
             popupWindow.setFocusable(true);
             //弹框位置
-            popupWindow.showAtLocation(view, Gravity.CENTER|Gravity.CENTER,0,268);
+            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,268);
             //点击外面弹窗消失
             popupWindow.setOutsideTouchable(true);
         }
@@ -129,6 +129,19 @@ public class EditHomeActivity extends Activity {
         Rlayout2.setOnClickListener(new Listener());
         Rlayout3.setOnClickListener(new Listener());
         Rlayout4.setOnClickListener(new Listener());
+    }
+    private void popup1() {
+        //装载popup对应的界面布局
+        LayoutInflater inflater = LayoutInflater.from(this);
+        view = inflater.inflate(R.layout.messagemore,null);
+        //设置popupWindow大小
+        popupWindow = new PopupWindow(view, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT);
+        //获取焦点
+        popupWindow.setFocusable(true);
+        //弹框位置
+        popupWindow.showAtLocation(view, Gravity.CENTER|Gravity.CENTER,0,0);
+        //点击外面弹窗消失
+        popupWindow.setOutsideTouchable(true);
     }
 
     //"更多"弹框里的控件点击事件
@@ -153,7 +166,7 @@ public class EditHomeActivity extends Activity {
 
 
                 case R.id.Rlayout_popup4:     //详细信息
-                    popup();
+                    popup1();
 
                     break;
             }
