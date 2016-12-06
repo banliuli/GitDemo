@@ -125,48 +125,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom">
-            <ImageView
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/picture"
-                android:src="@drawable/picture"
-                android:layout_marginLeft="130dp"
-                android:layout_marginTop="5dp"/>
-            <TextView
+                android:id="@+id/activity_edit_picture">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/picture"
+                    android:src="@drawable/picture"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="来自相册"
+                    android:layout_marginLeft="172dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#101010"
+                    android:textSize="17sp" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"/>
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="来自相册"
-                android:layout_marginLeft="185dp"
-                android:layout_marginTop="12dp"
-                android:textColor="@color/colorBlack"
-                android:textSize="17sp" />
-            <TextView
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBlack"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/camera"
-                android:id="@+id/camera"
-                android:layout_below="@+id/picture"
-                android:layout_marginLeft="123dp"
-                android:layout_marginTop="10dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="相机拍照"
-                android:layout_below="@+id/picture"
-                android:layout_marginLeft="185dp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorBlack"
-                android:textSize="17sp" />
-            <TextView
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBlack"/>
+                android:layout_marginTop="35dp"
+                android:id="@+id/activity_edit_camera">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/camera"
+                    android:id="@+id/camera"
+                    android:layout_marginLeft="113dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="相机拍照"
+                    android:layout_marginLeft="175dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#101010"
+                    android:textSize="17sp" />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"/>
+            </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 

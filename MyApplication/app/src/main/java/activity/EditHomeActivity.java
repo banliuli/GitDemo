@@ -153,30 +153,17 @@ public class EditHomeActivity extends Activity {
                     Intent i1=new Intent(EditHomeActivity.this,PaperBgActivity.class);
                     startActivity(i1);
                     break;
-<<<<<<< HEAD
-                case R.id.Rlayout2://阅读密码
-=======
-
-
                 case R.id.Rlayout_popup2://阅读密码
->>>>>>> 6e25e307aa221d3baa66b7dac91c2e0447cddd23
                     Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
                     startActivity(i);
                     break;
                 case R.id.Rlayout_popup3:     //删除
                     break;
-<<<<<<< HEAD
                 case R.id.Rlayout4:     //详细信息
                     popup();
-=======
-
-
-
                 case R.id.Rlayout_popup4:     //详细信息
                     popup1();
->>>>>>> 6e25e307aa221d3baa66b7dac91c2e0447cddd23
-
-                    break;
+         break;
             }
         }
     }

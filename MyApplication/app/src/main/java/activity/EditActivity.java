@@ -3,6 +3,8 @@ package activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.administrator.suishouji.R;
 
@@ -23,6 +26,10 @@ public class EditActivity extends Activity {
     private ImageButton IBtnSpot,IBtnNumber,IBtnLeft,IBtnRight,IBtnPicture,IBtnWord;
 
     private LinearLayout HideWord,HidePicture;
+    private RelativeLayout addPicture,addCamera;
+    private ImageView imageView;
+    private static final int LOCAL_IMAGE_CODE = 1;//本地相册
+    private static final int CAMERA_IMAGE_CODE = 2;//照相机
 
     private boolean isVisbile = true;
 
@@ -51,6 +58,8 @@ public class EditActivity extends Activity {
 
         HideWord = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hideword);
         HidePicture = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hidepicture);
+        addPicture = (RelativeLayout) findViewById(R.id.activity_edit_picture);
+        addCamera = (RelativeLayout) findViewById(R.id.activity_edit_camera);
     }
 
 
@@ -65,6 +74,30 @@ public class EditActivity extends Activity {
         IBtnRight.setOnClickListener(listener);
         IBtnPicture.setOnClickListener(listener);
         IBtnWord.setOnClickListener(listener);
+        addPicture.setOnClickListener(listener);
+        addCamera.setOnClickListener(listener);
+    }
+    //获取相册和相机
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            // 表示 调用照相机拍照
+            case CAMERA_IMAGE_CODE:
+                if (resultCode == RESULT_OK) {
+                    Bundle bundle = data.getExtras();
+                    Bitmap bitmap = (Bitmap) bundle.get("data");
+                    imageView.setImageBitmap(bitmap);
+                }
+                break;
+            // 选择图片库的图片
+            case LOCAL_IMAGE_CODE:
+                if (resultCode == RESULT_OK) {
+                    Uri uri = data.getData();
+                    imageView.setImageURI(uri);
+                }
+                break;
+        }
     }
 
     /**
@@ -115,10 +148,21 @@ public class EditActivity extends Activity {
                         isVisbile = true;
                     }
                     break;
+                case R.id.activity_edit_picture:
+                    intent = new Intent(
+                            Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, LOCAL_IMAGE_CODE);// 打开相册
+                    break;
+                case R.id.activity_edit_camera:
+                    // TODO Auto-generated method stub
+                    // 使用意图 直接调用安装在手机上的照相机
+                    // 直接开发Camera硬件
+                    intent = new Intent(
+                            android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, CAMERA_IMAGE_CODE);// 打开照相机
+                    break;
             }
         }
     }
-
-
-
 }
