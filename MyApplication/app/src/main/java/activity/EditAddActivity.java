@@ -42,7 +42,7 @@ public class EditAddActivity extends AppCompatActivity {
                     i.setClass(EditAddActivity.this,MainActivity.class);
                     break;
                 case R.id.btn_edit_add_error:
-                    i.setClass(EditAddActivity.this,PaperBgActivity.class);
+                    i.setClass(EditAddActivity.this,MainActivity.class);
                     break;
             }
             startActivity(i);

@@ -1,5 +1,6 @@
 package activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,7 +20,7 @@ import adapter.DeleteTextListAdapter;
 import adapter.TextListAdapter;
 
 
-public class DeleteTextListActivity extends AppCompatActivity{
+public class DeleteTextListActivity extends Activity {
     private Button back;
     private List<ItemText> lit = new ArrayList<ItemText>();
     private DeleteTextListAdapter myadapter;

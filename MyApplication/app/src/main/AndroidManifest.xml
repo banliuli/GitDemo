@@ -39,6 +39,7 @@
         <activity android:name="activity.RegisterActivity" />
 
         <activity android:name="activity.TextListActivity"/>
+        <activity android:name="activity.AddfilesActivity"/>
 
 
 
@@ -53,6 +54,9 @@
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
         <activity android:name="activity.PaperBgActivity"/>
+        <activity android:name="activity.DeleteFileActivity"/>
+        <activity android:name="activity.SetpwdActivity"/>
+
 
 
 

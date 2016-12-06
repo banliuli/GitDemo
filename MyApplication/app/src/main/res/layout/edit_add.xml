@@ -16,17 +16,17 @@
         <Button
             android:id="@+id/btn_edit_add_back"
             android:layout_width="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@drawable/back" />
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_weight="6"
             android:layout_height="match_parent"
             android:text="登录到随手记"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:textColor="#ffffff"
-            android:gravity="center" />
+            android:gravity="center"/>
     </LinearLayout>
 
     <!--中间内容部分-->
@@ -98,8 +98,8 @@
 
     <Button
         android:id="@+id/btn_edit_add_error"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
         android:background="@drawable/close"
         android:layout_gravity="center"
         android:layout_alignParentBottom="true"/>

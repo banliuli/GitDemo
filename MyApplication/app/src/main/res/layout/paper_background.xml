@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="纸张背景"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:textColor="#ffffff"
             android:gravity="center"/>
         <Button
@@ -31,7 +31,7 @@
             android:layout_weight="0.5"
             android:layout_height="wrap_content"
             android:text="保存"
-            android:textSize="23dp"
+            android:textSize="18sp"
             android:textColor="#ffffff"
             android:background="#5677fc"/>
     </LinearLayout>
