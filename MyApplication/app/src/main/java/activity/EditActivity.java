@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ public class EditActivity extends Activity {
 
     private LinearLayout HideWord,HidePicture;
     private RelativeLayout addPicture,addCamera;
-    private ImageView imageView;
+    private ImageView IvAdd;
     private static final int LOCAL_IMAGE_CODE = 1;//本地相册
     private static final int CAMERA_IMAGE_CODE = 2;//照相机
 
@@ -47,6 +48,7 @@ public class EditActivity extends Activity {
     //获取界面控件
     private void getView() {
         IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
+        IvAdd = (ImageView)findViewById(R.id.Iv_activity_add);
         EdEdit = (EditText) findViewById(R.id.Ed_activity_edit_content);
 
         IBtnSpot = (ImageButton) findViewById(R.id.Ibtn_activity_edit_spot);
@@ -87,17 +89,24 @@ public class EditActivity extends Activity {
                 if (resultCode == RESULT_OK) {
                     Bundle bundle = data.getExtras();
                     Bitmap bitmap = (Bitmap) bundle.get("data");
-                    imageView.setImageBitmap(bitmap);
+                    IvAdd.setImageBitmap(bitmap);
                 }
                 break;
             // 选择图片库的图片
             case LOCAL_IMAGE_CODE:
                 if (resultCode == RESULT_OK) {
                     Uri uri = data.getData();
-                    imageView.setImageURI(uri);
+                    IvAdd.setImageURI(uri);
                 }
                 break;
         }
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     /**
