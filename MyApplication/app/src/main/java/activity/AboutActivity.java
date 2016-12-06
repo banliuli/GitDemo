@@ -19,14 +19,6 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-<<<<<<< HEAD
-        back=(ImageView)findViewById(R.id.img_activity_about_back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(AboutActivity.this,SettingActivity.class);
-                startActivity(i);
-=======
 
         initId();
         setListener();
@@ -61,7 +53,6 @@ public class AboutActivity extends Activity {
                 case R.id.btn_activity_about_gd2:
                     i.setClass(AboutActivity.this,SearchActivity.class);
                     break;
->>>>>>> 69eb3d94983f904f320574ae467880da912cbae1
             }
             startActivity(i);
         }

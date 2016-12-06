@@ -1,12 +1,15 @@
 package activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.administrator.suishouji.R;
 
@@ -17,7 +20,11 @@ public class EditActivity extends Activity {
     private ImageView IvBack;
     private EditText EdEdit;
 
-    private ImageButton IBtnSpot,IBtnNumber,IBtnLeft,IBtnRight,IBtnWord;
+    private ImageButton IBtnSpot,IBtnNumber,IBtnLeft,IBtnRight,IBtnPicture,IBtnWord;
+
+    private LinearLayout HideWord,HidePicture;
+
+    private boolean isVisbile = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +40,17 @@ public class EditActivity extends Activity {
     //获取界面控件
     private void getView() {
         IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
-        EdEdit = (EditText) findViewById(R.id.Ed_activity_edit_edit);
+        EdEdit = (EditText) findViewById(R.id.Ed_activity_edit_content);
 
         IBtnSpot = (ImageButton) findViewById(R.id.Ibtn_activity_edit_spot);
         IBtnNumber = (ImageButton) findViewById(R.id.Ibtn_activity_edit_number);
         IBtnLeft = (ImageButton) findViewById(R.id.Ibtn_activity_edit_left);
         IBtnRight = (ImageButton) findViewById(R.id.Ibtn_activity_edit_right);
+        IBtnPicture = (ImageButton) findViewById(R.id.Ibtn_activity_edit_picture);
         IBtnWord = (ImageButton) findViewById(R.id.Ibtn_activity_edit_word);
+
+        HideWord = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hideword);
+        HidePicture = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hidepicture);
     }
 
 
@@ -52,10 +63,13 @@ public class EditActivity extends Activity {
         IBtnNumber.setOnClickListener(listener);
         IBtnLeft.setOnClickListener(listener);
         IBtnRight.setOnClickListener(listener);
+        IBtnPicture.setOnClickListener(listener);
         IBtnWord.setOnClickListener(listener);
     }
 
-    //点击监听事件
+    /**
+     * 点击监听事件
+     */
     private class MyListener implements View.OnClickListener {
 
         @Override
@@ -74,10 +88,37 @@ public class EditActivity extends Activity {
                     break;
                 case R.id.Ibtn_activity_edit_right:    //右对齐
                     break;
-                case R.id.Ibtn_activity_edit_word:      //字体颜色
+                case R.id.Ibtn_activity_edit_picture:    //图片
+                    if (isVisbile) {
+                        //隐藏软键盘
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(EdEdit.getWindowToken(),0);
+                        isVisbile = false;
+                        HidePicture.setVisibility(View.VISIBLE);//显示布局
+                        HideWord.setVisibility(View.GONE);
+                    }else {
+                        HidePicture.setVisibility(View.GONE);//隐藏布局
+                        isVisbile = true;
+                    }
 
+                    break;
+                case R.id.Ibtn_activity_edit_word:      //字体颜色
+                    if (isVisbile) {
+                        //隐藏软键盘
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(EdEdit.getWindowToken(),0);
+                        isVisbile = false;
+                        HideWord.setVisibility(View.VISIBLE);//显示布局
+                        HidePicture.setVisibility(View.GONE);
+                    }else {
+                        HideWord.setVisibility(View.GONE);//隐藏布局
+                        isVisbile = true;
+                    }
                     break;
             }
         }
     }
+
+
+
 }

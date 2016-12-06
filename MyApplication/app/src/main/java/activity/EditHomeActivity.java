@@ -26,6 +26,7 @@ public class EditHomeActivity extends Activity {
 
     private RelativeLayout Rlayout1,Rlayout2,Rlayout3,Rlayout4;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ public class EditHomeActivity extends Activity {
                     startActivity(intent2);
                     break;
                 case R.id.btn_activity_edithome_more:      //更多
-                    popup();
+                        popup();
                     break;
             }
         }
@@ -80,7 +81,6 @@ public class EditHomeActivity extends Activity {
 
     //“更多”弹框
     private void popup() {
-
         if (view == null) {
             //装载popup对应的界面布局
             LayoutInflater inflater = LayoutInflater.from(this);
@@ -130,19 +130,12 @@ public class EditHomeActivity extends Activity {
             switch (v.getId()) {
                 case R.id.Rlayout_popup1:     //纸张背景
                     break;
-
-                case R.id.Rlayout_popup2:     //阅读密码
-
                 case R.id.Rlayout2://阅读密码
                     Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
                     startActivity(i);
-
                     break;
                 case R.id.Rlayout_popup3:     //删除
                     break;
-
-                case R.id.Rlayout_popup4:     //详细信息
-
                 case R.id.Rlayout4:     //详细信息
                     popup();
 
