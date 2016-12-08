@@ -11,8 +11,7 @@
 
         <activity android:name="activity.DeleteTextListActivity"/>
 
-        <activity android:name="activity.EditActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+        <activity android:name="activity.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +25,8 @@
         <activity android:name="activity.LoginActivity" />
         <activity android:name="activity.EditHomeActivity"/>
         <activity android:name="activity.MoveActivity" />
-        <!--<activity android:name="activity.EditActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>-->
+        <activity android:name="activity.EditActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name="activity.SettingActivity" />
         <activity android:name="activity.ConcealActivity" />
         <activity android:name="activity.OpinionActivity" />
@@ -56,6 +55,8 @@
         <activity android:name="activity.PaperBgActivity"/>
         <activity android:name="activity.DeleteFileActivity"/>
         <activity android:name="activity.SetpwdActivity"/>
+        <activity android:name="activity.CheckUpdateActivity"/>
+        <activity android:name="activity.ConcealPwd"/>
 
 
 

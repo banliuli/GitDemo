@@ -161,10 +161,18 @@ public class EditHomeActivity extends Activity {
                     break;
                 case R.id.Rlayout_popup3:     //删除
                     break;
+<<<<<<< HEAD
 
                 case R.id.Rlayout_popup4:     //详细信息
                     popup1();
                     break;
+=======
+                case R.id.Rlayout4:     //详细信息
+                    popup();
+                case R.id.Rlayout_popup4:     //详细信息
+                    popup1();
+         break;
+>>>>>>> 2fe9a5849d27b2c3d3c2fcf6d46c30f3c65db3c1
             }
         }
     }
