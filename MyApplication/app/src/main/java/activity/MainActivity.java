@@ -14,8 +14,6 @@ import com.example.administrator.suishouji.R;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     private Button btn_add;
