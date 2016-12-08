@@ -53,6 +53,8 @@
         <activity android:name="activity.PaperBgActivity"/>
         <activity android:name="activity.DeleteFileActivity"/>
         <activity android:name="activity.SetpwdActivity"/>
+        <activity android:name="activity.CheckUpdateActivity"/>
+        <activity android:name="activity.ConcealPwd"/>
 
 
     </application>

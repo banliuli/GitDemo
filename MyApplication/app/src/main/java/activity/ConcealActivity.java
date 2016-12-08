@@ -28,6 +28,8 @@ public class ConcealActivity extends Activity {
                 // TODO Auto-generated method stub
                 if(isChecked){
                     mTogBtn.setBackgroundResource(R.drawable.switch_btn);
+                    Intent i=new Intent(ConcealActivity.this,ConcealPwd.class);
+                    startActivity(i);
 
 
                 }else{
