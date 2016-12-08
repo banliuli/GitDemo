@@ -1,11 +1,15 @@
 package activity;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,8 +18,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.administrator.suishouji.R;
+
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class EditActivity extends Activity {
@@ -29,8 +38,11 @@ public class EditActivity extends Activity {
     private LinearLayout HideWord,HidePicture;
     private RelativeLayout addPicture,addCamera;
     private ImageView IvAdd;
-    private static final int LOCAL_IMAGE_CODE = 1;//本地相册
-    private static final int CAMERA_IMAGE_CODE = 2;//照相机
+    private static final int CAMERA_IMAGE_CODE = 1;// 拍照
+    private static final int LOCAL_IMAGE_CODE = 2;// 从相册中选择
+    private static final int PHOTO_REQUEST_CUT = 3;// 结果
+    private static final String PHOTO_FILE_NAME = "temp_photo.jpg";
+    private File tempFile;
 
     private boolean isVisbile = true;
 
@@ -78,10 +90,43 @@ public class EditActivity extends Activity {
         IBtnWord.setOnClickListener(listener);
         addPicture.setOnClickListener(listener);
         addCamera.setOnClickListener(listener);
+        IvAdd.setOnClickListener(listener);
     }
+//    public static boolean saveImage(Bitmap photo, String spath) {
+//        try {
+//            BufferedOutputStream bos = new BufferedOutputStream(
+//                    new FileOutputStream(spath, false));
+//            photo.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+//            bos.flush();
+//            bos.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//        return true;
+//    }
+    //剪切图片
+    private void crop(Uri uri) {
+        // 裁剪图片意图
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        intent.putExtra("crop", "true");
+        // 裁剪框的比例，1：1
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        // 裁剪后输出图片的尺寸大小
+        intent.putExtra("outputX", 250);
+        intent.putExtra("outputY", 250);
+         intent.putExtra("outputFormat", "JPEG");// 图片格式
+         intent.putExtra("noFaceDetection", true);// 取消人脸识别
+         intent.putExtra("return-data", true);
+        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CUT
+        startActivityForResult(intent, PHOTO_REQUEST_CUT);
+}
     //获取相册和相机
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
+        ContentResolver resolver = getContentResolver();
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             // 表示 调用照相机拍照
@@ -95,12 +140,20 @@ public class EditActivity extends Activity {
             // 选择图片库的图片
             case LOCAL_IMAGE_CODE:
                 if (resultCode == RESULT_OK) {
-                    Uri uri = data.getData();
-                    IvAdd.setImageURI(uri);
+                    if (data != null) {
+                        // 得到图片的全路径
+                        Uri uri = data.getData();
+                        crop(uri);
+                    }
                 }
                 break;
+            case PHOTO_REQUEST_CUT:
+                // 从剪切图片返回的数据
+                if (data != null) {
+                Bitmap bitmap = data.getParcelableExtra("data");
+                IvAdd.setImageBitmap(bitmap);
+                }
         }
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,7 +161,6 @@ public class EditActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
     /**
      * 点击监听事件
      */
@@ -158,10 +210,11 @@ public class EditActivity extends Activity {
                     }
                     break;
                 case R.id.activity_edit_picture:
-                    intent = new Intent(
-                            Intent.ACTION_PICK,
-                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, LOCAL_IMAGE_CODE);// 打开相册
+                    // 激活系统图库，选择一张图片
+                    intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    // 开启一个带有返回值的Activity，请求码为LOCAL_IMAGE_CODE
+                    startActivityForResult(intent, LOCAL_IMAGE_CODE);
                     break;
                 case R.id.activity_edit_camera:
                     // TODO Auto-generated method stub
