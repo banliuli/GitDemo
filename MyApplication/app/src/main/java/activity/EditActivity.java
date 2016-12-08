@@ -92,19 +92,6 @@ public class EditActivity extends Activity {
         addCamera.setOnClickListener(listener);
         IvAdd.setOnClickListener(listener);
     }
-//    public static boolean saveImage(Bitmap photo, String spath) {
-//        try {
-//            BufferedOutputStream bos = new BufferedOutputStream(
-//                    new FileOutputStream(spath, false));
-//            photo.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-//            bos.flush();
-//            bos.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//        return true;
-//    }
     //剪切图片
     private void crop(Uri uri) {
         // 裁剪图片意图
