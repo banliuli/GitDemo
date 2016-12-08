@@ -19,20 +19,19 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-<<<<<<< HEAD
 
         initId();
         setListener();
     }
 
 
-    private void  initId(){
-        back =(ImageView) findViewById(R.id.img_activity_about_back);
-        gd1 =(Button) findViewById(R.id.btn_activity_about_gd1);
-        gd2 =(Button) findViewById(R.id.btn_activity_about_gd2);
+    private void initId() {
+        back = (ImageView) findViewById(R.id.img_activity_about_back);
+        gd1 = (Button) findViewById(R.id.btn_activity_about_gd1);
+        gd2 = (Button) findViewById(R.id.btn_activity_about_gd2);
     }
 
-    private void setListener(){
+    private void setListener() {
         MyListener listener = new MyListener();
         back.setOnClickListener(listener);
         gd1.setOnClickListener(listener);
@@ -43,49 +42,20 @@ public class AboutActivity extends Activity {
         @Override
         public void onClick(View v) {
 
-            Intent i= new Intent();
-            switch (v.getId()){
+            Intent i = new Intent();
+            switch (v.getId()) {
                 case R.id.img_activity_about_back:
-                    i.setClass(AboutActivity.this,SettingActivity.class);
+                    i.setClass(AboutActivity.this, SettingActivity.class);
                     break;
                 case R.id.btn_activity_about_gd1:
-                    i.setClass(AboutActivity.this,CheckUpdateActivity.class);
+                    i.setClass(AboutActivity.this, CheckUpdateActivity.class);
                     break;
                 case R.id.btn_activity_about_gd2:
-                    i.setClass(AboutActivity.this,SearchActivity.class);
+                    i.setClass(AboutActivity.this, SearchActivity.class);
                     break;
-=======
-        initId();
-        setListener();
+
+            }
+
+        }
     }
-            private void initId() {
-                back = (ImageView) findViewById(R.id.img_activity_about_back);
-                gd1 = (Button) findViewById(R.id.btn_activity_about_gd1);
-                gd2 = (Button) findViewById(R.id.btn_activity_about_gd2);
-            }
-            private void setListener() {
-                MyListener listener = new MyListener();
-                back.setOnClickListener(listener);
-                gd1.setOnClickListener(listener);
-                gd2.setOnClickListener(listener);
-            }
-            private class MyListener implements View.OnClickListener {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent();
-                    switch (v.getId()) {
-                        case R.id.img_activity_about_back:
-                            i.setClass(AboutActivity.this, SettingActivity.class);
-                            break;
-                        case R.id.btn_activity_about_gd1:
-                            i.setClass(AboutActivity.this, CheckUpdateActivity.class);
-                            break;
-                        case R.id.btn_activity_about_gd2:
-                            i.setClass(AboutActivity.this, SearchActivity.class);
-                            break;
-                    }
-                    startActivity(i);
-                }
->>>>>>> 6e25e307aa221d3baa66b7dac91c2e0447cddd23
-            }
-    }
+}

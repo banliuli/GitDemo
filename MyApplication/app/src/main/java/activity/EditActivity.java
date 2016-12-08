@@ -3,28 +3,37 @@ package activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.administrator.suishouji.R;
+
+import jp.wasabeef.richeditor.RichEditor;
 
 
 public class EditActivity extends Activity {
 
 
     private ImageView IvBack;
-    private EditText EdEdit;
+    private TextView TvFinish;
+    private RichEditor mEditor;
 
-    private ImageButton IBtnSpot,IBtnNumber,IBtnLeft,IBtnRight,IBtnPicture,IBtnWord;
+    private ImageButton IBtnBullet,IBtnNumber,IBtnLeft,IBtnRight,IBtnPicture,IBtnWord;
 
     private LinearLayout HideWord,HidePicture;
 
     private boolean isVisbile = true;
+    int flag = 0;
+
+    private ImageView IvBlack,IvGray,IvBlue,IvRed,IvYellow,IvGreen;    //字体颜色
+    private ImageView IvBold,IvItalic,IvUnderline,IvStrikethrough;    //字体格式
+    private ImageView IvLeft1,IvRight1,IvCenter1;    //文本对齐
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +44,29 @@ public class EditActivity extends Activity {
         getView();
         //注册监听事件
         setListener();
+        //获取RichEditor界面
+        getEditor();
     }
 
-    //获取界面控件
+    /**
+     * 获取RichEditor界面
+     */
+    private void getEditor() {
+        mEditor.setEditorHeight(200);
+        mEditor.setEditorFontSize(20);
+        mEditor.setEditorFontColor(Color.BLACK);
+        mEditor.setPadding(10,10,10,10);
+        mEditor.setPlaceholder("欢迎使用随手记......");
+    }
+
+    /**
+     * 获取界面控件
+     */
     private void getView() {
         IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
-        EdEdit = (EditText) findViewById(R.id.Ed_activity_edit_content);
+        TvFinish = (TextView) findViewById(R.id.Tv_activity_edit_finish);
 
-        IBtnSpot = (ImageButton) findViewById(R.id.Ibtn_activity_edit_spot);
+        IBtnBullet = (ImageButton) findViewById(R.id.Ibtn_activity_edit_bullet);
         IBtnNumber = (ImageButton) findViewById(R.id.Ibtn_activity_edit_number);
         IBtnLeft = (ImageButton) findViewById(R.id.Ibtn_activity_edit_left);
         IBtnRight = (ImageButton) findViewById(R.id.Ibtn_activity_edit_right);
@@ -51,15 +75,38 @@ public class EditActivity extends Activity {
 
         HideWord = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hideword);
         HidePicture = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hidepicture);
+
+        mEditor = (RichEditor) findViewById(R.id.activity_edit_editor);
+
+        //字体颜色
+        IvBlack = (ImageView) findViewById(R.id.Iv_activity_edit_black);
+        IvGray = (ImageView) findViewById(R.id.Iv_activity_edit_gray);
+        IvBlue = (ImageView) findViewById(R.id.Iv_activity_edit_blue);
+        IvRed = (ImageView) findViewById(R.id.Iv_activity_edit_red);
+        IvYellow = (ImageView) findViewById(R.id.Iv_activity_edit_yellow);
+        IvGreen = (ImageView) findViewById(R.id.Iv_activity_edit_green);
+
+        //字体格式
+        IvBold = (ImageView) findViewById(R.id.Iv_activity_edit_bold);
+        IvItalic = (ImageView) findViewById(R.id.Iv_activity_edit_italic);
+        IvUnderline = (ImageView) findViewById(R.id.Iv_activity_edit_underline);
+        IvStrikethrough = (ImageView) findViewById(R.id.Iv_activity_edit_strikethrough);
+
+        //字体对齐
+        IvLeft1 = (ImageView) findViewById(R.id.Iv_activity_edit_left1);
+        IvRight1 = (ImageView) findViewById(R.id.Iv_activity_edit_right1);
+        IvCenter1 = (ImageView) findViewById(R.id.Iv_activity_edit_center1);
     }
 
-
-    //注册监听事件
+    /**
+     * 注册监听事件
+     */
     private void setListener() {
         EditActivity.MyListener listener = new EditActivity.MyListener();
         IvBack.setOnClickListener(listener);
+        TvFinish.setOnClickListener(listener);
 
-        IBtnSpot.setOnClickListener(listener);
+        IBtnBullet.setOnClickListener(listener);
         IBtnNumber.setOnClickListener(listener);
         IBtnLeft.setOnClickListener(listener);
         IBtnRight.setOnClickListener(listener);
@@ -80,19 +127,60 @@ public class EditActivity extends Activity {
                     intent.setClass(getApplication(),EditHomeActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.Ibtn_activity_edit_spot:       //无数字列项
+                case R.id.Tv_activity_edit_finish:    //完成
+                    Intent intent2 = new Intent();
+                    intent2.setClass(getApplication(),EditHomeActivity.class);
+                    startActivity(intent2);
+                    break;
+                case R.id.Ibtn_activity_edit_bullet:       //无数字列项
+                    mEditor.setBullets();
+
+                    if (flag == 0) {
+                        IBtnBullet.setImageResource(0);
+                        IBtnBullet.setImageResource(R.drawable.bullet1);
+                        flag = 1;
+                    }else {
+                        IBtnBullet.setImageResource(0);
+                        IBtnBullet.setImageResource(R.drawable.bullet);
+                        flag = 0;
+                    }
                     break;
                 case R.id.Ibtn_activity_edit_number:   //有数字列项
+                    mEditor.setNumbers();
+
+                    if (flag == 0) {
+                        IBtnNumber.setImageResource(0);
+                        IBtnNumber.setImageResource(R.drawable.number1);
+                        flag = 1;
+                    }else {
+                        IBtnNumber.setImageResource(0);
+                        IBtnNumber.setImageResource(R.drawable.number);
+                        flag = 0;
+                    }
                     break;
                 case R.id.Ibtn_activity_edit_left:     //左对齐
+                    mEditor.setAlignLeft();
+
                     break;
                 case R.id.Ibtn_activity_edit_right:    //右对齐
+                    mEditor.setAlignRight();
+
                     break;
                 case R.id.Ibtn_activity_edit_picture:    //图片
+                    if (flag == 0) {
+                        IBtnPicture.setImageResource(0);
+                        IBtnPicture.setImageResource(R.drawable.epicture1);
+                        flag = 1;
+                    }else {
+                        IBtnPicture.setImageResource(0);
+                        IBtnPicture.setImageResource(R.drawable.epicture);
+                        flag = 0;
+                    }
+
                     if (isVisbile) {
                         //隐藏软键盘
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(EdEdit.getWindowToken(),0);
+                        imm.hideSoftInputFromWindow(mEditor.getWindowToken(),0);
                         isVisbile = false;
                         HidePicture.setVisibility(View.VISIBLE);//显示布局
                         HideWord.setVisibility(View.GONE);
@@ -102,11 +190,21 @@ public class EditActivity extends Activity {
                     }
 
                     break;
-                case R.id.Ibtn_activity_edit_word:      //字体颜色
+                case R.id.Ibtn_activity_edit_word:      //字体格式
+                    if (flag == 0) {
+                        IBtnWord.setImageResource(0);
+                        IBtnWord.setImageResource(R.drawable.word1);
+                        flag = 1;
+                    }else {
+                        IBtnWord.setImageResource(0);
+                        IBtnWord.setImageResource(R.drawable.word);
+                        flag = 0;
+                    }
+
                     if (isVisbile) {
                         //隐藏软键盘
                         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(EdEdit.getWindowToken(),0);
+                        imm.hideSoftInputFromWindow(mEditor.getWindowToken(),0);
                         isVisbile = false;
                         HideWord.setVisibility(View.VISIBLE);//显示布局
                         HidePicture.setVisibility(View.GONE);
@@ -114,11 +212,280 @@ public class EditActivity extends Activity {
                         HideWord.setVisibility(View.GONE);//隐藏布局
                         isVisbile = true;
                     }
+
+                    //加粗
+                    IvBold.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setBold();
+                            if (flag == 0) {
+                                IvBold.setImageResource(0);
+                                IvBold.setImageResource(R.drawable.bold1);
+                                flag = 1;
+                            }else {
+                                IvBold.setImageResource(0);
+                                IvBold.setImageResource(R.drawable.bold);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //斜体
+                   IvItalic.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setItalic();
+                            if (flag == 0) {
+                                IvItalic.setImageResource(0);
+                                IvItalic.setImageResource(R.drawable.italic1);
+                                flag = 1;
+                            }else {
+                                IvItalic.setImageResource(0);
+                                IvItalic.setImageResource(R.drawable.italic);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //下划线
+                    IvUnderline.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setUnderline();
+                            if (flag == 0) {
+                                IvUnderline.setImageResource(0);
+                                IvUnderline.setImageResource(R.drawable.underline1);
+                                flag = 1;
+                            }else {
+                                IvUnderline.setImageResource(0);
+                                IvUnderline.setImageResource(R.drawable.underline);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //中划线
+                   IvStrikethrough.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setStrikeThrough();
+                            if (flag == 0) {
+                                IvStrikethrough.setImageResource(0);
+                                IvStrikethrough.setImageResource(R.drawable.strikethrough1);
+                                flag = 1;
+                            }else {
+                                IvStrikethrough.setImageResource(0);
+                                IvStrikethrough.setImageResource(R.drawable.strikethrough);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //左对齐
+                    IvLeft1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setAlignLeft();
+                            if (flag == 0) {
+                                IvLeft1.setImageResource(0);
+                                IvLeft1.setImageResource(R.drawable.left11);
+                                flag = 1;
+                            }else {
+                                IvLeft1.setImageResource(0);
+                                IvLeft1.setImageResource(R.drawable.left1);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //居中
+                    IvCenter1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setAlignCenter();
+                            if (flag == 0) {
+                                IvCenter1.setImageResource(0);
+                                IvCenter1.setImageResource(R.drawable.center11);
+                                flag = 1;
+                            }else {
+                                IvCenter1.setImageResource(0);
+                                IvCenter1.setImageResource(R.drawable.center1);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //右对齐
+                    IvRight1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setAlignRight();
+                            if (flag == 0) {
+                                IvRight1.setImageResource(0);
+                                IvRight1.setImageResource(R.drawable.right11);
+                                flag = 1;
+                            }else {
+                                IvRight1.setImageResource(0);
+                                IvRight1.setImageResource(R.drawable.right1);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+
+                    //字体大小H1
+                    findViewById(R.id.Iv_activity_edit_h1).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setHeading(1);
+                        }
+                    });
+
+                    //字体大小H2
+                    findViewById(R.id.Iv_activity_edit_h2).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setHeading(2);
+                        }
+                    });
+
+                    //字体大小H3
+                    findViewById(R.id.Iv_activity_edit_h3).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setHeading(3);
+                        }
+                    });
+
+                    //字体大小H4
+                    findViewById(R.id.Iv_activity_edit_h4).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setHeading(4);
+                        }
+                    });
+
+                    //字体大小H5
+                    findViewById(R.id.Iv_activity_edit_h5).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setHeading(5);
+                        }
+                    });
+
+                    //字体大小H6
+                    findViewById(R.id.Iv_activity_edit_h6).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setHeading(6);
+                        }
+                    });
+
+
+                    //字体颜色为黑色
+                     IvBlack.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setTextColor(Color.BLACK);
+                            if (flag == 0) {
+                                IvBlack.setImageResource(0);
+                                IvBlack.setImageResource(R.drawable.color11);
+                                flag = 1;
+                            }else {
+                                IvBlack.setImageResource(0);
+                                IvBlack.setImageResource(R.drawable.color1);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //字体颜色为灰色
+                    IvGray.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setTextColor(Color.GRAY);
+                            if (flag == 0) {
+                                IvGray.setImageResource(0);
+                                IvGray.setImageResource(R.drawable.color22);
+                                flag = 1;
+                            }else {
+                                IvGray.setImageResource(0);
+                                IvGray.setImageResource(R.drawable.color2);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //字体颜色为蓝色
+                    IvBlue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setTextColor(Color.BLUE);
+                            if (flag == 0) {
+                                IvBlue.setImageResource(0);
+                                IvBlue.setImageResource(R.drawable.color33);
+                                flag = 1;
+                            }else {
+                                IvBlue.setImageResource(0);
+                                IvBlue.setImageResource(R.drawable.color3);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //字体颜色为红色
+                    IvRed.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setTextColor(Color.RED);
+                            if (flag == 0) {
+                                IvRed.setImageResource(0);
+                                IvRed.setImageResource(R.drawable.color44);
+                                flag = 1;
+                            }else {
+                                IvRed.setImageResource(0);
+                                IvRed.setImageResource(R.drawable.color4);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //字体颜色为黄色
+                    IvYellow.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setTextColor(Color.YELLOW);
+                            if (flag == 0) {
+                                IvYellow.setImageResource(0);
+                                IvYellow.setImageResource(R.drawable.color55);
+                                flag = 1;
+                            }else {
+                                IvYellow.setImageResource(0);
+                                IvYellow.setImageResource(R.drawable.color5);
+                                flag = 0;
+                            }
+                        }
+                    });
+
+                    //字体颜色为绿色
+                    IvGreen.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mEditor.setTextColor(Color.GREEN);
+                            if (flag == 0) {
+                                IvGreen.setImageResource(0);
+                                IvGreen.setImageResource(R.drawable.color66);
+                                flag = 1;
+                            }else {
+                                IvGreen.setImageResource(0);
+                                IvGreen.setImageResource(R.drawable.color6);
+                                flag = 0;
+                            }
+                        }
+                    });
+
                     break;
             }
         }
     }
-
-
-
 }

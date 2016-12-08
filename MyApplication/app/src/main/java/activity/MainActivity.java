@@ -14,11 +14,6 @@ import com.example.administrator.suishouji.R;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 6e25e307aa221d3baa66b7dac91c2e0447cddd23
 public class MainActivity extends AppCompatActivity {
 
     private Button btn_add;

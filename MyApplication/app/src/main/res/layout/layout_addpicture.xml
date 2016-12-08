@@ -77,7 +77,7 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/spot"/>
+            android:src="@drawable/bullet"/>
         <ImageButton
             android:id="@+id/Ibtn_number"
             android:background="@drawable/btn_change"
