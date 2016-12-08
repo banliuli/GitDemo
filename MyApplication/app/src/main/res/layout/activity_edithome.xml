@@ -83,7 +83,7 @@
             android:drawableTop="@drawable/collect2"
             android:text="收藏"
             android:textSize="16dp"
-            android:background="@drawable/home_bg"/>
+            android:background="@drawable/btn_change1"/>
 
         <Button
             android:layout_weight="1"

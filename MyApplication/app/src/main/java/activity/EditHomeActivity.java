@@ -28,7 +28,6 @@ public class EditHomeActivity extends Activity {
 
     private RelativeLayout Rlayout1,Rlayout2,Rlayout3,Rlayout4;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +64,8 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                case R.id.btn_activity_edithome_collect:   //收藏
+
                 case R.id.btn_activity_edithome_move:      //移动
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(),MoveActivity.class);
@@ -76,7 +77,7 @@ public class EditHomeActivity extends Activity {
                     startActivity(intent2);
                     break;
                 case R.id.btn_activity_edithome_more:      //更多
-                        popup();
+                    popup();
                     break;
                 case R.id.Iv_activity_edithome_back:
                     Intent i=new Intent(EditHomeActivity.this,TextListActivity.class);
@@ -130,6 +131,7 @@ public class EditHomeActivity extends Activity {
         Rlayout3.setOnClickListener(new Listener());
         Rlayout4.setOnClickListener(new Listener());
     }
+
     private void popup1() {
         //装载popup对应的界面布局
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -159,11 +161,18 @@ public class EditHomeActivity extends Activity {
                     break;
                 case R.id.Rlayout_popup3:     //删除
                     break;
+<<<<<<< HEAD
+
+                case R.id.Rlayout_popup4:     //详细信息
+                    popup1();
+                    break;
+=======
                 case R.id.Rlayout4:     //详细信息
                     popup();
                 case R.id.Rlayout_popup4:     //详细信息
                     popup1();
          break;
+>>>>>>> 2fe9a5849d27b2c3d3c2fcf6d46c30f3c65db3c1
             }
         }
     }

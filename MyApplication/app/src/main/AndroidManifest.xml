@@ -11,8 +11,7 @@
 
         <activity android:name="activity.DeleteTextListActivity"/>
 
-        <activity android:name="activity.MainActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+        <activity android:name="activity.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

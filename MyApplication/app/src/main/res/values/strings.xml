@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Suishouji</string>
     <drawable name="home_bg">#d4d4d2</drawable>
-    <drawable name="btn_pressed">#3F51B5</drawable>
+    <drawable name="btn_pressed">#2828FF</drawable>
     <drawable name="btn_press">#F75000</drawable>
 </resources>
