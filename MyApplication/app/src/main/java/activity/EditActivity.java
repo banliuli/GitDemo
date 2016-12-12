@@ -134,6 +134,7 @@ public class EditActivity extends Activity {
         IvAdd.setOnClickListener(listener);*/
     }
 
+
 //    public static boolean saveImage(Bitmap photo, String spath) {
 //        try {
 //            BufferedOutputStream bos = new BufferedOutputStream(
