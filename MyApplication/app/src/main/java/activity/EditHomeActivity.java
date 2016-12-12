@@ -1,8 +1,10 @@
 package activity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -79,7 +81,7 @@ public class EditHomeActivity extends Activity {
                 case R.id.btn_activity_edithome_more:      //更多
                     popup();
                     break;
-                case R.id.Iv_activity_edithome_back:
+                case R.id.Iv_activity_edithome_back:       //返回
                     Intent i=new Intent(EditHomeActivity.this,TextListActivity.class);
                     startActivity(i);
                     break;
@@ -88,7 +90,9 @@ public class EditHomeActivity extends Activity {
 
     }
 
-    //“更多”弹框
+    /**
+     * “更多”弹框
+     */
     private void popup() {
         if (view == null) {
             //装载popup对应的界面布局
@@ -100,9 +104,14 @@ public class EditHomeActivity extends Activity {
             //获取焦点
             popupWindow.setFocusable(true);
             //弹框位置
-            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,268);
+            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,180);
             //点击外面弹窗消失
-            popupWindow.setOutsideTouchable(true);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                }
+            });
 
         }
         else {
@@ -114,9 +123,14 @@ public class EditHomeActivity extends Activity {
             //获取焦点
             popupWindow.setFocusable(true);
             //弹框位置
-            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,268);
+            popupWindow.showAtLocation(view, Gravity.RIGHT|Gravity.BOTTOM,0,180);
             //点击外面弹窗消失
-            popupWindow.setOutsideTouchable(true);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popupWindow.dismiss();
+                }
+            });
         }
 
         //获取"更多"弹框里的控件
@@ -132,6 +146,9 @@ public class EditHomeActivity extends Activity {
         Rlayout4.setOnClickListener(new Listener());
     }
 
+    /**
+     * “详细信息”弹框
+     */
     private void popup1() {
         //装载popup对应的界面布局
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -143,7 +160,12 @@ public class EditHomeActivity extends Activity {
         //弹框位置
         popupWindow.showAtLocation(view, Gravity.CENTER|Gravity.CENTER,0,0);
         //点击外面弹窗消失
-        popupWindow.setOutsideTouchable(true);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
     }
 
     //"更多"弹框里的控件点击事件
@@ -160,19 +182,24 @@ public class EditHomeActivity extends Activity {
                     startActivity(i);
                     break;
                 case R.id.Rlayout_popup3:     //删除
-                    break;
-<<<<<<< HEAD
+                    new AlertDialog.Builder(EditHomeActivity.this).setTitle("确认删除？")//设置对话框标题
+                    .setMessage("删除后无法恢复")//设置显示的内容
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {  //添加确定按钮
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {  //添加取消按钮
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                case R.id.Rlayout_popup4:     //详细信息
-                    popup1();
+                        }
+                    }).show();
                     break;
-=======
-                case R.id.Rlayout4:     //详细信息
-                    popup();
                 case R.id.Rlayout_popup4:     //详细信息
                     popup1();
-         break;
->>>>>>> 2fe9a5849d27b2c3d3c2fcf6d46c30f3c65db3c1
+                break;
+
             }
         }
     }

@@ -44,7 +44,6 @@
 
         <activity android:name="activity.MyAccountsActivity" />
         <activity android:name="activity.NickNameActivity" />
-        <activity android:name="activity.CollectionActivity"/>
 
 
         <activity android:name="activity.SexActivity" />
@@ -55,18 +54,8 @@
         <activity android:name="activity.PaperBgActivity"/>
         <activity android:name="activity.DeleteFileActivity"/>
         <activity android:name="activity.SetpwdActivity"/>
-        <activity android:name="activity.CheckUpdateActivity"/>
         <activity android:name="activity.ConcealPwd"/>
-
-
-
-
-        <activity android:name="activity.DeleteFileActivity"/>
-
-
-        <activity android:name="activity.AddfiesActivity"/>
-        <activity android:name="activity.SetpwdActivity"/>
-
+        <activity android:name="activity.CollectionActivity"/>
 
     </application>
 

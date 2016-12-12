@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.administrator.suishouji.R;
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     private List<File> lf = new ArrayList<File>();
     private Button edit;
-    private Button login;
+    private ImageView login;
+    private ImageView refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getId() {
-        login=(Button)findViewById(R.id.btn_activtiy_main_login);
+        login=(ImageView) findViewById(R.id.iv_activtiy_main_login);
         bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
         edit = (Button)findViewById(R.id.btn_activity_main_edit1);
         btn_add=(Button)findViewById(R.id.btn_activtiy_main_add);
-
+        refresh = (ImageView) findViewById(R.id.iv_activtiy_main_refresh);
     }
     private void setListener() {
         MyListener mylistener = new MyListener();
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         mine.setOnClickListener(mylistener);
         edit.setOnClickListener(mylistener);
         btn_add.setOnClickListener(mylistener);
+        refresh.setOnClickListener(mylistener);
     }
     //数据获取
     private void getData() {
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent();
             switch (v.getId()){
-                case R.id.btn_activtiy_main_login:
+                case R.id.iv_activtiy_main_login:
                     i.setClass(MainActivity.this,LoginActivity.class);
                     break;
                 case R.id.btn_activtiy_main_mine:
@@ -90,8 +93,14 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btn_activity_main_edit1:
                     i.setClass(MainActivity.this,EditAddActivity.class);
                     break;
+                case R.id.iv_activtiy_main_refresh:
+                    finish();
+                    i.setClass(MainActivity.this,MainActivity.class);
+                    break;
             }
             startActivity(i);
         }
     }
+
+
 }

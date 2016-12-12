@@ -8,11 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -30,12 +27,12 @@ public class EditActivity extends Activity {
     private TextView TvFinish;
     private RichEditor mEditor;
 
-    private ImageButton IBtnBullet,IBtnNumber,IBtnLeft,IBtnRight,IBtnPicture,IBtnWord;
+    private ImageView IvBullet,IvNumber,IvLeft,IvRight,IvPicture,IvWord;
 
     private LinearLayout HideWord,HidePicture;
     private RelativeLayout addPicture,addCamera;
 
-    private ImageView IvAdd;
+   // private ImageView IvAdd;
     private static final int CAMERA_IMAGE_CODE = 1;// 拍照
     private static final int LOCAL_IMAGE_CODE = 2;// 从相册中选择
     private static final int PHOTO_REQUEST_CUT = 3;// 结果
@@ -66,9 +63,9 @@ public class EditActivity extends Activity {
      * 获取RichEditor界面
      */
     private void getEditor() {
-        mEditor.setEditorHeight(200);
-        mEditor.setEditorFontSize(20);
-        mEditor.setEditorFontColor(Color.BLACK);
+        mEditor.setEditorHeight(200);    //起始编辑设置高度
+        mEditor.setEditorFontSize(20);   //设置字体大小
+        mEditor.setEditorFontColor(Color.BLACK);  //设置字体颜色
         mEditor.setPadding(10,10,10,10);
         mEditor.setPlaceholder("欢迎使用随手记......");
     }
@@ -80,25 +77,22 @@ public class EditActivity extends Activity {
         IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
         TvFinish = (TextView) findViewById(R.id.Tv_activity_edit_finish);
 
-        IvAdd = (ImageView)findViewById(R.id.Iv_activity_add);
-        EdEdit = (EditText) findViewById(R.id.Ed_activity_edit_content);
+        //IvAdd = (ImageView)findViewById(R.id.Iv_activity_add);
 
-        IBtnBullet = (ImageButton) findViewById(R.id.Ibtn_activity_edit_bullet);
-        IBtnNumber = (ImageButton) findViewById(R.id.Ibtn_activity_edit_number);
-        IBtnLeft = (ImageButton) findViewById(R.id.Ibtn_activity_edit_left);
-        IBtnRight = (ImageButton) findViewById(R.id.Ibtn_activity_edit_right);
-        IBtnPicture = (ImageButton) findViewById(R.id.Ibtn_activity_edit_picture);
-        IBtnWord = (ImageButton) findViewById(R.id.Ibtn_activity_edit_word);
+        IvBullet = (ImageView) findViewById(R.id.Iv_activity_edit_bullet);
+        IvNumber = (ImageView) findViewById(R.id.Iv_activity_edit_number);
+        IvLeft = (ImageView) findViewById(R.id.Iv_activity_edit_left);
+        IvRight = (ImageView) findViewById(R.id.Iv_activity_edit_right);
+        IvPicture = (ImageView) findViewById(R.id.Iv_activity_edit_picture);
+        IvWord = (ImageView) findViewById(R.id.Iv_activity_edit_word);
 
         HideWord = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hideword);
         HidePicture = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hidepicture);
 
         addPicture = (RelativeLayout) findViewById(R.id.activity_edit_picture);
         addCamera = (RelativeLayout) findViewById(R.id.activity_edit_camera);
-    }
 
-
-        mEditor = (RichEditor) findViewById(R.id.activity_edit_editor);
+        mEditor = (RichEditor) findViewById(R.id.activity_edit_editor);  //文本编辑器
 
         //字体颜色
         IvBlack = (ImageView) findViewById(R.id.Iv_activity_edit_black);
@@ -128,16 +122,18 @@ public class EditActivity extends Activity {
         IvBack.setOnClickListener(listener);
         TvFinish.setOnClickListener(listener);
 
-        IBtnBullet.setOnClickListener(listener);
-        IBtnNumber.setOnClickListener(listener);
-        IBtnLeft.setOnClickListener(listener);
-        IBtnRight.setOnClickListener(listener);
-        IBtnPicture.setOnClickListener(listener);
-        IBtnWord.setOnClickListener(listener);
-        addPicture.setOnClickListener(listener);
+        IvBullet.setOnClickListener(listener);
+        IvNumber.setOnClickListener(listener);
+        IvLeft.setOnClickListener(listener);
+        IvRight.setOnClickListener(listener);
+        IvPicture.setOnClickListener(listener);
+        IvWord.setOnClickListener(listener);
+
+        /*addPicture.setOnClickListener(listener);
         addCamera.setOnClickListener(listener);
-        IvAdd.setOnClickListener(listener);
+        IvAdd.setOnClickListener(listener);*/
     }
+
 //    public static boolean saveImage(Bitmap photo, String spath) {
 //        try {
 //            BufferedOutputStream bos = new BufferedOutputStream(
@@ -151,11 +147,14 @@ public class EditActivity extends Activity {
 //        }
 //        return true;
 //    }
-    //剪切图片
+
+    /**
+     *剪切图片
+     */
     private void crop(Uri uri) {
         // 裁剪图片意图
         Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
+        intent.setDataAndType(uri, "image");
         intent.putExtra("crop", "true");
         // 裁剪框的比例，1：1
         intent.putExtra("aspectX", 1);
@@ -168,8 +167,14 @@ public class EditActivity extends Activity {
          intent.putExtra("return-data", true);
         // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CUT
         startActivityForResult(intent, PHOTO_REQUEST_CUT);
-}
-    //获取相册和相机
+    }
+
+    /**
+     * 获取相册和相机
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         ContentResolver resolver = getContentResolver();
@@ -180,7 +185,7 @@ public class EditActivity extends Activity {
                 if (resultCode == RESULT_OK) {
                     Bundle bundle = data.getExtras();
                     Bitmap bitmap = (Bitmap) bundle.get("data");
-                    IvAdd.setImageBitmap(bitmap);
+                    mEditor.setImageBitmap(bitmap);
                 }
                 break;
             // 选择图片库的图片
@@ -197,16 +202,17 @@ public class EditActivity extends Activity {
                 // 从剪切图片返回的数据
                 if (data != null) {
                 Bitmap bitmap = data.getParcelableExtra("data");
-                IvAdd.setImageBitmap(bitmap);
+                mEditor.setImageBitmap(bitmap);
                 }
         }
     }
-    @Override
+
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
+    }*/
 
     /**
      * 点击监听事件
@@ -226,48 +232,49 @@ public class EditActivity extends Activity {
                     intent2.setClass(getApplication(),EditHomeActivity.class);
                     startActivity(intent2);
                     break;
-                case R.id.Ibtn_activity_edit_bullet:       //无数字列项
+
+                case R.id.Iv_activity_edit_bullet:       //无数字列项
                     mEditor.setBullets();
 
                     if (flag == 0) {
-                        IBtnBullet.setImageResource(0);
-                        IBtnBullet.setImageResource(R.drawable.bullet1);
+                        IvBullet.setImageResource(0);
+                        IvBullet.setImageResource(R.drawable.bullet1);
                         flag = 1;
                     }else {
-                        IBtnBullet.setImageResource(0);
-                        IBtnBullet.setImageResource(R.drawable.bullet);
+                        IvBullet.setImageResource(0);
+                        IvBullet.setImageResource(R.drawable.bullet);
                         flag = 0;
                     }
                     break;
-                case R.id.Ibtn_activity_edit_number:   //有数字列项
+                case R.id.Iv_activity_edit_number:   //有数字列项
                     mEditor.setNumbers();
 
                     if (flag == 0) {
-                        IBtnNumber.setImageResource(0);
-                        IBtnNumber.setImageResource(R.drawable.number1);
+                        IvNumber.setImageResource(0);
+                        IvNumber.setImageResource(R.drawable.number1);
                         flag = 1;
                     }else {
-                        IBtnNumber.setImageResource(0);
-                        IBtnNumber.setImageResource(R.drawable.number);
+                        IvNumber.setImageResource(0);
+                        IvNumber.setImageResource(R.drawable.number);
                         flag = 0;
                     }
                     break;
-                case R.id.Ibtn_activity_edit_left:     //左对齐
+                case R.id.Iv_activity_edit_left:     //左对齐
                     mEditor.setAlignLeft();
 
                     break;
-                case R.id.Ibtn_activity_edit_right:    //右对齐
+                case R.id.Iv_activity_edit_right:    //右对齐
                     mEditor.setAlignRight();
 
                     break;
-                case R.id.Ibtn_activity_edit_picture:    //图片
+                case R.id.Iv_activity_edit_picture:    //图片
                     if (flag == 0) {
-                        IBtnPicture.setImageResource(0);
-                        IBtnPicture.setImageResource(R.drawable.epicture1);
+                        IvPicture.setImageResource(0);
+                        IvPicture.setImageResource(R.drawable.epicture1);
                         flag = 1;
                     }else {
-                        IBtnPicture.setImageResource(0);
-                        IBtnPicture.setImageResource(R.drawable.epicture);
+                        IvPicture.setImageResource(0);
+                        IvPicture.setImageResource(R.drawable.epicture);
                         flag = 0;
                     }
 
@@ -283,15 +290,38 @@ public class EditActivity extends Activity {
                         isVisbile = true;
                     }
 
+                    //选择图片
+                    findViewById(R.id.activity_edit_picture).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // 激活系统图库，选择一张图片
+                            Intent intent = new Intent(Intent.ACTION_PICK);
+                            intent.setType("image");
+                            // 开启一个带有返回值的Activity，请求码为LOCAL_IMAGE_CODE
+                            startActivityForResult(intent, LOCAL_IMAGE_CODE);
+                        }
+                    });
+
+                    //选择相机
+                    findViewById(R.id.activity_edit_camera).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            // 使用意图 直接调用安装在手机上的照相机
+                            // 直接开发Camera硬件
+                            Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                            startActivityForResult(intent, CAMERA_IMAGE_CODE);// 打开照相机
+                        }
+                    });
                     break;
-                case R.id.Ibtn_activity_edit_word:      //字体格式
+                case R.id.Iv_activity_edit_word:      //字体格式
                     if (flag == 0) {
-                        IBtnWord.setImageResource(0);
-                        IBtnWord.setImageResource(R.drawable.word1);
+                        IvWord.setImageResource(0);
+                        IvWord.setImageResource(R.drawable.word1);
                         flag = 1;
                     }else {
-                        IBtnWord.setImageResource(0);
-                        IBtnWord.setImageResource(R.drawable.word);
+                        IvWord.setImageResource(0);
+                        IvWord.setImageResource(R.drawable.word);
                         flag = 0;
                     }
 
@@ -577,22 +607,6 @@ public class EditActivity extends Activity {
                             }
                         }
                     });
-
-                    break;
-                case R.id.activity_edit_picture:
-                    // 激活系统图库，选择一张图片
-                    intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    // 开启一个带有返回值的Activity，请求码为LOCAL_IMAGE_CODE
-                    startActivityForResult(intent, LOCAL_IMAGE_CODE);
-                    break;
-                case R.id.activity_edit_camera:
-                    // TODO Auto-generated method stub
-                    // 使用意图 直接调用安装在手机上的照相机
-                    // 直接开发Camera硬件
-                    intent = new Intent(
-                            android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, CAMERA_IMAGE_CODE);// 打开照相机
                     break;
             }
         }

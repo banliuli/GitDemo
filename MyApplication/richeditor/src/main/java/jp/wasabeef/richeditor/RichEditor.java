@@ -298,6 +298,10 @@ public class RichEditor extends WebView {
     exec("javascript:RE.setUnderline();");
   }
 
+  public void setImageBitmap(Bitmap bitmap) {
+    exec("javascript:RE.prepareInsert();");
+  }
+
   public void setTextColor(int color) {
     exec("javascript:RE.prepareInsert();");
 
