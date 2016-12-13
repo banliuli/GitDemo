@@ -26,6 +26,7 @@ public class EditActivity extends Activity {
     private ImageView IvBack;
     private TextView TvFinish;
     private RichEditor mEditor;
+    private TextView mPreview;
 
     private ImageView IvBullet,IvNumber,IvLeft,IvRight,IvPicture,IvWord;
 
@@ -68,6 +69,13 @@ public class EditActivity extends Activity {
         mEditor.setEditorFontColor(Color.BLACK);  //设置字体颜色
         mEditor.setPadding(10,10,10,10);
         mEditor.setPlaceholder("欢迎使用随手记......");
+
+        //获取文本
+        mEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
+            @Override public void onTextChange(String text) {
+                mPreview.setText(text);
+            }
+        });
     }
 
     /**
@@ -93,6 +101,7 @@ public class EditActivity extends Activity {
         addCamera = (RelativeLayout) findViewById(R.id.activity_edit_camera);
 
         mEditor = (RichEditor) findViewById(R.id.activity_edit_editor);  //文本编辑器
+        mPreview = (TextView) findViewById(R.id.activity_edit_preview);
 
         //字体颜色
         IvBlack = (ImageView) findViewById(R.id.Iv_activity_edit_black);
@@ -152,7 +161,7 @@ public class EditActivity extends Activity {
     /**
      *剪切图片
      */
-    private void crop(Uri uri) {
+   private void crop(Uri uri) {
         // 裁剪图片意图
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image");
@@ -163,9 +172,9 @@ public class EditActivity extends Activity {
         // 裁剪后输出图片的尺寸大小
         intent.putExtra("outputX", 250);
         intent.putExtra("outputY", 250);
-         intent.putExtra("outputFormat", "JPEG");// 图片格式
-         intent.putExtra("noFaceDetection", true);// 取消人脸识别
-         intent.putExtra("return-data", true);
+        intent.putExtra("outputFormat", "JPEG");// 图片格式
+        intent.putExtra("noFaceDetection", true);// 取消人脸识别
+        intent.putExtra("return-data", true);
         // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CUT
         startActivityForResult(intent, PHOTO_REQUEST_CUT);
     }
@@ -186,7 +195,7 @@ public class EditActivity extends Activity {
                 if (resultCode == RESULT_OK) {
                     Bundle bundle = data.getExtras();
                     Bitmap bitmap = (Bitmap) bundle.get("data");
-                    mEditor.setImageBitmap(bitmap);
+                    //mEditor.setImageBitmap(bitmap);
                 }
                 break;
             // 选择图片库的图片
@@ -203,7 +212,7 @@ public class EditActivity extends Activity {
                 // 从剪切图片返回的数据
                 if (data != null) {
                 Bitmap bitmap = data.getParcelableExtra("data");
-                mEditor.setImageBitmap(bitmap);
+                //mEditor.setImageBitmap(bitmap);
                 }
         }
     }
@@ -295,6 +304,7 @@ public class EditActivity extends Activity {
                     findViewById(R.id.activity_edit_picture).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
                             // 激活系统图库，选择一张图片
                             Intent intent = new Intent(Intent.ACTION_PICK);
                             intent.setType("image");
@@ -612,4 +622,6 @@ public class EditActivity extends Activity {
             }
         }
     }
+
 }
+
