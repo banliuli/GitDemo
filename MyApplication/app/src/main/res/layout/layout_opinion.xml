@@ -82,23 +82,29 @@
             android:textSize="16sp"
             android:gravity="center_vertical"
             android:layout_marginLeft="5dp"/>
-        <RadioButton
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="咨询"
-            android:textSize="16sp"
-            android:layout_marginLeft="70dp" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="建议"
-            android:textSize="16sp"
-            />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="其他"
-            android:textSize="16sp"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="咨询"
+                android:textSize="16sp"
+                android:layout_marginLeft="70dp" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="建议"
+                android:textSize="16sp"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="其他"
+                android:textSize="16sp"/>
+        </RadioGroup>
     </LinearLayout>
 
 </LinearLayout>
