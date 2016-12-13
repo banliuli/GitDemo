@@ -17,7 +17,7 @@ import com.example.administrator.suishouji.R;
 public class ConcealPwd extends Activity {
     private Button mfinish;
     private EditText Et_set,Et_sure;
-    private ImageView mIv_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +29,10 @@ public class ConcealPwd extends Activity {
         mfinish=(Button)findViewById(R.id.btn_concealpwd_activity_finish);
         Et_set=(EditText)findViewById(R.id.Et_concealpwd_set);
         Et_sure=(EditText)findViewById(R.id.Et_concealpwd_sure);
-        mIv_back=(ImageView)findViewById(R.id.img_activity_concelpwd_back);
     }
     private void MyListener(){
         MyListener listener=new MyListener();
         mfinish.setOnClickListener(listener);
-        mIv_back.setOnClickListener(listener);
     }
     private class MyListener implements View.OnClickListener {
         @Override
@@ -52,16 +50,11 @@ public class ConcealPwd extends Activity {
                     }
                     else if(pwd.length()<6&&pwd.length()>=0){
                         Toast.makeText(ConcealPwd.this, "长度不为6!", Toast.LENGTH_SHORT).show();
-
-
                     }
                     else{
                         Toast.makeText(ConcealPwd.this, "密码输入不一致!", Toast.LENGTH_SHORT).show();
                     }
                     break;
-                case R.id.img_activity_concelpwd_back:
-                    Intent i1=new Intent(ConcealPwd.this,ConcealActivity.class);
-                    startActivity(i1);
             }
         }
     }

@@ -42,12 +42,14 @@
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/switch_off"
+            android:button="@drawable/switch_btn"
             android:checked="false"
             android:text=""
             android:textOff=""
             android:textOn=""
             android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:onClick="onClick"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
