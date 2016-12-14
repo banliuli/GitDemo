@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--标题栏部分-->
+    <!--标题栏部分-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -18,14 +18,14 @@
             android:layout_gravity="center"
             android:layout_margin="10dp" />
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="随手记"
-            android:textSize="30dp"
+            android:textSize="25sp"
             android:textColor="#ffffff"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_weight="1" />
+            />
     </LinearLayout>
 
 
@@ -35,16 +35,19 @@
         android:layout_height="wrap_content"
         android:background="#e6e3e6">
         <LinearLayout
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#ffffff"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
             <SearchView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/searchView" />
+                android:id="@+id/searchView"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true" />
         </LinearLayout>
     </LinearLayout>
 
@@ -63,31 +66,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/xian" />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginRight="15dp">
-        <RadioButton
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/check_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
             android:text="全选"
-            android:textSize="20dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"/>
+            android:textSize="18sp"
+            android:layout_margin="5dp"
+            android:layout_gravity="left"
+            />
         <Button
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:background="@drawable/button_shape_delete"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btn_shape_delete"
             android:text="删除"
-            android:textSize="17dp"
-            android:textColor="#ffffff" />
-    </LinearLayout>
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/btn_delete_textlist_delete"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="3dp"
+            />
+    </RelativeLayout>
 
 </LinearLayout>
