@@ -7,11 +7,13 @@ public class ItemText {
     private Long id;
     private String title;
     private String content;
+    public boolean checked;
 
-    public ItemText(Long id,String title,String content) {
+    public ItemText(Long id,String title,String content,Boolean checked) {
         this.content = content;
         this.id = id;
         this.title = title;
+        this.checked=checked;
     }
 
     public String getContent() {
@@ -37,5 +39,16 @@ public class ItemText {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
+
+    public boolean isChecked() {
+        return checked;
     }
 }

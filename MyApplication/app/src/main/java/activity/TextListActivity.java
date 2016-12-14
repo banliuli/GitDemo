@@ -50,7 +50,7 @@ public class TextListActivity extends AppCompatActivity{
     }
 
     private void getData() {
-        lit.add(new ItemText(0L,"来自手机","来自手机"));
+        lit.add(new ItemText(0L,"来自手机","来自手机",false));
     }
 
     private void initID() {
