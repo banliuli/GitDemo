@@ -1,13 +1,16 @@
 package activity;
 
 import android.app.Activity;
-import android.content.ContentResolver;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -16,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.administrator.suishouji.R;
+
+import java.io.FileNotFoundException;
 
 import jp.wasabeef.richeditor.RichEditor;
 
@@ -33,12 +38,12 @@ public class EditActivity extends Activity {
     private LinearLayout HideWord,HidePicture;
     private RelativeLayout addPicture,addCamera;
 
-   // private ImageView IvAdd;
-    private static final int CAMERA_IMAGE_CODE = 1;// 拍照
-    private static final int LOCAL_IMAGE_CODE = 2;// 从相册中选择
-    private static final int PHOTO_REQUEST_CUT = 3;// 结果
-    private static final String PHOTO_FILE_NAME = "temp_photo.jpg";
-    private File tempFile;
+    private static final int CAMERA_WITH_DATA = 0;
+    private static final int PHOTO_PICKED_WITH_DATA = 1;
+    private Bitmap bitMap;   //保存照片
+
+
+    private static final int PHOTO_REQUEST_CUT = 2;// 结果
 
     private boolean isVisbile = true;
     int flag = 0;
@@ -58,6 +63,7 @@ public class EditActivity extends Activity {
         setListener();
         //获取RichEditor界面
         getEditor();
+
     }
 
     /**
@@ -84,8 +90,6 @@ public class EditActivity extends Activity {
     private void getView() {
         IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
         TvFinish = (TextView) findViewById(R.id.Tv_activity_edit_finish);
-
-        //IvAdd = (ImageView)findViewById(R.id.Iv_activity_add);
 
         IvBullet = (ImageView) findViewById(R.id.Iv_activity_edit_bullet);
         IvNumber = (ImageView) findViewById(R.id.Iv_activity_edit_number);
@@ -138,25 +142,7 @@ public class EditActivity extends Activity {
         IvPicture.setOnClickListener(listener);
         IvWord.setOnClickListener(listener);
 
-        /*addPicture.setOnClickListener(listener);
-        addCamera.setOnClickListener(listener);
-        IvAdd.setOnClickListener(listener);*/
     }
-
-
-//    public static boolean saveImage(Bitmap photo, String spath) {
-//        try {
-//            BufferedOutputStream bos = new BufferedOutputStream(
-//                    new FileOutputStream(spath, false));
-//            photo.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-//            bos.flush();
-//            bos.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//        return true;
-//    }
 
     /**
      *剪切图片
@@ -181,11 +167,8 @@ public class EditActivity extends Activity {
 
     /**
      * 获取相册和相机
-     * @param requestCode
-     * @param resultCode
-     * @param data
      */
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         ContentResolver resolver = getContentResolver();
         super.onActivityResult(requestCode, resultCode, data);
@@ -216,13 +199,93 @@ public class EditActivity extends Activity {
                 }
         }
     }
+*/
 
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }*/
+    //拍照获取图片
+    protected void doTakePhoto() {
+
+        try {
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent,CAMERA_WITH_DATA);
+        }catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //从本地手机中选择图片
+    private void doSelectImageFromLoacal() {
+        Intent localIntent = new Intent();
+        localIntent.setType("image/*");
+        localIntent.setAction("android.intent.action.GET_CONTENT");
+        Intent localIntent2 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        localIntent2.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+
+        startActivityForResult(localIntent2,PHOTO_PICKED_WITH_DATA);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+        if (resultCode != RESULT_OK)
+            return;
+        switch (requestCode) {
+            case PHOTO_PICKED_WITH_DATA:  //从本地选择图片
+                if (bitMap != null && !bitMap.isRecycled()) {
+                    bitMap.recycle();
+                }
+                Uri selectedImageUri = data.getData();
+                if (selectedImageUri != null) {
+                    try {
+                        bitMap = BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImageUri));
+
+                        String[] proj = {MediaStore.Images.Media.DATA};
+                        Cursor cursor = getContentResolver().query(selectedImageUri, proj, null, null, null);
+                        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                        cursor.moveToFirst();
+                        String path = cursor.getString(column_index);
+                        crop(selectedImageUri);
+                        //获取图片名字
+                        String temp[] = path.replace("\\\\", "/").split("/");
+                        String fileName = "";
+                        if (temp.length > 1) {
+                            fileName = temp[temp.length - 1];
+                        }
+
+                        mEditor.insertImage(path, fileName);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                break;
+            case CAMERA_WITH_DATA:  //拍照
+                Bundle bundle = data.getExtras();
+                bitMap = (Bitmap) bundle.get("data");
+                Uri uri = data.getData();
+                if (uri != null) {
+                    try {
+                        bitMap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+
+                        String[] proj = {MediaStore.Images.Media.DATA};
+                        Cursor cursor = getContentResolver().query(uri, proj, null, null, null);
+                        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                        cursor.moveToFirst();
+                        String path = cursor.getString(column_index);
+                        //获取图片名字
+                        String temp[] = path.replace("\\\\", "/").split("/");
+                        String fileName = "";
+                        if (temp.length > 1) {
+                            fileName = temp[temp.length - 1];
+                        }
+
+                        mEditor.insertImage(path, fileName);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+                }
+        }
+    }
+
 
     /**
      * 点击监听事件
@@ -304,12 +367,14 @@ public class EditActivity extends Activity {
                     findViewById(R.id.activity_edit_picture).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            doSelectImageFromLoacal();
+
 
                             // 激活系统图库，选择一张图片
-                            Intent intent = new Intent(Intent.ACTION_PICK);
+                           /* Intent intent = new Intent(Intent.ACTION_PICK);
                             intent.setType("image");
                             // 开启一个带有返回值的Activity，请求码为LOCAL_IMAGE_CODE
-                            startActivityForResult(intent, LOCAL_IMAGE_CODE);
+                            startActivityForResult(intent, LOCAL_IMAGE_CODE);*/
                         }
                     });
 
@@ -317,11 +382,14 @@ public class EditActivity extends Activity {
                     findViewById(R.id.activity_edit_camera).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            doTakePhoto();
+                            //mEditor.insertImage("selectedImageUri","");
+
                             // TODO Auto-generated method stub
                             // 使用意图 直接调用安装在手机上的照相机
                             // 直接开发Camera硬件
-                            Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent, CAMERA_IMAGE_CODE);// 打开照相机
+                           /* Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                            startActivityForResult(intent, CAMERA_IMAGE_CODE);// 打开照相机*/
                         }
                     });
                     break;
