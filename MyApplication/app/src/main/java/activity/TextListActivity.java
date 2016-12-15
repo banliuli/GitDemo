@@ -43,8 +43,6 @@ public class TextListActivity extends AppCompatActivity{
                 String j = String.valueOf(i);
                 Intent ii=new Intent(TextListActivity.this,EditHomeActivity.class);
                 startActivity(ii);
-
-
             }
         });
     }
