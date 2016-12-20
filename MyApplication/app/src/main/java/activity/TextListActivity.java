@@ -21,7 +21,6 @@ import adapter.TextListAdapter;
  */
 public class TextListActivity extends AppCompatActivity{
     private Button back;
-    private Button edit;
     private List<ItemText> lit = new ArrayList<ItemText>();
     private TextListAdapter myadapter;
     private ListView lv;
@@ -45,22 +44,38 @@ public class TextListActivity extends AppCompatActivity{
                 startActivity(ii);
             }
         });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+
+                // TODO 自动生成的方法存根
+                Button btn= (Button) arg1.findViewById(R.id.btn_item_textlist_delete);
+                if(btn.getVisibility() == View.INVISIBLE){
+                    btn.setVisibility(View.VISIBLE);
+                }
+                else{
+                    btn.setVisibility(View.INVISIBLE);
+                }
+                return true;//关于返回值，若返回False，则是当长按时，既调用onItemLongClick，同时调用onItemLongClick后
+                //还会调用onItemClick，就是说会同时调用onItemLongClick，和onItemClick，
+                //若返回true，则只调用onItemLongClick
+            }
+        });
     }
 
     private void getData() {
-        lit.add(new ItemText(0L,"来自手机","来自手机",false));
+        lit.add(new ItemText(0L,"来自手机","来自手机"));
     }
 
     private void initID() {
         back = (Button)findViewById(R.id.btn_activtiy_textlist_return);
-        edit = (Button)findViewById(R.id.btn_activtiy_textlist_edit);
     }
     private void setListener() {
         MyListener listener = new MyListener();
         back.setOnClickListener(listener);
-        edit.setOnClickListener(listener);
     }
-
     private class MyListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
@@ -69,10 +84,6 @@ public class TextListActivity extends AppCompatActivity{
                 case R.id.btn_activtiy_textlist_return:
                     i.setClass(TextListActivity.this,MainActivity.class);
                     break;
-                case R.id.btn_activtiy_textlist_edit:
-                    i.setClass(TextListActivity.this,DeleteTextListActivity.class);
-                    break;
-
             }
             startActivity(i);
         }

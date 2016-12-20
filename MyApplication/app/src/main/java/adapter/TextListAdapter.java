@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.administrator.suishouji.R;
@@ -27,7 +28,6 @@ public class TextListAdapter extends BaseAdapter {
     public int getCount() {
         return lit.size();
     }
-
     @Override
     public Object getItem(int i) {
         return lit.get(i);
@@ -37,16 +37,36 @@ public class TextListAdapter extends BaseAdapter {
     public long getItemId(int i) {
         return lit.get(i).getId();
     }
+    public class ViewHolder{
+        public TextView TvTitle;
+        public TextView TvContent;
+        public Button delete;
 
+    }
     @Override
-    public View getView(int i, View view, ViewGroup parent) {
+    public View getView(final int i, View view, ViewGroup parent) {
+        ViewHolder viewHolder=null;
         if (null == view){
+            viewHolder=new ViewHolder();
             view = LayoutInflater.from(context).inflate(R.layout.layout_item_textlist,null);
+            viewHolder.TvTitle = (TextView) view.findViewById(R.id.Tv_item_textlist_title);
+            viewHolder.delete = (Button) view.findViewById(R.id.btn_item_textlist_delete);
+            viewHolder.TvContent = (TextView) view.findViewById(R.id.Tv_item_textlist_content);
+            view.setTag(viewHolder);
+        }else {
+            viewHolder=(ViewHolder)view.getTag();
         }
-        TextView TvTitle = (TextView) view.findViewById(R.id.Tv_item_textlist_title);
-        TvTitle.setText(lit.get(i).getTitle());
-        TextView TvContent = (TextView) view.findViewById(R.id.Tv_item_textlist_content);
-        TvContent.setText(lit.get(i).getContent());
+        ItemText currItem=lit.get(i);
+        viewHolder.TvTitle.setText(currItem.getTitle());
+        viewHolder.TvContent.setText(currItem.getContent());
+        viewHolder.delete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // TODO 自动生成的方法存根
+                lit.remove(i);
+                notifyDataSetChanged();
+            }}
+        );
         return view;
     }
 }
