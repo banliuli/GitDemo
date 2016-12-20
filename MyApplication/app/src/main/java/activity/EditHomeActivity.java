@@ -31,6 +31,7 @@ public class EditHomeActivity extends Activity {
     private ToggleButton BtnEdit;
     private ToggleButton BtnMore;
     private ImageView mIv_back;
+    private ImageView collect;
 
     private PopupWindow popupWindow;
     private View view;
@@ -50,16 +51,20 @@ public class EditHomeActivity extends Activity {
         //注册监听事件
         setListener();
         setData();
+        collect = (ImageView)findViewById(R.id.edit_collect);
         BtnCollect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
+                    collect.setBackgroundResource(R.drawable.collect);
                     Toast.makeText(EditHomeActivity.this, "收藏成功!", Toast.LENGTH_SHORT).show();
-                    status.setOne(isChecked);
+//                    status.setOne(isChecked);
                 }
                 else{
-                    status.setOne(false);
+                    collect.setBackgroundResource(R.drawable.collect2);
+                    Toast.makeText(EditHomeActivity.this, "取消收藏!", Toast.LENGTH_SHORT).show();
+//                    status.setOne(false);
                 }
             }
         });// 添加监听事件
