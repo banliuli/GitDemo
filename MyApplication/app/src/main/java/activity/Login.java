@@ -75,7 +75,6 @@ public class Login extends AppCompatActivity {                 //登录界面活
         register = (Button) findViewById(R.id.btn_login_page_register);
         etname = (EditText) findViewById(R.id.et_login_page_Etname);
         etpwd = (EditText) findViewById(R.id.et_login_page_Etpwd);
-        box = (CheckBox) findViewById(R.id.cb_login_page_box);
     }
 //    设置监听
     private void setListener() {

@@ -1,9 +1,11 @@
 package activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -11,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.administrator.suishouji.R;
@@ -26,7 +29,13 @@ import adapter.TextListAdapter;
  */
 public class TextListActivity extends AppCompatActivity{
     private Button back;
+
     private Button edit;
+
+    private Button add;
+    private List<ItemText> lit = new ArrayList<ItemText>();
+    private TextListAdapter myadapter;
+
     private ListView lv;
     private DBManager dm;
     private Cursor cursor;
@@ -45,20 +54,12 @@ public class TextListActivity extends AppCompatActivity{
         dm = new DBManager(this);
         initAdapter();
         lv.setAdapter(adapter);
+
         //给ListView设置item点击监听器，实现点击效果
         lv.setOnItemClickListener(new myOnItemClickListener());
+        //实现长按出现菜单
         lv.setOnCreateContextMenuListener(new myOnCreateContextMenuListener());
 
-
-
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-//                String j = String.valueOf(i);
-//                Intent ii=new Intent(TextListActivity.this,EditHomeActivity.class);
-//                startActivity(ii);
-//            }
-//        });
     }
 
     //在listview中显示数据库中的对象
@@ -69,14 +70,15 @@ public class TextListActivity extends AppCompatActivity{
         int count = cursor.getCount();//个数
         ArrayList<String> items = new ArrayList<String>();
         ArrayList<String> times = new ArrayList<String>();
-        for(int i= 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             items.add(cursor.getString(cursor.getColumnIndex("title")));
             times.add(cursor.getString(cursor.getColumnIndex("time")));
             cursor.moveToNext();//将游标指向下一个
         }
         dm.close();//关闭数据操作对象
-        adapter = new TextListAdapter(this,items,times);//创建数据源
+        adapter = new TextListAdapter(this, items, times);//创建数据源
     }
+
 
     //选择菜单
     public class myOnCreateContextMenuListener implements View.OnCreateContextMenuListener {
@@ -179,37 +181,60 @@ public class TextListActivity extends AppCompatActivity{
         }
     }
 
-
-//    private void getData() {
-//        lit.add(new ItemText(0L,"来自手机","来自手机",false));
-//    }
-
     private void initID() {
         back = (Button)findViewById(R.id.btn_activtiy_textlist_return);
+
         edit = (Button)findViewById(R.id.btn_activtiy_textlist_edit);
 
         lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
+
+        add=(Button)findViewById(R.id.btn_activtiy_textlist_add);
+
     }
     private void setListener() {
         MyListener listener = new MyListener();
         back.setOnClickListener(listener);
-        edit.setOnClickListener(listener);
+        add.setOnClickListener(listener);
     }
+    private void dialog(){
+        final AlertDialog.Builder builder=new AlertDialog.Builder(TextListActivity.this);
+        builder.setTitle("请输入文件名");
+        builder.setIcon(android.R.drawable.ic_dialog_info);
+        final EditText editText = new EditText(this);
+        builder.setView(editText);
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String input = editText.getText().toString();
+                lit.add(new ItemText(1L,input," "));
+                myadapter.notifyDataSetChanged();
 
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.create();
+        builder.show();
+    }
     private class MyListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
-            Intent i = new Intent();
             switch (v.getId()){
                 case R.id.btn_activtiy_textlist_return:
+                    Intent i = new Intent();
                     i.setClass(TextListActivity.this,MainActivity.class);
+                    startActivity(i);
                     break;
-                case R.id.btn_activtiy_textlist_edit:
-                    i.setClass(TextListActivity.this,DeleteTextListActivity.class);
+                case R.id.btn_activtiy_textlist_add:
+                    dialog();
                     break;
 
             }
-            startActivity(i);
+
         }
     }
 }

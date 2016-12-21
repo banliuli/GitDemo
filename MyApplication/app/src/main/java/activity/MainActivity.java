@@ -95,9 +95,6 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent();
             switch (v.getId()){
-                case R.id.iv_activtiy_main_login:
-                    i.setClass(MainActivity.this,LoginActivity.class);
-                    break;
                 case R.id.btn_activtiy_main_mine:
                     i.setClass(MainActivity.this,MineActivity.class);
                     break;
