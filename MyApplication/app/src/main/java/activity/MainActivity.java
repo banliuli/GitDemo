@@ -1,6 +1,7 @@
 package activity;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +16,9 @@ import com.example.administrator.suishouji.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private Button btn_add;
-    private Button bianji;
     private Button mine;
     private FileAdapter myadapter;
     private ListView lv;
@@ -48,12 +48,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+
+                // TODO 自动生成的方法存根
+                Button btn= (Button) arg1.findViewById(R.id.btn_item_file_delete);
+                if(btn.getVisibility() == View.INVISIBLE){
+                    btn.setVisibility(View.VISIBLE);
+                }
+                else{
+                    btn.setVisibility(View.INVISIBLE);
+                }
+                return true;//关于返回值，若返回False，则是当长按时，既调用onItemLongClick，同时调用onItemLongClick后
+                //还会调用onItemClick，就是说会同时调用onItemLongClick，和onItemClick，
+                //若返回true，则只调用onItemLongClick
+            }
+        });
     }
 
 
     private void getId() {
         login=(ImageView) findViewById(R.id.iv_activtiy_main_login);
-        bianji = (Button)findViewById(R.id.btn_activtiy_main_edit);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
         edit = (Button)findViewById(R.id.btn_activity_main_edit1);
         btn_add=(Button)findViewById(R.id.btn_activtiy_main_add);
@@ -62,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
     private void setListener() {
         MyListener mylistener = new MyListener();
         login.setOnClickListener(mylistener);
-        bianji.setOnClickListener(mylistener);
         mine.setOnClickListener(mylistener);
         edit.setOnClickListener(mylistener);
         btn_add.setOnClickListener(mylistener);
@@ -83,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_activtiy_main_mine:
                     i.setClass(MainActivity.this,MineActivity.class);
-                    break;
-                case R.id.btn_activtiy_main_edit:
-                    i.setClass(MainActivity.this,DeleteFileActivity.class);
                     break;
                 case R.id.btn_activtiy_main_add:
                     i.setClass(MainActivity.this, AddfilesActivity.class);
