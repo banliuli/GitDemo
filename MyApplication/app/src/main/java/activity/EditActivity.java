@@ -11,17 +11,21 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.suishouji.R;
 
 import java.io.FileNotFoundException;
 
+import DBSql.DBManager;
 import jp.wasabeef.richeditor.RichEditor;
 
 
@@ -52,6 +56,15 @@ public class EditActivity extends Activity {
     private ImageView IvBold,IvItalic,IvUnderline,IvStrikethrough;    //字体格式
     private ImageView IvLeft1,IvRight1,IvCenter1;    //文本对齐
 
+
+    private DBManager dm=null;
+    private String idString;
+    private int state = 1;
+    private EditText EtTitle;
+    private String title;
+    private String text;
+    private int id2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +76,7 @@ public class EditActivity extends Activity {
         setListener();
         //获取RichEditor界面
         getEditor();
+        dm=new DBManager(this);
 
     }
 
@@ -90,6 +104,7 @@ public class EditActivity extends Activity {
     private void getView() {
         IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
         TvFinish = (TextView) findViewById(R.id.Tv_activity_edit_finish);
+        EtTitle = (EditText)findViewById(R.id.Ed_activity_edit_title);
 
         IvBullet = (ImageView) findViewById(R.id.Iv_activity_edit_bullet);
         IvNumber = (ImageView) findViewById(R.id.Iv_activity_edit_number);
@@ -301,8 +316,9 @@ public class EditActivity extends Activity {
                     startActivity(intent);
                     break;
                 case R.id.Tv_activity_edit_finish:    //完成
+                    getData();
                     Intent intent2 = new Intent();
-                    intent2.setClass(getApplication(),EditHomeActivity.class);
+                    intent2.setClass(getApplication(),TextListActivity.class);
                     startActivity(intent2);
                     break;
 
@@ -690,6 +706,24 @@ public class EditActivity extends Activity {
             }
         }
     }
-
+    public void getData(){
+        title = EtTitle.getText().toString();
+        text= mPreview.getText().toString();
+        Log.i("log","title---->"+title);
+        Log.i("log", "travels---->"+text);
+        try{
+            dm.open();
+            if(state==1) {
+                dm.insert(title, text);
+                Toast.makeText(EditActivity.this,"chenggong",Toast.LENGTH_SHORT).show();
+            }
+            if (state==2)
+                Log.i("log", "ready to alter");
+            dm.update(id2, title, text);
+            dm.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
 

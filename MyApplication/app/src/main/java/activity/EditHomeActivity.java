@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
+import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -39,6 +41,9 @@ public class EditHomeActivity extends Activity {
     SharedPreferences.Editor editor;
     private boolean first;
     private RelativeLayout Rlayout1,Rlayout2,Rlayout3,Rlayout4;
+    private TextView TvTitle;
+    private TextView TvTime;
+    private TextView TvContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,18 @@ public class EditHomeActivity extends Activity {
     }
 
     private void setData(){
+
+        Intent intent = getIntent();//获取启动该Activity的intent对象
+
+        String title= intent.getStringExtra("title");
+        String content = intent.getStringExtra("content");
+        String time= intent.getStringExtra("time");
+        long t = Long.parseLong(time);
+        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
+        this.TvTitle.setText(title);
+        this.TvTime.setText(datetime);
+        this.TvContent.setText(content);
+
         preferences = getSharedPreferences("togglebuttonstatus", Context.MODE_PRIVATE);
 		/*
 		 * 判断是不是第一次运行该程序
@@ -113,6 +130,10 @@ public class EditHomeActivity extends Activity {
         BtnEdit = (ToggleButton) findViewById(R.id.btn_activity_edithome_edit);
         BtnMore = (ToggleButton) findViewById(R.id.btn_activity_edithome_more);
         mIv_back=(ImageView)findViewById(R.id.Iv_activity_edithome_back);
+
+        TvTitle = (TextView)findViewById(R.id.Tv_activity_edithome_title);
+        TvTime = (TextView)findViewById(R.id.Tv_acyivity_edithome_time);
+        TvContent = (TextView)findViewById(R.id.Tv_activity_edithome_content);
     }
 
     //注册监听事件
