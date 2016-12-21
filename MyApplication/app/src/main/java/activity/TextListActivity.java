@@ -184,8 +184,6 @@ public class TextListActivity extends AppCompatActivity{
     private void initID() {
         back = (Button)findViewById(R.id.btn_activtiy_textlist_return);
 
-        edit = (Button)findViewById(R.id.btn_activtiy_textlist_edit);
-
         lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
 
         add=(Button)findViewById(R.id.btn_activtiy_textlist_add);
