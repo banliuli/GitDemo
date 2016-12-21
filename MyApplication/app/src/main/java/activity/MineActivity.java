@@ -71,7 +71,7 @@ public class MineActivity extends Activity {
                     i.setClass(MineActivity.this,MyAccountsActivity.class);
                     break;
                 case R.id.btn_layout_mine_login2:
-                    i.setClass(MineActivity.this,LoginActivity.class);
+                    i.setClass(MineActivity.this,Login.class);
                     break;
                 case R.id.btn_mine_suishouji:
                     i.setClass(MineActivity.this,MainActivity.class);
