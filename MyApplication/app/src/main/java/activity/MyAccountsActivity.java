@@ -61,7 +61,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import data.PersonalDataManager;
+import data.UserDataManager;
 import data.UserData;
 import data.UserDataManager;
 
@@ -88,7 +88,7 @@ public class MyAccountsActivity extends AppCompatActivity {
     private Button cancle;
     private ActionBar.Tab etname;
     private ActionBar.Tab etpwd;
-    private PersonalDataManager mUserDataManager;
+    private UserDataManager mUserDataManager;
     private EditText username;
 
 
@@ -203,7 +203,7 @@ public class MyAccountsActivity extends AppCompatActivity {
                 Toast.makeText(this, "注销成功提示",Toast.LENGTH_SHORT).show();//注销成功提示
                 etname.setText("");
                 etpwd.setText("");
-                mUserDataManager.deletePersonalDatabyname(userName);
+                mUserDataManager.deleteUserDatabyname(userName);
             }else if(result==0){
                 Toast.makeText(this, "注销失败提示",Toast.LENGTH_SHORT).show();  //注销失败提示
             }
@@ -474,7 +474,7 @@ public class MyAccountsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         if (mUserDataManager == null) {
-            mUserDataManager = new PersonalDataManager(this);
+            mUserDataManager = new UserDataManager(this);
             mUserDataManager.openDataBase();
         }
         super.onResume();
