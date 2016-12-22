@@ -16,10 +16,25 @@
             android:layout_height="wrap_content"
             android:id="@+id/Tv_layout_suishouji_file_Title"
             android:layout_toRightOf="@+id/Iv_layout_suishouji_file"
+            android:layout_toLeftOf="@+id/btn_item_file_delete"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:textSize="20sp"
+            />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:background="@drawable/btn_shape_delete"
+            android:textSize="17sp"
+            android:text="删除"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/btn_item_file_delete"
+            android:focusable="false"
+            android:visibility="invisible"
             />
         <ImageView
             android:layout_width="match_parent"

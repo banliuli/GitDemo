@@ -1,34 +1,54 @@
 package activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
+import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.administrator.suishouji.R;
+import com.example.administrator.suishouji.ToggleStatus;
 
 
 public class EditHomeActivity extends Activity {
 
-    private Button BtnCollect;
-    private Button BtnMove;
-    private Button BtnEdit;
-    private Button BtnMore;
+    private ToggleButton BtnCollect;
+    ToggleStatus status = new ToggleStatus();
+    private ToggleButton BtnMove;
+    private ToggleButton BtnEdit;
+    private ToggleButton BtnMore;
     private ImageView mIv_back;
+    private ImageView collect;
 
     private PopupWindow popupWindow;
     private View view;
 
+<<<<<<< HEAD
     private RelativeLayout Rlayout1,Rlayout2,Rlayout3;
+=======
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    private boolean first;
+    private RelativeLayout Rlayout1,Rlayout2,Rlayout3,Rlayout4;
+    private TextView TvTitle;
+    private TextView TvTime;
+    private TextView TvContent;
+>>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +59,92 @@ public class EditHomeActivity extends Activity {
         getView();
         //注册监听事件
         setListener();
+        setData();
+        collect = (ImageView)findViewById(R.id.edit_collect);
+        BtnCollect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    collect.setBackgroundResource(R.drawable.collect);
+                    Toast.makeText(EditHomeActivity.this, "收藏成功!", Toast.LENGTH_SHORT).show();
+//                    status.setOne(isChecked);
+                }
+                else{
+                    collect.setBackgroundResource(R.drawable.collect2);
+                    Toast.makeText(EditHomeActivity.this, "取消收藏!", Toast.LENGTH_SHORT).show();
+//                    status.setOne(false);
+                }
+            }
+        });// 添加监听事件
     }
 
+<<<<<<< HEAD
 
+=======
+    private void setData(){
+        Intent intent = getIntent();//获取启动该Activity的intent对象
+        String title= intent.getStringExtra("title");
+        String content = intent.getStringExtra("content");
+        String time= intent.getStringExtra("time");
+        long t = Long.parseLong(time);
+       String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
+        this.TvTitle.setText(title);
+        this.TvTime.setText(datetime);
+        this.TvContent.setText(content);
+
+        preferences = getSharedPreferences("togglebuttonstatus", Context.MODE_PRIVATE);
+		/*
+		 * 判断是不是第一次运行该程序
+		 * （因为第一次运行时，SharedPreferences是没有保存"first"的，
+		 * "first"不存在即为null，默认返回自己设置的参数true）
+		 *
+		 */
+        first = preferences.getBoolean("first", true);
+        editor = preferences.edit();
+        if(first){
+            getStatus();
+        }
+        else{
+            status.one = preferences.getBoolean("s_one", false);
+            setToggButonStatus(status);
+        }
+    }
+    /*
+	 * 根据保存的参数设置每个ToggleButton的状态
+	 */
+    private void setToggButonStatus(ToggleStatus data){
+        BtnCollect.setChecked(data.one);
+    }
+    /*
+	 * 获取每个ToggleButton的状态，并保存在status里面
+	 */
+    private void getStatus(){
+        status.one = BtnCollect.isChecked();
+    }
+    @Override
+    protected void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        if(first){
+            editor.putBoolean("first", false);
+        }
+        //关闭之前把数据写进去
+        editor.putBoolean("s_one", status.one);
+        editor.commit();
+    }
+>>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
     //获取界面控件
     private void getView() {
-        BtnCollect = (Button) findViewById(R.id.btn_activity_edithome_collect);
-        BtnMove = (Button) findViewById(R.id.btn_activity_edithome_move);
-        BtnEdit = (Button) findViewById(R.id.btn_activity_edithome_edit);
-        BtnMore = (Button) findViewById(R.id.btn_activity_edithome_more);
+        BtnCollect = (ToggleButton) findViewById(R.id.btn_activity_edithome_collect);
+        BtnMove = (ToggleButton) findViewById(R.id.btn_activity_edithome_move);
+//        BtnEdit = (ToggleButton) findViewById(R.id.btn_activity_edithome_edit);
+        BtnMore = (ToggleButton) findViewById(R.id.btn_activity_edithome_more);
         mIv_back=(ImageView)findViewById(R.id.Iv_activity_edithome_back);
+
+        TvTitle = (TextView)findViewById(R.id.Tv_activity_edithome_title);
+        TvTime = (TextView)findViewById(R.id.Tv_acyivity_edithome_time);
+        TvContent = (TextView)findViewById(R.id.Tv_activity_edithome_content);
     }
 
     //注册监听事件
@@ -56,29 +152,28 @@ public class EditHomeActivity extends Activity {
         MyListener listener = new MyListener();
         BtnCollect.setOnClickListener(listener);
         BtnMove.setOnClickListener(listener);
-        BtnEdit.setOnClickListener(listener);
+//        BtnEdit.setOnClickListener(listener);
         BtnMore.setOnClickListener(listener);
         mIv_back.setOnClickListener(listener);
     }
-    
+
 
     private class MyListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.btn_activity_edithome_collect:   //收藏
-
+                //case R.id.btn_activity_edithome_collect:   //收藏
                 case R.id.btn_activity_edithome_move:      //移动
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(),MoveActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.btn_activity_edithome_edit:     //编辑
-                    Intent intent2 = new Intent();
-                    intent2.setClass(getApplicationContext(),EditActivity.class);
-                    startActivity(intent2);
-                    break;
+//                case R.id.btn_activity_edithome_edit:     //编辑
+//                    Intent intent2 = new Intent();
+//                    intent2.setClass(getApplicationContext(),EditActivity.class);
+//                    startActivity(intent2);
+//                    break;
                 case R.id.btn_activity_edithome_more:      //更多
                     popup();
                     break;
@@ -100,7 +195,7 @@ public class EditHomeActivity extends Activity {
             LayoutInflater inflater = LayoutInflater.from(this);
             view = inflater.inflate(R.layout.popup,null);
 
-           //设置popupWindow大小
+            //设置popupWindow大小
             popupWindow = new PopupWindow(view, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT, ActionBarOverlayLayout.LayoutParams.WRAP_CONTENT);
             //获取焦点
             popupWindow.setFocusable(true);
@@ -178,13 +273,13 @@ public class EditHomeActivity extends Activity {
                     break;
                 case R.id.Rlayout_popup2:     //删除
                     new AlertDialog.Builder(EditHomeActivity.this).setTitle("确认删除？")//设置对话框标题
-                    .setMessage("删除后无法恢复")//设置显示的内容
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {  //添加确定按钮
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    }).setNegativeButton("取消", new DialogInterface.OnClickListener() {  //添加取消按钮
+                            .setMessage("删除后无法恢复")//设置显示的内容
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {  //添加确定按钮
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    finish();
+                                }
+                            }).setNegativeButton("取消", new DialogInterface.OnClickListener() {  //添加取消按钮
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -193,7 +288,7 @@ public class EditHomeActivity extends Activity {
                     break;
                 case R.id.Rlayout_popup3:     //详细信息
                     popup1();
-                break;
+                    break;
 
             }
         }

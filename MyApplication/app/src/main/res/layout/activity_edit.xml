@@ -206,37 +206,37 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/h1"/>
+                    android:src="@drawable/size1"/>
                 <ImageView
                     android:id="@+id/Iv_activity_edit_h2"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/h2"/>
+                    android:src="@drawable/size2"/>
                 <ImageView
                     android:id="@+id/Iv_activity_edit_h3"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/h3"/>
+                    android:src="@drawable/size3"/>
                 <ImageView
                     android:id="@+id/Iv_activity_edit_h4"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/h4"/>
+                    android:src="@drawable/size4"/>
                 <ImageView
                     android:id="@+id/Iv_activity_edit_h5"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/h5"/>
+                    android:src="@drawable/size5"/>
                 <ImageView
                     android:id="@+id/Iv_activity_edit_h6"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/h6"/>
+                    android:src="@drawable/size6"/>
             </LinearLayout>
 
             <TextView
