@@ -64,15 +64,15 @@ public class TextListActivity extends AppCompatActivity{
         cursor = dm.selectAll();//获取所有数据
         cursor.moveToFirst();//将游标移动到第一条数据，使用前必须调用
         int count = cursor.getCount();//个数
-        ArrayList<String> items = new ArrayList<String>();
+        ArrayList<String> title = new ArrayList<String>();
         ArrayList<String> text = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
-            items.add(cursor.getString(cursor.getColumnIndex("title")));
+            title.add(cursor.getString(cursor.getColumnIndex("title")));
             text.add(cursor.getString(cursor.getColumnIndex("content")));
             cursor.moveToNext();//将游标指向下一个
         }
         dm.close();//关闭数据操作对象
-        adapter = new TextListAdapter(this, items, text);//创建数据源
+        adapter = new TextListAdapter(this,title, text);//创建数据源
     }
 
 
