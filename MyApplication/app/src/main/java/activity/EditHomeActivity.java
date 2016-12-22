@@ -1,28 +1,41 @@
 package activity;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
+import android.text.SpannableString;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 
 import com.example.administrator.suishouji.R;
 import com.example.administrator.suishouji.ToggleStatus;
+
+import DBSql.DBCollect;
+import DBSql.DBManager;
+import adapter.CollectionAdapter;
+import jp.wasabeef.richeditor.RichEditor;
 
 
 public class EditHomeActivity extends Activity {
@@ -33,7 +46,6 @@ public class EditHomeActivity extends Activity {
     private ToggleButton BtnEdit;
     private ToggleButton BtnMore;
     private ImageView mIv_back;
-    private ImageView collect;
 
     private PopupWindow popupWindow;
     private View view;
@@ -46,6 +58,24 @@ public class EditHomeActivity extends Activity {
     private TextView TvTime;
     private TextView TvContent;
 
+    private DBCollect dm = null;
+    private String idString;
+    private int state = -1;
+    private EditText EtTitle;
+    private String title;
+    private String text;
+    private String time;
+    private int id2;
+    public Cursor cursor=null;
+    public String namestr="";
+    private String path = null;
+    private String mtime;
+    private ActionBar.Tab mPreview;
+    private AdapterView.AdapterContextMenuInfo menuInfo;
+    private CollectionAdapter item;
+    private CollectionAdapter adapter;
+    private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,20 +86,69 @@ public class EditHomeActivity extends Activity {
         //注册监听事件
         setListener();
         setData();
-        collect = (ImageView)findViewById(R.id.edit_collect);
+        dm = new DBCollect(this);
+        Intent intent = getIntent();
+        state = Integer.parseInt(intent.getStringExtra("state"));
+        Log.i("log", "state---->"+state);
+        if (state==2) {
+            idString = intent.getStringExtra("id");
+            Log.i("log", "id---->" + idString);
+            id2 = Integer.parseInt(idString);
+            title = intent.getStringExtra("title");
+            text = intent.getStringExtra("content");
+            time = intent.getStringExtra("time");
+            EtTitle.setText(title);
+            dm.open();
+            int i = 0;
+            int start = 0;
+            int end = 0;
+            String str1 = null;
+            String str2 = "[";
+            String str4 = "]";
+            String iconname=null;
+            SpannableString travelsSpan = new SpannableString(text);
+            for (i = 0; i < text.length(); i++) {
+                str1 = text.substring(i, i + 1);
+                //travelsString+=str1;
+                Log.i("log", str1);
+                if (str1.equals(str2)) {
+                    start = i + 1;
+                }
+                if (str1.equals(str4)) {
+                    end = i;
+                    namestr = text.substring(start, end);
+                    Log.i("log", namestr);
+                    cursor = dm.selcetPathByName(namestr);
+                    cursor.moveToFirst();
+                    path = cursor.getString(cursor.getColumnIndex("path"));
+                    cursor.close();
+                    namestr = null;
+                    Log.i("log", path);
+
+                    if (!(cursor == null)) {
+                        int count = cursor.getCount();
+                        Log.i("log", "count----->" + count);
+                    } else {
+                        Log.i("log", "insert icon faile");
+                    }
+                }
+
+            }
+            dm.close();
+        }
         BtnCollect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
-                    collect.setBackgroundResource(R.drawable.collect);
+                    getData();
                     Toast.makeText(EditHomeActivity.this, "收藏成功!", Toast.LENGTH_SHORT).show();
-//                    status.setOne(isChecked);
+                    status.setOne(isChecked);
                 }
                 else{
-                    collect.setBackgroundResource(R.drawable.collect2);
+                    DeleteData();
                     Toast.makeText(EditHomeActivity.this, "取消收藏!", Toast.LENGTH_SHORT).show();
-//                    status.setOne(false);
+                    status.setOne(false);
                 }
             }
         });// 添加监听事件
@@ -149,13 +228,21 @@ public class EditHomeActivity extends Activity {
         mIv_back.setOnClickListener(listener);
     }
 
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        // TODO Auto-generated method stub
+        final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        menu.setHeaderTitle("");
+        //设置选项
+        Log.i("log", "chooseing menu");
+        menu.add(0,0,0,"删除");
+    }
 
     private class MyListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                //case R.id.btn_activity_edithome_collect:   //收藏
+
                 case R.id.btn_activity_edithome_move:      //移动
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(),MoveActivity.class);
@@ -289,6 +376,38 @@ public class EditHomeActivity extends Activity {
                     break;
 
             }
+        }
+    }
+    public void getData()
+    {
+        Log.i("log","title---->"+title);
+        Log.i("log", "travels---->"+text);
+        try{
+            dm.open();
+            if(state==1) {
+                dm.insert(title, text);
+            }
+            if (state==2) {
+                Log.i("log", "ready to alter");
+                dm.update(id2, title, text);
+            }
+            dm.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public void DeleteData()
+    {
+        Log.i("log","title---->"+title);
+        Log.i("log", "travels---->"+text);
+        try{
+            dm.open();
+            if(state==2) {
+                dm.delete(id2,title,text);
+            }
+            dm.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
     }
 }

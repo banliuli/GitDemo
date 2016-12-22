@@ -29,6 +29,7 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:text="编辑"
+            android:id="@+id/activity_collection_edit"
             android:textColor="#ffffff"
             android:gravity="center_vertical"
             android:textSize="18sp"/>
