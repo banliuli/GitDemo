@@ -113,14 +113,15 @@ public class UserDataManager {
     //修改用户信息
     public boolean updateUserData(UserData userData) {
 
-        int id = userData.getUserId();
+        //int id = userData.getUserId();
         String userName = userData.getUsername();
         String userPwd = userData.getPassword();
 
         ContentValues values = new ContentValues();
         values.put(USER_NAME, userName);
         values.put(USER_PWD, userPwd);
-        return mSQLiteDatabase.update(TABLE_NAME, values, ID + "=" + id, null) > 0;
+        return mSQLiteDatabase.update(TABLE_NAME, values,null, null) > 0;
+        //return mSQLiteDatabase.update(TABLE_NAME, values, ID + "=" + id, null) > 0;
     }
     //读取用户信息
     public Cursor fetchAllUserDatas() {

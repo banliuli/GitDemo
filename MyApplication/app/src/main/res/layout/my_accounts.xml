@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="用户名"
                 android:textSize="25dp" />
-            <TextView
+            <EditText
                 android:id="@+id/et_my_accounts_username"
                 android:layout_width="0dp"
                 android:layout_weight="1"

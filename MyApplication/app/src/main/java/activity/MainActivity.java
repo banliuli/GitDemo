@@ -3,6 +3,7 @@ package activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -91,13 +92,38 @@ public class MainActivity extends Activity {
     }
     //更改界面
     private class MyListener implements View.OnClickListener{
-            @Override
+        private int flag;
+
+        @Override
             public void onClick(View v) {
                 Intent i = new Intent();
             switch (v.getId()){
                 case R.id.iv_activtiy_main_login:
-                    i.setClass(MainActivity.this,Login.class);
+                    if(flag==0){
+                        i.setClass(MainActivity.this,Login.class);
+                        flag=1;
+                    }else{
+                        i.setClass(MainActivity.this,MyAccountsActivity.class);
+                        flag=0;
+                    }
+
                     break;
+                //登录切换
+//                 login.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                       ImageView .setImage(ImageView.img);
+//                        if (flag == 0) {
+//                             login.setImageResource(0);
+//                             login.setImageResource(R.drawable.img);
+//                            flag = 1;
+//                        }else {
+//                             login.setImageResource(0);
+//                             login.setImageResource(R.drawable.personal);
+//                            flag = 0;
+//                        }
+//                    }
+//                });
                 case R.id.btn_activtiy_main_mine:
                     i.setClass(MainActivity.this,MineActivity.class);
                     break;
@@ -112,9 +138,11 @@ public class MainActivity extends Activity {
                     i.setClass(MainActivity.this,MainActivity.class);
                     break;
             }
+
             startActivity(i);
         }
     }
+
 
 
 }

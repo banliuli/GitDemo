@@ -3,7 +3,7 @@ package activity;
 /**
  * Created by lenovo on 2016/11/28.
  */
-import android.app.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
     private TextView loginSuccessShow;
     private TextView mChangepwdText;
     private UserDataManager mUserDataManager;         //用户数据管理类
+    private Button resetpwd;
 
 
     @Override
@@ -73,6 +74,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
         fh = (Button) findViewById(R.id.btn_login_page_fh);
         login = (Button) findViewById(R.id.btn_login_page_login);
         register = (Button) findViewById(R.id.btn_login_page_register);
+        resetpwd = (Button) findViewById(R.id.btn_login_page_resetpwd);
         etname = (EditText) findViewById(R.id.et_login_page_Etname);
         etpwd = (EditText) findViewById(R.id.et_login_page_Etpwd);
         box = (CheckBox) findViewById(R.id.cb_login_page_box);
@@ -82,6 +84,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
         fh.setOnClickListener(mylistener);
         login.setOnClickListener(mylistener);
         register.setOnClickListener(mylistener);
+        resetpwd.setOnClickListener(mylistener);
         etname.setOnClickListener(mylistener);
         etpwd.setOnClickListener(mylistener);
         box.setOnClickListener(mylistener);
@@ -97,12 +100,12 @@ public class Login extends AppCompatActivity {                 //登录界面活
                 case R.id.btn_login_page_login:                              //登录界面的登录按钮
                     login();
                     break;
-//
-//                case R.id.login_text_change_pwd:                             //登录界面的注销按钮
-//                    Intent intent_Login_to_reset = new Intent(Login.this,Resetpwd.class) ;    //切换Login Activity至User Activity
-//                    startActivity(intent_Login_to_reset);
-//                    finish();
-//                    break;
+
+                case R.id.btn_login_page_resetpwd:                             //登录界面的注销按钮
+                    Intent intent_Login_to_reset = new Intent(Login.this,ResetpwdActivity.class) ;    //切换Login Activity至User Activity
+                    startActivity(intent_Login_to_reset);
+                    finish();
+                    break;
             }
         }
     };

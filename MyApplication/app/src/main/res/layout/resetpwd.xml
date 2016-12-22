@@ -3,31 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activity.LoginActivity"
+    tools:context="activity.Login"
     android:background="#e8ecfa"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:background="#5677fc">
-        <Button
-            android:id="@+id/btn_login_page_fh"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="match_parent"
-            android:background="@drawable/back" />
+        <!--<Button android:id="@+id/btn_resetpwd_fh"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="0.5"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@drawable/back" />-->
         <TextView
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="match_parent"
-            android:text="登录到随手记"
+            android:text="修改密码"
             android:textSize="25dp"
             android:textColor="#ffffff"
             android:gravity="center" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +46,7 @@
                 android:textSize="22dp"
                 android:layout_marginLeft="10dp"/>
             <EditText
-                android:id="@+id/et_login_page_Etname"
+                android:id="@+id/et_resetpwd_uname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="QQ/手机号/邮箱"
@@ -63,59 +60,75 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="密码："
+                android:text="旧密码："
                 android:textSize="22dp"
                 android:layout_marginLeft="10dp"/>
             <EditText
-                android:id="@+id/et_login_page_Etpwd"
+                android:id="@+id/et_resetpwd_pwd1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="23dp"
+                android:alpha="0.8"
                 android:layout_marginRight="10dp"/>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-        <CheckBox
-            android:id="@+id/cb_login_page_box"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新密码："
+                android:textSize="22dp"
+                android:layout_marginLeft="10dp"/>
+            <EditText
+                android:id="@+id/et_resetpwd_pwd2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="23dp"
+                android:alpha="0.8"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="记住密码"
-            android:textColor="#f55b38"
-            android:textSize="18dp" />
-        <Button
-            android:id="@+id/btn_login_page_resetpwd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="修改密码"
-            android:gravity="center"/>
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="确认新密码："
+                android:textSize="22dp"
+                android:layout_marginLeft="10dp"/>
+            <EditText
+                android:id="@+id/et_resetpwd_spwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="23dp"
+                android:layout_marginRight="10dp" />
+        </LinearLayout>
     </LinearLayout>
     <Button
-        android:id="@+id/btn_login_page_login"
+        android:id="@+id/btn_resetpwd_sure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="登录"
-        android:textSize="23dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_shape_login"
-        android:layout_margin="15dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"/>
-    <Button
-        android:id="@+id/btn_login_page_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="注册"
+        android:layout_marginTop="30dp"
+        android:text="确定"
         android:textSize="23dp"
         android:textColor="#ffffff"
         android:background="@drawable/button_shape_register"
          android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+    <Button
+        android:id="@+id/btn_resetpwd_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="取消"
+        android:textSize="23dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_shape_delete"
+        android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"/>
 </LinearLayout>
