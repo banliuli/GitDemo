@@ -50,6 +50,9 @@ public class EditHomeActivity extends Activity {
     private PopupWindow popupWindow;
     private View view;
 
+<<<<<<< HEAD
+    private RelativeLayout Rlayout1,Rlayout2,Rlayout3;
+=======
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     private boolean first;
@@ -57,6 +60,7 @@ public class EditHomeActivity extends Activity {
     private TextView TvTitle;
     private TextView TvTime;
     private TextView TvContent;
+>>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
 
     private DBCollect dm = null;
     private String idString;
@@ -154,6 +158,9 @@ public class EditHomeActivity extends Activity {
         });// 添加监听事件
     }
 
+<<<<<<< HEAD
+
+=======
     private void setData(){
         Intent intent = getIntent();//获取启动该Activity的intent对象
         String title= intent.getStringExtra("title");
@@ -205,6 +212,7 @@ public class EditHomeActivity extends Activity {
         editor.putBoolean("s_one", status.one);
         editor.commit();
     }
+>>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
     //获取界面控件
     private void getView() {
         BtnCollect = (ToggleButton) findViewById(R.id.btn_activity_edithome_collect);
@@ -312,13 +320,11 @@ public class EditHomeActivity extends Activity {
         Rlayout1 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup1);
         Rlayout2 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup2);
         Rlayout3 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup3);
-        Rlayout4 = (RelativeLayout) view.findViewById(R.id.Rlayout_popup4);
 
         //获取"更多"弹框里的控件点击事件
         Rlayout1.setOnClickListener(new Listener());
         Rlayout2.setOnClickListener(new Listener());
         Rlayout3.setOnClickListener(new Listener());
-        Rlayout4.setOnClickListener(new Listener());
     }
 
     /**
@@ -348,15 +354,11 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.Rlayout_popup1://纸张背景
-                    Intent i1=new Intent(EditHomeActivity.this,PaperBgActivity.class);
-                    startActivity(i1);
-                    break;
-                case R.id.Rlayout_popup2://阅读密码
+                case R.id.Rlayout_popup1://阅读密码
                     Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
                     startActivity(i);
                     break;
-                case R.id.Rlayout_popup3:     //删除
+                case R.id.Rlayout_popup2:     //删除
                     new AlertDialog.Builder(EditHomeActivity.this).setTitle("确认删除？")//设置对话框标题
                             .setMessage("删除后无法恢复")//设置显示的内容
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {  //添加确定按钮
@@ -371,7 +373,7 @@ public class EditHomeActivity extends Activity {
                         }
                     }).show();
                     break;
-                case R.id.Rlayout_popup4:     //详细信息
+                case R.id.Rlayout_popup3:     //详细信息
                     popup1();
                     break;
 
