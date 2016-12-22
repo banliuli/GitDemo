@@ -50,9 +50,6 @@ public class EditHomeActivity extends Activity {
     private PopupWindow popupWindow;
     private View view;
 
-<<<<<<< HEAD
-    private RelativeLayout Rlayout1,Rlayout2,Rlayout3;
-=======
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     private boolean first;
@@ -60,7 +57,7 @@ public class EditHomeActivity extends Activity {
     private TextView TvTitle;
     private TextView TvTime;
     private TextView TvContent;
->>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
+
 
     private DBCollect dm = null;
     private String idString;
@@ -158,9 +155,7 @@ public class EditHomeActivity extends Activity {
         });// 添加监听事件
     }
 
-<<<<<<< HEAD
 
-=======
     private void setData(){
         Intent intent = getIntent();//获取启动该Activity的intent对象
         String title= intent.getStringExtra("title");
@@ -212,7 +207,7 @@ public class EditHomeActivity extends Activity {
         editor.putBoolean("s_one", status.one);
         editor.commit();
     }
->>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
+
     //获取界面控件
     private void getView() {
         BtnCollect = (ToggleButton) findViewById(R.id.btn_activity_edithome_collect);

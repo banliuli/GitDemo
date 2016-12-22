@@ -27,6 +27,14 @@
             android:text="随手记笔记"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
+        <ImageView
+            android:id="@+id/Iv_activity_edithome_share"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/share" />
+
     </LinearLayout>
 
     <FrameLayout
@@ -35,33 +43,15 @@
         android:layout_weight="5">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-<<<<<<< HEAD
-
-            <EditText
-                android:id="@+id/Ed_activity_edithome_title"
-=======
             <TextView
                 android:id="@+id/Tv_activity_edithome_title"
->>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-                android:hint="点击输入标题"
-                android:textSize="20dp"
-                android:textColor="#8E8E8E"
-                android:background="@null"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGray"
-                android:layout_margin="5dp"/>
-
-=======
                 android:text="随手记笔记"
                 android:textSize="20sp"/>
             <TextView
@@ -86,7 +76,6 @@
                 android:text="随手记笔记内容"
                 android:layout_marginLeft="20dp"
                 android:textSize="20sp"/>
->>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
         </LinearLayout>
 
     </FrameLayout>
@@ -109,23 +98,24 @@
                 android:id="@+id/btn_activity_edithome_collect"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginBottom="7dp"
                 android:textColor="@color/colorBlack"
-                android:button="@drawable/btn_collect"
                 android:background="@drawable/btn_change1"
+                android:button="@drawable/btn_collect"
                 android:text=""
                 android:textOff=""
                 android:textOn="" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="收藏"
-                android:textSize="17dp"
-                android:layout_marginTop="-5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_below="@+id/btn_activity_edithome_collect"
-                android:background="@drawable/btn_change1"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收藏"
+            android:textSize="17dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@+id/btn_activity_edithome_collect"
+            android:background="@drawable/btn_change1"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -139,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="30dp"
                 android:button="@drawable/move"
                 android:background="@drawable/btn_change1"
                 android:text=""
@@ -151,35 +141,35 @@
                 android:text="移动到"
                 android:textSize="17dp"
                 android:layout_marginTop="-5dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_below="@+id/btn_activity_edithome_move"
                 android:background="@drawable/btn_change1"/>
         </RelativeLayout>
         <!--<RelativeLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="0dp"-->
-            <!--android:background="@drawable/btn_change1">-->
-            <!--<ToggleButton-->
-                <!--android:layout_weight="1"-->
-                <!--android:id="@+id/btn_activity_edithome_edit"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="30dp"-->
-                <!--android:button="@drawable/edit"-->
-                <!--android:background="@drawable/btn_change1"-->
-                <!--android:text=""-->
-                <!--android:textOff=""-->
-                <!--android:textOn="" />-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="编辑"-->
-                <!--android:textSize="17dp"-->
-                <!--android:layout_marginTop="-5dp"-->
-                <!--android:layout_marginLeft="30dp"-->
-                <!--android:layout_below="@+id/btn_activity_edithome_edit"-->
-                <!--android:background="@drawable/btn_change1"/>-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="0dp"-->
+        <!--android:background="@drawable/btn_change1">-->
+        <!--<ToggleButton-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/btn_activity_edithome_edit"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:button="@drawable/edit"-->
+        <!--android:background="@drawable/btn_change1"-->
+        <!--android:text=""-->
+        <!--android:textOff=""-->
+        <!--android:textOn="" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="编辑"-->
+        <!--android:textSize="17dp"-->
+        <!--android:layout_marginTop="-5dp"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_below="@+id/btn_activity_edithome_edit"-->
+        <!--android:background="@drawable/btn_change1"/>-->
         <!--</RelativeLayout>-->
 
 
@@ -194,7 +184,7 @@
                 android:id="@+id/btn_activity_edithome_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:button="@drawable/more"
                 android:background="@drawable/btn_change1"
@@ -207,7 +197,7 @@
                 android:text="更多"
                 android:textSize="17dp"
                 android:layout_marginTop="-5dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="20dp"
                 android:layout_below="@+id/btn_activity_edithome_more"
                 android:background="@drawable/btn_change1"/>
         </RelativeLayout>

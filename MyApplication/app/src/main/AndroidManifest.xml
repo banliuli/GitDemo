@@ -51,17 +51,11 @@
         <activity android:name="activity.PersonalIntroduceActivity" />
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
-<<<<<<< HEAD
-        <activity android:name="activity.DeleteFileActivity"/>
-=======
-        <activity android:name="activity.PaperBgActivity"/>
->>>>>>> 07cb80d14d6df130977b7c576f472c8684319005
         <activity android:name="activity.SetpwdActivity"/>
         <activity android:name="activity.ConcealPwd"/>
         <activity android:name="activity.CollectionActivity"/>
 
     </application>
-<!--������������-->
     <uses-sdk android:minSdkVersion="8"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
