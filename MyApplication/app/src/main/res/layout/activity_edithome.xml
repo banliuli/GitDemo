@@ -27,14 +27,6 @@
             android:text="随手记笔记"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
-        <ImageView
-            android:id="@+id/Iv_activity_edithome_share"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/share" />
-
     </LinearLayout>
 
     <FrameLayout
@@ -43,28 +35,26 @@
         android:layout_weight="5">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
+                android:id="@+id/Ed_activity_edithome_title"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="随手记笔记"
-                android:textSize="20dp"/>
-            <View
-                android:layout_width="wrap_content"
+                android:hint="点击输入标题"
+                android:textSize="20dp"
+                android:textColor="#8E8E8E"
+                android:background="@null"/>
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorGray"
                 android:layout_margin="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="随手记笔记内容"
-                android:layout_marginLeft="20dp"
-                android:textSize="20dp"/>
+
         </LinearLayout>
 
     </FrameLayout>

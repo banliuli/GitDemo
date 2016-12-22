@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.suishouji">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -51,7 +54,6 @@
         <activity android:name="activity.PersonalIntroduceActivity" />
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
-        <activity android:name="activity.PaperBgActivity"/>
         <activity android:name="activity.DeleteFileActivity"/>
         <activity android:name="activity.SetpwdActivity"/>
         <activity android:name="activity.ConcealPwd"/>
