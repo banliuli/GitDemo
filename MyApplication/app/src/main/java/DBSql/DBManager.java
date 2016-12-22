@@ -66,7 +66,7 @@ public class DBManager {
         }
         return cursor;
     }
-
+    //获取内容
     public Cursor selectById(int id) {
 
         //String result[] = {};
@@ -81,7 +81,18 @@ public class DBManager {
 
         return cursor;
     }
-
+    public Cursor selcetPathByName(String name){
+        Cursor cursor=null;
+        try{
+            String sql = "select path from icons where filename='"+ name +"'";
+            cursor=mSQLiteDatabase.rawQuery(sql, null);
+            Log.i("log", sql);
+        }catch(Exception ex){
+            ex.printStackTrace();
+            Log.i("log", "select faile");
+        }
+        return cursor;
+    }
 
     //插入数据
     public long insert(String title, String content) {
@@ -105,7 +116,21 @@ public class DBManager {
         return l;
 
     }
-
+    public long inserticonpath(String filename,String iconpath){
+        long l=-1;
+        try{
+            Log.i("log", "ready to insert icon");
+            ContentValues cv = new ContentValues();
+            cv.put("filename",filename);
+            cv.put("path", iconpath);
+            l = mSQLiteDatabase.insert("icons", null, cv);
+            Log.i("log", "insert iconname success");
+        }catch(Exception ex){
+            ex.printStackTrace();
+            l = -1;
+        }
+        return l;
+    }
     //删除数据
     public int delete(long id) {
         int affect = 0;
@@ -125,11 +150,12 @@ public class DBManager {
     //修改数据
     public int update(int id, String title, String content) {
         int affect = 0;
+        long datetime = System.currentTimeMillis();
         try {
             ContentValues cv = new ContentValues();
-
             cv.put("title", title);
             cv.put("content", content);
+            cv.put("time",datetime);
             affect = mSQLiteDatabase.update("data", cv, "_id=?", new String[]{id + ""});
         } catch (Exception ex) {
             ex.printStackTrace();

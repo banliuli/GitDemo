@@ -30,11 +30,7 @@ import adapter.TextListAdapter;
 public class TextListActivity extends AppCompatActivity{
     private Button back;
 
-    private Button edit;
-
     private Button add;
-    private List<ItemText> lit = new ArrayList<ItemText>();
-    private TextListAdapter myadapter;
 
     private ListView lv;
     private DBManager dm;
@@ -69,14 +65,14 @@ public class TextListActivity extends AppCompatActivity{
         cursor.moveToFirst();//将游标移动到第一条数据，使用前必须调用
         int count = cursor.getCount();//个数
         ArrayList<String> items = new ArrayList<String>();
-        ArrayList<String> times = new ArrayList<String>();
+        ArrayList<String> text = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
             items.add(cursor.getString(cursor.getColumnIndex("title")));
-            times.add(cursor.getString(cursor.getColumnIndex("time")));
+            text.add(cursor.getString(cursor.getColumnIndex("content")));
             cursor.moveToNext();//将游标指向下一个
         }
         dm.close();//关闭数据操作对象
-        adapter = new TextListAdapter(this, items, times);//创建数据源
+        adapter = new TextListAdapter(this, items, text);//创建数据源
     }
 
 
@@ -151,7 +147,7 @@ public class TextListActivity extends AppCompatActivity{
                     intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
                     intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
 
-                    intent.setClass(TextListActivity.this, EditActivity.class);
+                    intent.setClass(TextListActivity.this, EditHomeActivity.class);
                     TextListActivity.this.startActivity(intent);
                 }catch(Exception ex){
                     ex.printStackTrace();
@@ -194,41 +190,19 @@ public class TextListActivity extends AppCompatActivity{
         back.setOnClickListener(listener);
         add.setOnClickListener(listener);
     }
-    private void dialog(){
-        final AlertDialog.Builder builder=new AlertDialog.Builder(TextListActivity.this);
-        builder.setTitle("请输入文件名");
-        builder.setIcon(android.R.drawable.ic_dialog_info);
-        final EditText editText = new EditText(this);
-        builder.setView(editText);
-        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String input = editText.getText().toString();
-                lit.add(new ItemText(1L,input," "));
-                myadapter.notifyDataSetChanged();
-
-            }
-        });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        builder.create();
-        builder.show();
-    }
     private class MyListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
+            Intent i = new Intent();
             switch (v.getId()){
                 case R.id.btn_activtiy_textlist_return:
-                    Intent i = new Intent();
                     i.setClass(TextListActivity.this,MainActivity.class);
                     startActivity(i);
                     break;
                 case R.id.btn_activtiy_textlist_add:
-                    dialog();
+                    i.setClass(TextListActivity.this,EditActivity.class);
+                    i.putExtra("state", EDIT_STATE);
+                    startActivity(i);
                     break;
 
             }

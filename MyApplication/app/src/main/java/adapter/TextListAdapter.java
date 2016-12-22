@@ -81,9 +81,9 @@ public class TextListAdapter extends BaseAdapter {
         text.setText(listItems.get(position));
 
         TextView time = (TextView) convertView.findViewById(R.id.Tv_item_textlist_date);
-        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss",
-                Long.parseLong(listItemTimes.get(position))).toString();
-        time.setText(datetime);
+//        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss",
+//                Long.parseLong(listItemTimes.get(position))).toString();
+        time.setText(listItems.get(position));
 
         return convertView;
     }

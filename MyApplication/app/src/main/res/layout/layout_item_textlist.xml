@@ -15,7 +15,6 @@
         android:id="@+id/Llyout_textlist"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/Tv_item_textlist_text"
-        android:layout_toLeftOf="@+id/btn_item_textlist_delete"
         >
         <TextView
             android:layout_width="match_parent"

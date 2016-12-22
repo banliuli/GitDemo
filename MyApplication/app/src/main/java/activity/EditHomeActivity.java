@@ -76,14 +76,12 @@ public class EditHomeActivity extends Activity {
     }
 
     private void setData(){
-
         Intent intent = getIntent();//获取启动该Activity的intent对象
-
         String title= intent.getStringExtra("title");
         String content = intent.getStringExtra("content");
         String time= intent.getStringExtra("time");
         long t = Long.parseLong(time);
-        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
+       String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
         this.TvTitle.setText(title);
         this.TvTime.setText(datetime);
         this.TvContent.setText(content);
@@ -132,7 +130,7 @@ public class EditHomeActivity extends Activity {
     private void getView() {
         BtnCollect = (ToggleButton) findViewById(R.id.btn_activity_edithome_collect);
         BtnMove = (ToggleButton) findViewById(R.id.btn_activity_edithome_move);
-        BtnEdit = (ToggleButton) findViewById(R.id.btn_activity_edithome_edit);
+//        BtnEdit = (ToggleButton) findViewById(R.id.btn_activity_edithome_edit);
         BtnMore = (ToggleButton) findViewById(R.id.btn_activity_edithome_more);
         mIv_back=(ImageView)findViewById(R.id.Iv_activity_edithome_back);
 
@@ -146,7 +144,7 @@ public class EditHomeActivity extends Activity {
         MyListener listener = new MyListener();
         BtnCollect.setOnClickListener(listener);
         BtnMove.setOnClickListener(listener);
-        BtnEdit.setOnClickListener(listener);
+//        BtnEdit.setOnClickListener(listener);
         BtnMore.setOnClickListener(listener);
         mIv_back.setOnClickListener(listener);
     }
@@ -163,11 +161,11 @@ public class EditHomeActivity extends Activity {
                     intent.setClass(getApplicationContext(),MoveActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.btn_activity_edithome_edit:     //编辑
-                    Intent intent2 = new Intent();
-                    intent2.setClass(getApplicationContext(),EditActivity.class);
-                    startActivity(intent2);
-                    break;
+//                case R.id.btn_activity_edithome_edit:     //编辑
+//                    Intent intent2 = new Intent();
+//                    intent2.setClass(getApplicationContext(),EditActivity.class);
+//                    startActivity(intent2);
+//                    break;
                 case R.id.btn_activity_edithome_more:      //更多
                     popup();
                     break;
