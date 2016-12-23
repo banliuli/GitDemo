@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
+import android.text.Html;
 import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -84,7 +85,7 @@ public class EditHomeActivity extends Activity {
        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
         this.TvTitle.setText(title);
         this.TvTime.setText(datetime);
-        this.TvContent.setText(content);
+        this.TvContent.setText(Html.fromHtml(content));
 
         preferences = getSharedPreferences("togglebuttonstatus", Context.MODE_PRIVATE);
 		/*

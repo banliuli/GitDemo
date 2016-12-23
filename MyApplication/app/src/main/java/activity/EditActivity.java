@@ -369,7 +369,7 @@ public class EditActivity extends Activity {
             switch (v.getId()) {
                 case R.id.Iv_activity_edit_back:         //返回
                     Intent intent = new Intent();
-                    intent.setClass(getApplication(),EditHomeActivity.class);
+                    intent.setClass(getApplication(),TextListActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.Tv_activity_edit_finish:    //完成

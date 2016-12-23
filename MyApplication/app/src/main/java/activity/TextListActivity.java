@@ -15,13 +15,20 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.administrator.suishouji.R;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import DBSql.DBManager;
+import DBSql.HtmlManager;
 import adapter.TextListAdapter;
 
 /**
@@ -35,10 +42,23 @@ public class TextListActivity extends AppCompatActivity{
     private ListView lv;
     private DBManager dm;
     private Cursor cursor;
+    public Cursor cursor2;
     private TextListAdapter adapter;
     public static final String CHECK_STATE = "0";
     public static final String EDIT_STATE = "1";
     public static final String ALERT_STATE = "2";
+    private HtmlManager HM;
+    private int start=0;
+    private int end=0;
+    private int i;
+    private String str1=null;
+    private String str2="[";
+    private String str4="]";
+    private String iconname=null;
+    private File copyfromfile=null;
+    private File copyintofile=null;
+    private FileOutputStream copyinto=null;
+    private FileInputStream copyfrom=null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,14 +85,14 @@ public class TextListActivity extends AppCompatActivity{
         cursor.moveToFirst();//将游标移动到第一条数据，使用前必须调用
         int count = cursor.getCount();//个数
         ArrayList<String> title = new ArrayList<String>();
-        ArrayList<String> text = new ArrayList<String>();
+        ArrayList<String> time = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
             title.add(cursor.getString(cursor.getColumnIndex("title")));
-            text.add(cursor.getString(cursor.getColumnIndex("content")));
+            time.add(cursor.getString(cursor.getColumnIndex("time")));
             cursor.moveToNext();//将游标指向下一个
         }
         dm.close();//关闭数据操作对象
-        adapter = new TextListAdapter(this,title, text);//创建数据源
+        adapter = new TextListAdapter(this,title, time);//创建数据源
     }
 
 
@@ -88,6 +108,7 @@ public class TextListActivity extends AppCompatActivity{
             menu.add(0,0,0,"删除");
             menu.add(0,1,0,"修改");
             menu.add(0,2,0,"查看");
+            menu.add(0,3,0,"导出到SD卡");
         }
 
     }
@@ -153,11 +174,80 @@ public class TextListActivity extends AppCompatActivity{
                     ex.printStackTrace();
                 }
                 break;
+            case 3://导出
+                try{
+                    cursor.moveToPosition(menuInfo.position);
+                    String itemtitle=cursor.getString(cursor.getColumnIndex("title"));
+                    String itemcontent=cursor.getString(cursor.getColumnIndex("content"));
+                    //HM.htmlmanager(itemtitle, itemcontent);
+                    copyicon(itemtitle,itemcontent);
+                    Toast.makeText(TextListActivity.this, "导出成功，快去SD卡的\" 随手记 \"里找出来分享吧！！", Toast.LENGTH_LONG).show();
+                }catch(Exception ex){
+                    Toast.makeText(TextListActivity.this, "Sorry!!!导出失败！！", Toast.LENGTH_LONG).show();
+                    ex.printStackTrace();
+                }
+                break;
             default:;
         }
         dm.close();
         return super.onContextItemSelected(item);
     }
+
+
+    public int copyicon(String title1,String content1){
+        for(i=0;i<content1.length();i++)
+        {
+            str1=content1.substring(i, i+1);
+            if(str1.equals(str2))
+            {
+                start=i+1;
+            }
+            if(str1.equals(str4))
+            {
+                end=i;
+                iconname=content1.substring(start, end);
+                Log.i("log", iconname);
+                cursor2=dm.selcetPathByName(iconname);
+                cursor2.moveToFirst();
+                String iconpath2=cursor2.getString(cursor2.getColumnIndex("path"));
+                Log.i("log", iconpath2);
+                cursor2.close();
+                copyfromfile=new File(iconpath2);
+                String copyintopath="/mnt/sdcard/随手记/"+title1+"/"+iconname;
+                Log.i("log", copyintopath);
+                copyfile(iconpath2,copyintopath);
+            }
+        }
+        return 0;
+    }
+    public int copyfile(String from,String into){
+        try
+        {
+            copyfrom=new FileInputStream(from);
+            copyinto=new FileOutputStream(into);
+            Log.i("log", "fuck you");
+            byte[] bt = new byte[1024];
+            int c;
+            while((c=copyfrom.read(bt)) > 0){
+                copyinto.write(bt,0,c);
+            }
+            copyfrom.close();
+            copyinto.close();
+            Log.i("log", "copy success");
+            return 1;
+        }catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return -1;
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return -1;
+
+        }
+    }
+
 
     //短按，即点击
     public class myOnItemClickListener implements AdapterView.OnItemClickListener {
