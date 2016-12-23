@@ -11,17 +11,22 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.SpannableString;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.suishouji.R;
 
 import java.io.FileNotFoundException;
 
+import DBSql.DBManager;
 import jp.wasabeef.richeditor.RichEditor;
 
 
@@ -52,6 +57,19 @@ public class EditActivity extends Activity {
     private ImageView IvBold,IvItalic,IvUnderline,IvStrikethrough;    //字体格式
     private ImageView IvLeft1,IvRight1,IvCenter1;    //文本对齐
 
+    private DBManager dm=null;
+    private String idString;
+    private int state = -1;
+    private EditText EtTitle;
+    private String title;
+    private String text;
+    private String time;
+    private int id2;
+    public Cursor cursor=null;
+    public String namestr="";
+    private String path = null;
+    private String mtime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +79,64 @@ public class EditActivity extends Activity {
         getView();
         //注册监听事件
         setListener();
+        dm=new DBManager(this);
+        Intent intent = getIntent();
+        state = Integer.parseInt(intent.getStringExtra("state"));
+        Log.i("log", "state---->"+state);
+        if (state==2) {
+            idString = intent.getStringExtra("id");
+            Log.i("log", "id---->" + idString);
+            id2 = Integer.parseInt(idString);
+            title = intent.getStringExtra("title");
+            text = intent.getStringExtra("content");
+            time = intent.getStringExtra("time");
+            EtTitle.setText(title);
+            dm.open();
+            int i = 0;
+            int start = 0;
+            int end = 0;
+            String str1 = null;
+            String str2 = "[";
+            String str4 = "]";
+            String iconname=null;
+            SpannableString travelsSpan = new SpannableString(text);
+            for (i = 0; i < text.length(); i++) {
+                str1 = text.substring(i, i + 1);
+                //travelsString+=str1;
+                Log.i("log", str1);
+                if (str1.equals(str2)) {
+                    start = i + 1;
+                }
+                if (str1.equals(str4)) {
+                    end = i;
+                    namestr = text.substring(start, end);
+                    Log.i("log", namestr);
+                    cursor = dm.selcetPathByName(namestr);
+                    cursor.moveToFirst();
+                    path = cursor.getString(cursor.getColumnIndex("path"));
+                    cursor.close();
+                    namestr = null;
+                    Log.i("log", path);
+
+                    if (!(cursor == null)) {
+                        int count = cursor.getCount();
+                        Log.i("log", "count----->" + count);
+                    } else {
+                        Log.i("log", "insert icon faile");
+                    }
+                }
+
+            }
+            dm.close();
+            mEditor.setPlaceholder(String.valueOf(travelsSpan));
+        }
+
         //获取RichEditor界面
         getEditor();
 
     }
+
+
 
     /**
      * 获取RichEditor界面
@@ -74,7 +146,7 @@ public class EditActivity extends Activity {
         mEditor.setEditorFontSize(20);   //设置字体大小
         mEditor.setEditorFontColor(Color.BLACK);  //设置字体颜色
         mEditor.setPadding(10,10,10,10);
-        mEditor.setPlaceholder("欢迎使用随手记......");
+//        mEditor.setPlaceholder("欢迎使用随手记......");
 
         //获取文本
         mEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
@@ -106,6 +178,7 @@ public class EditActivity extends Activity {
 
         mEditor = (RichEditor) findViewById(R.id.activity_edit_editor);  //文本编辑器
         mPreview = (TextView) findViewById(R.id.activity_edit_preview);
+        EtTitle=(EditText)findViewById(R.id.Ed_activity_edit_title);
 
         //字体颜色
         IvBlack = (ImageView) findViewById(R.id.Iv_activity_edit_black);
@@ -301,8 +374,9 @@ public class EditActivity extends Activity {
                     startActivity(intent);
                     break;
                 case R.id.Tv_activity_edit_finish:    //完成
+                    getData();
                     Intent intent2 = new Intent();
-                    intent2.setClass(getApplication(),EditHomeActivity.class);
+                    intent2.setClass(getApplication(),TextListActivity.class);
                     startActivity(intent2);
                     break;
 
@@ -688,6 +762,27 @@ public class EditActivity extends Activity {
                     });
                     break;
             }
+        }
+    }
+
+    private void getData() {
+        title = EtTitle.getText().toString();
+        text= mPreview.getText().toString();
+        Log.i("log","title---->"+title);
+        Log.i("log", "travels---->"+text);
+        try{
+            dm.open();
+            if(state==1) {
+                dm.insert(title, text);
+                Toast.makeText(EditActivity.this,"chenggong",Toast.LENGTH_SHORT).show();
+            }
+            if (state==2) {
+                Log.i("log", "ready to alter");
+                dm.update(id2, title, text);
+            }
+            dm.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
     }
 

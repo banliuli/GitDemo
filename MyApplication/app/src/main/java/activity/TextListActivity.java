@@ -27,8 +27,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import DBSql.DBManager;
 import DBSql.HtmlManager;
+
 import adapter.TextListAdapter;
 
 /**
@@ -36,10 +38,11 @@ import adapter.TextListAdapter;
  */
 public class TextListActivity extends AppCompatActivity{
     private Button back;
-
     private Button add;
-
+    private List<ItemText> lit = new ArrayList<ItemText>();
+    private TextListAdapter myadapter;
     private ListView lv;
+
     private DBManager dm;
     private Cursor cursor;
     public Cursor cursor2;
@@ -66,11 +69,9 @@ public class TextListActivity extends AppCompatActivity{
         setContentView(R.layout.activity_textlist);
         initID();
         setListener();
-
         dm = new DBManager(this);
         initAdapter();
         lv.setAdapter(adapter);
-
         //给ListView设置item点击监听器，实现点击效果
         lv.setOnItemClickListener(new myOnItemClickListener());
         //实现长按出现菜单
@@ -269,17 +270,15 @@ public class TextListActivity extends AppCompatActivity{
 
     private void initID() {
         back = (Button)findViewById(R.id.btn_activtiy_textlist_return);
-
-        lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
-
         add=(Button)findViewById(R.id.btn_activtiy_textlist_add);
-
+        lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
     }
     private void setListener() {
         MyListener listener = new MyListener();
         back.setOnClickListener(listener);
         add.setOnClickListener(listener);
     }
+
     private class MyListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {

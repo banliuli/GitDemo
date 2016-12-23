@@ -22,6 +22,7 @@ public class TextListAdapter extends BaseAdapter {
     private List<String> listItemTimes;
     private LayoutInflater inflater;
 
+
     public TextListAdapter(Context context, List<String> listItems, List<String> listItemTimes) {
         this.context = context;
         this.listItems = listItems;
@@ -71,22 +72,27 @@ public class TextListAdapter extends BaseAdapter {
         return i;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.layout_item_textlist, null);
-        }
+    public class ViewHolder{
+        public TextView TvTitle;
+        public TextView TvContent;
+        public Button delete;
 
-        TextView text = (TextView) convertView.findViewById(R.id.Tv_item_textlist_title);
-        text.setText(listItems.get(position));
-
-        TextView time = (TextView) convertView.findViewById(R.id.Tv_item_textlist_date);
-        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss",
-                Long.parseLong(listItemTimes.get(position))).toString();
-        time.setText(datetime);
-
-        return convertView;
     }
 
-}
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.layout_item_textlist, null);
+            }
 
+            TextView text = (TextView) convertView.findViewById(R.id.Tv_item_textlist_title);
+            text.setText(listItems.get(position));
+
+            TextView time = (TextView) convertView.findViewById(R.id.Tv_item_textlist_date);
+            String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss",
+                    Long.parseLong(listItemTimes.get(position))).toString();
+            time.setText(datetime);
+
+            return convertView;
+        }
+}
