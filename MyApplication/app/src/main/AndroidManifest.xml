@@ -20,6 +20,7 @@
         </activity>
         <activity android:name="activity.CheckUpdateActivity" />
 	<activity android:name="activity.Login" />
+        <activity android:name="activity.ResetpwdActivity" />
         <activity android:name="activity.EditHomeActivity"/>
         <activity android:name="activity.MoveActivity" />
         <activity android:name="activity.EditActivity"
@@ -54,12 +55,12 @@
         <activity android:name="activity.CollectionActivity"/>
 
     </application>
-<!--ÉÏÍøÌõ¼þÉèÖÃ-->
+<!--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-->
     <uses-sdk android:minSdkVersion="8"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
 
-    <!--Í¼Æ¬ÎÄ¼þ¶ÁÐ´-->
+    <!--Í¼Æ¬ï¿½Ä¼ï¿½ï¿½ï¿½Ð´-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
 

@@ -89,6 +89,8 @@ public class RegisterActivity extends AppCompatActivity {
             if (pwd1.equals(pwd2)==false){
                 Toast.makeText(this,"密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
                 return;
+            }else if (pwd1.length() < 6) {
+                Toast.makeText(this, "密码小于六位数，请重新输入", Toast.LENGTH_SHORT).show();
             }else {
                 UserData mUser= new UserData(username,pwd1);
                 mUserDataManager.openDataBase();

@@ -63,6 +63,8 @@ public class MineActivity extends Activity {
 
 
     private class MyListener implements View.OnClickListener{
+        private boolean flag;
+
         @Override
         public void onClick(View v) {
             Intent i = new Intent();
@@ -71,7 +73,12 @@ public class MineActivity extends Activity {
                     i.setClass(MineActivity.this,MyAccountsActivity.class);
                     break;
                 case R.id.btn_layout_mine_login2:
-                    i.setClass(MineActivity.this,Login.class);
+
+//                    if(flag==false){
+                        i.setClass(MineActivity.this,Login.class);
+//                    }else{
+//                        i.setClass(MineActivity.this,MyAccountsActivity.class);
+//                    }
                     break;
                 case R.id.btn_mine_suishouji:
                     i.setClass(MineActivity.this,MainActivity.class);

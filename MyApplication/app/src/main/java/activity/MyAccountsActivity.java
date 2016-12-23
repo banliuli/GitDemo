@@ -62,6 +62,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import data.UserDataManager;
+import data.UserData;
+import data.UserDataManager;
 
 public class MyAccountsActivity extends AppCompatActivity {
 
@@ -87,21 +89,23 @@ public class MyAccountsActivity extends AppCompatActivity {
     private ActionBar.Tab etname;
     private ActionBar.Tab etpwd;
     private UserDataManager mUserDataManager;
+    private EditText username;
 
-    // private EditText username;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_accounts);
-
+        SharedPreferences spf = getSharedPreferences("MYAPP",MODE_PRIVATE);
         //获取控件
         initId();
         //设置监听
         setListener();
+        //获取用户信息
+        //getUserData();
         //保存用户信息
-      //  setUsername();
+      // setUsername();
         setUnickname();
         setUsex();
         setArea();
@@ -134,6 +138,8 @@ public class MyAccountsActivity extends AppCompatActivity {
         //username.setOnClickListener(listener);
     }
     class MyListener implements View.OnClickListener {
+        private UserData userData;
+        String username;
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -161,7 +167,10 @@ public class MyAccountsActivity extends AppCompatActivity {
                     Intent intent = new Intent(MyAccountsActivity.this, MineActivity.class);
                     startActivity(intent);
                     break;
-
+               // case R.id.et_my_accounts_username:
+                   // String username=username.getText().toString().trim();
+                   // int count=mUserDataManager.findUserByName(username);
+                   // mUserDataManager.updatePersonalData(personalData);
                 //清空用户名EditText
                 case R.id.et_my_accounts_nickname:
                     nickname.setText("");
@@ -214,21 +223,23 @@ public class MyAccountsActivity extends AppCompatActivity {
         return true;
     }
 
-//    /**
-//     * 获取用户信息
-//     */
-//    private void getUnickname() {
-//        SharedPreferences spf = getSharedPreferences("UNAME_EDIT", Context.MODE_PRIVATE);
-//        String Unickname = spf.getString("UNAME", "");
-//        String Usex = spf.getString("SEX", "");
-//        String Uarea = spf.getString("AREA", "");
-//        String Utruename = spf.getString("TRUENAME", "");
-//
-//        nickname.setText(Unickname );
-//        sex.setText(Usex );
-//        area.setText(Uarea );
-//        truename.setText(Utruename );
-//    }
+    /**
+     * 获取用户信息
+     */
+    private void getUserData() {
+        SharedPreferences spf = getSharedPreferences("UNAME_EDIT", Context.MODE_PRIVATE);
+        String Username = spf.getString("USERNAME", "");
+        String Unickname = spf.getString("UNAME", "");
+        String Usex = spf.getString("SEX", "");
+        String Uarea = spf.getString("AREA", "");
+        String Utruename = spf.getString("TRUENAME", "");
+
+        username.setText(Username);
+        nickname.setText(Unickname );
+        sex.setText(Usex );
+        area.setText(Uarea );
+        truename.setText(Utruename );
+    }
 
     /**
      * 保存用户信息的修改
