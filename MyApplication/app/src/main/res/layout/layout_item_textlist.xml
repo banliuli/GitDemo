@@ -15,7 +15,6 @@
         android:id="@+id/Llyout_textlist"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/Tv_item_textlist_text"
-        android:layout_toLeftOf="@+id/btn_item_textlist_delete"
         >
         <TextView
             android:layout_width="match_parent"
@@ -28,25 +27,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Tv_item_textlist_content"
+            android:id="@+id/Tv_item_textlist_date"
+            android:layout_below="@+id/Tv_item_textlist_title"
+            android:layout_toRightOf="@+id/Tv_item_textlist_text"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:textSize="15sp"
             />
     </LinearLayout>
-    <Button
-        android:layout_width="60dp"
-        android:layout_height="35dp"
-        android:background="@drawable/btn_shape_delete"
-        android:textSize="17sp"
-        android:text="删除"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="5dp"
-        android:layout_alignParentRight="true"
-        android:id="@+id/btn_item_textlist_delete"
-        android:focusable="false"
-        android:visibility="invisible" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -46,25 +46,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
+                android:id="@+id/Tv_activity_edithome_title"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="随手记笔记"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/Tv_acyivity_edithome_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:text="2011年5月6日"
+                android:textSize="10sp"
+                android:textColor="@color/colorBlack"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@color/colorGray"
                 android:layout_margin="5dp"/>
             <TextView
+                android:id="@+id/Tv_activity_edithome_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="随手记笔记内容"
                 android:layout_marginLeft="20dp"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </LinearLayout>
 
     </FrameLayout>
@@ -80,52 +91,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/btn_change1">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/collect2"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/edit_collect"/>
+            android:background="@drawable/btn_change1"
+            android:layout_weight="1">
             <ToggleButton
                 android:layout_weight="0"
                 android:id="@+id/btn_activity_edithome_collect"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="-4dp"
-                android:textColor="@color/colorBlack"
-                android:background="@drawable/btn_change1"
-                android:layout_below="@+id/edit_collect"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:button="@drawable/btn_collect"
+                android:background="@null"
                 android:text=""
-                android:textOff="收藏"
-                android:textOn="已收藏" />
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="收藏"-->
-                <!--android:textSize="17dp"-->
-                <!--android:layout_marginTop="-5dp"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:layout_below="@+id/btn_activity_edithome_collect"-->
-                <!--android:background="@drawable/btn_change1"/>-->
+                android:textOff=""
+                android:textOn="" />
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收藏"
+            android:textSize="17dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginLeft="29dp"
+            android:layout_below="@+id/btn_activity_edithome_collect"
+            android:background="@drawable/btn_change1"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
-            android:background="@drawable/btn_change1">
+            android:background="@drawable/btn_change1"
+            android:layout_weight="1">
             <ToggleButton
                 android:layout_weight="0"
                 android:id="@+id/btn_activity_edithome_move"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
                 android:button="@drawable/move"
-                android:background="@drawable/btn_change1"
+                android:background="@null"
                 android:text=""
                 android:textOff=""
                 android:textOn="" />
@@ -139,47 +143,49 @@
                 android:layout_below="@+id/btn_activity_edithome_move"
                 android:background="@drawable/btn_change1"/>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:background="@drawable/btn_change1">
-            <ToggleButton
-                android:layout_weight="1"
-                android:id="@+id/btn_activity_edithome_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:button="@drawable/edit"
-                android:background="@drawable/btn_change1"
-                android:text=""
-                android:textOff=""
-                android:textOn="" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="编辑"
-                android:textSize="17dp"
-                android:layout_marginTop="-5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_below="@+id/btn_activity_edithome_edit"
-                android:background="@drawable/btn_change1"/>
-        </RelativeLayout>
+        <!--<RelativeLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="0dp"-->
+        <!--android:background="@drawable/btn_change1">-->
+        <!--<ToggleButton-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/btn_activity_edithome_edit"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:button="@drawable/edit"-->
+        <!--android:background="@drawable/btn_change1"-->
+        <!--android:text=""-->
+        <!--android:textOff=""-->
+        <!--android:textOn="" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="编辑"-->
+        <!--android:textSize="17dp"-->
+        <!--android:layout_marginTop="-5dp"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_below="@+id/btn_activity_edithome_edit"-->
+        <!--android:background="@drawable/btn_change1"/>-->
+        <!--</RelativeLayout>-->
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
-            android:background="@drawable/btn_change1">
+            android:background="@drawable/btn_change1"
+            android:layout_weight="1">
             <ToggleButton
                 android:layout_weight="0"
                 android:id="@+id/btn_activity_edithome_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
                 android:button="@drawable/more"
-                android:background="@drawable/btn_change1"
+                android:background="@null"
                 android:text=""
                 android:textOff=""
                 android:textOn="" />

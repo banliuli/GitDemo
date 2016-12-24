@@ -51,10 +51,8 @@ public class AboutActivity extends Activity {
                 case R.id.btn_activity_about_gd2:
                     i.setClass(AboutActivity.this, SearchActivity.class);
                     break;
-
-
             }
-
+            startActivity(i);
         }
     }
 }

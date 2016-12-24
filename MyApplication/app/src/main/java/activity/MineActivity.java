@@ -81,7 +81,7 @@ public class MineActivity extends Activity {
 //                    }
                     break;
                 case R.id.btn_mine_suishouji:
-                    i.setClass(MineActivity.this,MainActivity.class);
+                    i.setClass(MineActivity.this,TextListActivity.class);
                     break;
                 case R.id.btn_mine_collect:
                     i.setClass(MineActivity.this,CollectionActivity.class);

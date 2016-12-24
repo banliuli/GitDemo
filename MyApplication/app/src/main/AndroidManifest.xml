@@ -1,15 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.suishouji">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
 
-        <activity android:name="activity.MainActivity">
+        <activity android:name="activity.TextListActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,12 +37,6 @@
         <activity android:name="activity.SearchActivity" />
         <activity android:name="activity.MineActivity"/>
         <activity android:name="activity.RegisterActivity" />
-
-        <activity android:name="activity.TextListActivity"/>
-        <activity android:name="activity.AddfilesActivity"/>
-
-
-
         <activity android:name="activity.MyAccountsActivity" />
         <activity android:name="activity.NickNameActivity" />
 
@@ -49,13 +46,15 @@
         <activity android:name="activity.PersonalIntroduceActivity" />
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
-        <activity android:name="activity.PaperBgActivity"/>
         <activity android:name="activity.SetpwdActivity"/>
         <activity android:name="activity.ConcealPwd"/>
         <activity android:name="activity.CollectionActivity"/>
 
     </application>
+
 <!--������������-->
+
+
     <uses-sdk android:minSdkVersion="8"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 

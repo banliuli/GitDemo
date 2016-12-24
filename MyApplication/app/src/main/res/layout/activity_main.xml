@@ -41,12 +41,12 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:textSize="16sp"
-                android:text="编辑"
+                android:textSize="18sp"
+                android:text="添加"
                 android:id="@+id/btn_activtiy_main_edit"
                 android:layout_gravity="center"
                 android:textColor="@color/colorWhite"
-                android:background="@color/colorTitle"
+                android:background="@null"
                 android:layout_weight="0.5"/>
         </LinearLayout>
         <LinearLayout

@@ -3,6 +3,7 @@ package activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.Button;
@@ -36,6 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
             mUserDataManager = new UserDataManager(this);
             mUserDataManager.openDataBase();
         }
+        //设置密码为隐藏
+        pwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        spwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
     }
 
     private void initId() {
@@ -65,7 +69,6 @@ public class RegisterActivity extends AppCompatActivity {
                     i.setClass(RegisterActivity.this,Login.class);
                     startActivity(i);
                     break;
-
             }
             register_check();
         }
@@ -101,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(this,"注册成功", Toast.LENGTH_SHORT).show();
 
-                    Intent i =new Intent(RegisterActivity.this,MainActivity.class);
+                    Intent i =new Intent(RegisterActivity.this,Login.class);
                     startActivity(i);
                     finish();
                 }

@@ -12,29 +12,6 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/Iv_popup_paperbg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/paper_bg"/>
-
-        <TextView
-            android:id="@+id/Tv_popup_paperbg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/Iv_popup_paperbg"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="纸张背景"
-            android:textSize="20dp"
-            android:textColor="@color/colorWhite"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/Rlayout_popup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
             android:id="@+id/Iv_popup_readpwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +30,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/Rlayout_popup3"
+        android:id="@+id/Rlayout_popup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -76,7 +53,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/Rlayout_popup4"
+        android:id="@+id/Rlayout_popup3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

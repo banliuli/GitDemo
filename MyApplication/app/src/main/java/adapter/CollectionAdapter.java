@@ -16,13 +16,14 @@ import java.util.List;
 
 import activity.ItemText;
 
-public class TextListAdapter extends BaseAdapter {
+public class CollectionAdapter extends BaseAdapter {
     private Context context;
     private List<String> listItems;
     private List<String> listItemTimes;
     private LayoutInflater inflater;
+    public ArrayList listitems;
 
-    public TextListAdapter(Context context, List<String> listItems, List<String> listItemTimes) {
+    public CollectionAdapter(Context context, List<String> listItems, List<String> listItemTimes) {
         this.context = context;
         this.listItems = listItems;
         this.listItemTimes = listItemTimes;
@@ -83,10 +84,11 @@ public class TextListAdapter extends BaseAdapter {
         TextView time = (TextView) convertView.findViewById(R.id.Tv_item_textlist_date);
 //        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss",
 //                Long.parseLong(listItemTimes.get(position))).toString();
-        time.setText(listItemTimes.get(position));
+        time.setText(listItems.get(position));
 
         return convertView;
     }
+
 
 }
 

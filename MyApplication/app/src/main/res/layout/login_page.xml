@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activity.LoginActivity"
+    tools:context="activity.Login"
     android:background="#e8ecfa"
     android:orientation="vertical">
 
@@ -87,6 +87,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="记住密码"
             android:textColor="#f55b38"
             android:textSize="18dp" />
@@ -94,8 +95,13 @@
             android:id="@+id/btn_login_page_resetpwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="修改密码"
-            android:gravity="center"/>
+            android:textColor="#f55b38"
+            android:textSize="18dp"
+            android:gravity="right"
+            android:background="@null"
+            android:layout_marginRight="20dp"/>
     </LinearLayout>
     <Button
         android:id="@+id/btn_login_page_login"
@@ -105,9 +111,10 @@
         android:textSize="23dp"
         android:textColor="#ffffff"
         android:background="@drawable/button_shape_login"
-        android:layout_margin="15dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"/>
     <Button
         android:id="@+id/btn_login_page_register"
         android:layout_width="match_parent"
@@ -117,5 +124,17 @@
         android:textColor="#ffffff"
         android:background="@drawable/button_shape_register"
          android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"/>
+    <Button
+        android:id="@+id/btn_login_page_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注销"
+        android:textSize="23dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_shape_delete"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"/>
 </LinearLayout>

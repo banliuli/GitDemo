@@ -48,10 +48,10 @@ public class EditAddActivity extends AppCompatActivity {
             Intent i= new Intent();
             switch (v.getId()){
                 case R.id.btn_edit_add_back:
-                    i.setClass(EditAddActivity.this,MainActivity.class);
+                    i.setClass(EditAddActivity.this,TextListActivity.class);
                     break;
                 case R.id.btn_edit_add_error:
-                    i.setClass(EditAddActivity.this,MainActivity.class);
+                    i.setClass(EditAddActivity.this,TextListActivity.class);
                     break;
                 case R.id.btn_text:
                     i.setClass(EditAddActivity.this,EditActivity.class);

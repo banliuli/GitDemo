@@ -1,7 +1,6 @@
 package activity;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,17 +10,21 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.SpannableString;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.suishouji.R;
 
 import java.io.FileNotFoundException;
 
+import DBSql.DBManager;
 import jp.wasabeef.richeditor.RichEditor;
 
 
@@ -31,12 +34,12 @@ public class EditActivity extends Activity {
     private ImageView IvBack;
     private TextView TvFinish;
     private RichEditor mEditor;
+    private EditText mtitle;
     private TextView mPreview;
 
     private ImageView IvBullet,IvNumber,IvLeft,IvRight,IvPicture,IvWord;
 
-    private LinearLayout HideWord,HidePicture;
-    private RelativeLayout addPicture,addCamera;
+    private LinearLayout HideWord;
 
     private static final int CAMERA_WITH_DATA = 0;
     private static final int PHOTO_PICKED_WITH_DATA = 1;
@@ -52,6 +55,20 @@ public class EditActivity extends Activity {
     private ImageView IvBold,IvItalic,IvUnderline,IvStrikethrough;    //字体格式
     private ImageView IvLeft1,IvRight1,IvCenter1;    //文本对齐
 
+
+    private DBManager dm=null;
+    private String idString;
+    private int state = -1;
+    private EditText EtTitle;
+    private String title;
+    private String text;
+    private String time;
+    private int id2;
+    public Cursor cursor=null;
+    public String namestr="";
+    private String path = null;
+    private String mtime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +80,57 @@ public class EditActivity extends Activity {
         setListener();
         //获取RichEditor界面
         getEditor();
+        dm=new DBManager(this);
+        Intent intent = getIntent();
+        state = Integer.parseInt(intent.getStringExtra("state"));
+        Log.i("log", "state---->"+state);
+        if (state==2) {
+            idString = intent.getStringExtra("id");
+            Log.i("log", "id---->" + idString);
+            id2 = Integer.parseInt(idString);
+            title = intent.getStringExtra("title");
+            text = intent.getStringExtra("content");
+            time = intent.getStringExtra("time");
+            EtTitle.setText(title);
+            dm.open();
+            int i = 0;
+            int start = 0;
+            int end = 0;
+            String str1 = null;
+            String str2 = "[";
+            String str4 = "]";
+            String iconname=null;
+            SpannableString travelsSpan = new SpannableString(text);
+            for (i = 0; i < text.length(); i++) {
+                str1 = text.substring(i, i + 1);
+                //travelsString+=str1;
+                Log.i("log", str1);
+                if (str1.equals(str2)) {
+                    start = i + 1;
+                }
+                if (str1.equals(str4)) {
+                    end = i;
+                    namestr = text.substring(start, end);
+                    Log.i("log", namestr);
+                    cursor = dm.selcetPathByName(namestr);
+                    cursor.moveToFirst();
+                    path = cursor.getString(cursor.getColumnIndex("path"));
+                    cursor.close();
+                    namestr = null;
+                    Log.i("log", path);
 
+                    if (!(cursor == null)) {
+                        int count = cursor.getCount();
+                        Log.i("log", "count----->" + count);
+                    } else {
+                        Log.i("log", "insert icon faile");
+                    }
+                }
+
+            }
+            dm.close();
+            mEditor.setPlaceholder(String.valueOf(travelsSpan));
+        }
     }
 
     /**
@@ -74,7 +141,7 @@ public class EditActivity extends Activity {
         mEditor.setEditorFontSize(20);   //设置字体大小
         mEditor.setEditorFontColor(Color.BLACK);  //设置字体颜色
         mEditor.setPadding(10,10,10,10);
-        mEditor.setPlaceholder("欢迎使用随手记......");
+//        mEditor.setPlaceholder("欢迎使用随手记......");
 
         //获取文本
         mEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
@@ -88,8 +155,9 @@ public class EditActivity extends Activity {
      * 获取界面控件
      */
     private void getView() {
-        IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
+//        IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
         TvFinish = (TextView) findViewById(R.id.Tv_activity_edit_finish);
+        EtTitle = (EditText)findViewById(R.id.Ed_activity_edit_title);
 
         IvBullet = (ImageView) findViewById(R.id.Iv_activity_edit_bullet);
         IvNumber = (ImageView) findViewById(R.id.Iv_activity_edit_number);
@@ -99,10 +167,8 @@ public class EditActivity extends Activity {
         IvWord = (ImageView) findViewById(R.id.Iv_activity_edit_word);
 
         HideWord = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hideword);
-        HidePicture = (LinearLayout) findViewById(R.id.Llyout_activity_edit_hidepicture);
 
-        addPicture = (RelativeLayout) findViewById(R.id.activity_edit_picture);
-        addCamera = (RelativeLayout) findViewById(R.id.activity_edit_camera);
+        mtitle = (EditText) findViewById(R.id.Ed_activity_edit_title);
 
         mEditor = (RichEditor) findViewById(R.id.activity_edit_editor);  //文本编辑器
         mPreview = (TextView) findViewById(R.id.activity_edit_preview);
@@ -132,7 +198,7 @@ public class EditActivity extends Activity {
      */
     private void setListener() {
         EditActivity.MyListener listener = new EditActivity.MyListener();
-        IvBack.setOnClickListener(listener);
+//        IvBack.setOnClickListener(listener);
         TvFinish.setOnClickListener(listener);
 
         IvBullet.setOnClickListener(listener);
@@ -166,53 +232,8 @@ public class EditActivity extends Activity {
     }
 
     /**
-     * 获取相册和相机
+     * 从本地手机中选择图片
      */
-    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
-        ContentResolver resolver = getContentResolver();
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            // 表示 调用照相机拍照
-            case CAMERA_IMAGE_CODE:
-                if (resultCode == RESULT_OK) {
-                    Bundle bundle = data.getExtras();
-                    Bitmap bitmap = (Bitmap) bundle.get("data");
-                    //mEditor.setImageBitmap(bitmap);
-                }
-                break;
-            // 选择图片库的图片
-            case LOCAL_IMAGE_CODE:
-                if (resultCode == RESULT_OK) {
-                    if (data != null) {
-                        // 得到图片的全路径
-                        Uri uri = data.getData();
-                        crop(uri);
-                    }
-                }
-                break;
-            case PHOTO_REQUEST_CUT:
-                // 从剪切图片返回的数据
-                if (data != null) {
-                Bitmap bitmap = data.getParcelableExtra("data");
-                //mEditor.setImageBitmap(bitmap);
-                }
-        }
-    }
-*/
-
-    //拍照获取图片
-    protected void doTakePhoto() {
-
-        try {
-            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(cameraIntent,CAMERA_WITH_DATA);
-        }catch (ActivityNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //从本地手机中选择图片
     private void doSelectImageFromLoacal() {
         Intent localIntent = new Intent();
         localIntent.setType("image/*");
@@ -256,33 +277,6 @@ public class EditActivity extends Activity {
 
                 }
                 break;
-            case CAMERA_WITH_DATA:  //拍照
-                Bundle bundle = data.getExtras();
-                bitMap = (Bitmap) bundle.get("data");
-                Uri uri = data.getData();
-                if (uri != null) {
-                    try {
-                        bitMap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-
-                        String[] proj = {MediaStore.Images.Media.DATA};
-                        Cursor cursor = getContentResolver().query(uri, proj, null, null, null);
-                        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                        cursor.moveToFirst();
-                        String path = cursor.getString(column_index);
-                        //获取图片名字
-                        String temp[] = path.replace("\\\\", "/").split("/");
-                        String fileName = "";
-                        if (temp.length > 1) {
-                            fileName = temp[temp.length - 1];
-                        }
-
-                        mEditor.insertImage(path, fileName);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-
-                    break;
-                }
         }
     }
 
@@ -295,20 +289,21 @@ public class EditActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.Iv_activity_edit_back:         //返回
-                    Intent intent = new Intent();
-                    intent.setClass(getApplication(),EditHomeActivity.class);
-                    startActivity(intent);
-                    break;
+//                case R.id.Iv_activity_edit_back:         //返回
+//                    Intent intent = new Intent();
+//                    intent.setClass(getApplication(),EditHomeActivity.class);
+//                    startActivity(intent);
+//                    break;
                 case R.id.Tv_activity_edit_finish:    //完成
+                    getData();
                     Intent intent2 = new Intent();
-                    intent2.setClass(getApplication(),EditHomeActivity.class);
+                    intent2.setClass(getApplication(),TextListActivity.class);
                     startActivity(intent2);
                     break;
 
                 case R.id.Iv_activity_edit_bullet:       //无数字列项
                     mEditor.setBullets();
-
+                    
                     if (flag == 0) {
                         IvBullet.setImageResource(0);
                         IvBullet.setImageResource(R.drawable.bullet1);
@@ -334,11 +329,9 @@ public class EditActivity extends Activity {
                     break;
                 case R.id.Iv_activity_edit_left:     //左对齐
                     mEditor.setAlignLeft();
-
                     break;
                 case R.id.Iv_activity_edit_right:    //右对齐
                     mEditor.setAlignRight();
-
                     break;
                 case R.id.Iv_activity_edit_picture:    //图片
                     if (flag == 0) {
@@ -351,47 +344,8 @@ public class EditActivity extends Activity {
                         flag = 0;
                     }
 
-                    if (isVisbile) {
-                        //隐藏软键盘
-                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(mEditor.getWindowToken(),0);
-                        isVisbile = false;
-                        HidePicture.setVisibility(View.VISIBLE);//显示布局
-                        HideWord.setVisibility(View.GONE);
-                    }else {
-                        HidePicture.setVisibility(View.GONE);//隐藏布局
-                        isVisbile = true;
-                    }
+                    doSelectImageFromLoacal();
 
-                    //选择图片
-                    findViewById(R.id.activity_edit_picture).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            doSelectImageFromLoacal();
-
-
-                            // 激活系统图库，选择一张图片
-                           /* Intent intent = new Intent(Intent.ACTION_PICK);
-                            intent.setType("image");
-                            // 开启一个带有返回值的Activity，请求码为LOCAL_IMAGE_CODE
-                            startActivityForResult(intent, LOCAL_IMAGE_CODE);*/
-                        }
-                    });
-
-                    //选择相机
-                    findViewById(R.id.activity_edit_camera).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            doTakePhoto();
-                            //mEditor.insertImage("selectedImageUri","");
-
-                            // TODO Auto-generated method stub
-                            // 使用意图 直接调用安装在手机上的照相机
-                            // 直接开发Camera硬件
-                           /* Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent, CAMERA_IMAGE_CODE);// 打开照相机*/
-                        }
-                    });
                     break;
                 case R.id.Iv_activity_edit_word:      //字体格式
                     if (flag == 0) {
@@ -410,7 +364,6 @@ public class EditActivity extends Activity {
                         imm.hideSoftInputFromWindow(mEditor.getWindowToken(),0);
                         isVisbile = false;
                         HideWord.setVisibility(View.VISIBLE);//显示布局
-                        HidePicture.setVisibility(View.GONE);
                     }else {
                         HideWord.setVisibility(View.GONE);//隐藏布局
                         isVisbile = true;
@@ -690,6 +643,25 @@ public class EditActivity extends Activity {
             }
         }
     }
-
+    public void getData(){
+        title = EtTitle.getText().toString();
+        text= mPreview.getText().toString();
+        Log.i("log","title---->"+title);
+        Log.i("log", "travels---->"+text);
+        try{
+            dm.open();
+            if(state==1) {
+                dm.insert(title, text);
+                Toast.makeText(EditActivity.this,"chenggong",Toast.LENGTH_SHORT).show();
+            }
+          if (state==2) {
+                Log.i("log", "ready to alter");
+                dm.update(id2, title, text);
+            }
+            dm.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }
 

@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
     private TextView mChangepwdText;
     private UserDataManager mUserDataManager;         //用户数据管理类
     private Button resetpwd;
+    private Button cancle;
 
 
     @Override
@@ -77,6 +78,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
         resetpwd = (Button) findViewById(R.id.btn_login_page_resetpwd);
         etname = (EditText) findViewById(R.id.et_login_page_Etname);
         etpwd = (EditText) findViewById(R.id.et_login_page_Etpwd);
+        cancle = (Button) findViewById(R.id.btn_login_page_cancle);
         box = (CheckBox) findViewById(R.id.cb_login_page_box);
     }
 //    设置监听
@@ -88,10 +90,15 @@ public class Login extends AppCompatActivity {                 //登录界面活
         etname.setOnClickListener(mylistener);
         etpwd.setOnClickListener(mylistener);
         box.setOnClickListener(mylistener);
+        cancle.setOnClickListener(mylistener);
     }
     OnClickListener mylistener = new OnClickListener() {                  //不同按钮按下的监听事件选择
         public void onClick(View v) {
             switch (v.getId()) {
+                case R.id.btn_login_page_fh:                             //登录界面的注销按钮
+                    Intent fh = new Intent(Login.this,TextListActivity.class) ;    //切换Login Activity至User Activity
+                    startActivity(fh);
+                    break;
                 case R.id.btn_login_page_register:                            //登录界面的注册按钮
                     Intent intent_Login_to_Register = new Intent(Login.this,RegisterActivity.class) ;    //切换Login Activity至User Activity
                     startActivity(intent_Login_to_Register);
@@ -105,6 +112,9 @@ public class Login extends AppCompatActivity {                 //登录界面活
                     Intent intent_Login_to_reset = new Intent(Login.this,ResetpwdActivity.class) ;    //切换Login Activity至User Activity
                     startActivity(intent_Login_to_reset);
                     finish();
+                    break;
+                case R.id.btn_login_page_cancle:        //登录界面的注销按钮
+                    cancel();
                     break;
             }
         }
@@ -129,7 +139,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
                 }
                 editor.commit();
 
-                Intent intent = new Intent(Login.this,MainActivity.class) ;    //切换Login Activity至User Activity
+                Intent intent = new Intent(Login.this,TextListActivity.class) ;    //切换Login Activity至User Activity
                 startActivity(intent);
                 finish();
                 Toast.makeText(this, "登陆成功",Toast.LENGTH_SHORT).show();//登录成功提示
@@ -139,6 +149,23 @@ public class Login extends AppCompatActivity {                 //登录界面活
         }
     }
 
+
+    public void cancel() {           //注销
+        if (isUserNameAndPwdValid()) {
+            String userName = etname.getText().toString().trim();    //获取当前输入的用户名和密码信息
+            String userPwd = etpwd.getText().toString().trim();
+            int result=mUserDataManager.findUserByNameAndPwd(userName, userPwd);
+            if(result==1){                                             //返回1说明用户名和密码均正确
+                Toast.makeText(this, "注销成功提示",Toast.LENGTH_SHORT).show();//注销成功提示
+                etname.setText("");
+                etpwd.setText("");
+                mUserDataManager.deleteUserDatabyname(userName);
+            }else if(result==0){
+                Toast.makeText(this, "注销失败提示",Toast.LENGTH_SHORT).show();  //注销失败提示
+            }
+        }
+
+    }
     public boolean isUserNameAndPwdValid() {
         if (etname.getText().toString().trim().equals("")) {
             Toast.makeText(this, "账户为空",
