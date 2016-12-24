@@ -28,8 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Tv_item_textlist_date"
+<<<<<<< HEAD
             android:layout_below="@+id/Tv_item_textlist_title"
             android:layout_toRightOf="@+id/Tv_item_textlist_text"
+=======
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:textSize="15sp"

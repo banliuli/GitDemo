@@ -53,7 +53,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="随手记笔记"
+<<<<<<< HEAD
                 android:textSize="20sp"/>
+=======
+                android:textSize="20dp" />
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
             <TextView
                 android:id="@+id/Tv_acyivity_edithome_time"
                 android:layout_width="wrap_content"
@@ -93,10 +97,54 @@
             android:layout_marginLeft="5dp"
             android:background="@drawable/btn_change1"
             android:layout_weight="1">
+<<<<<<< HEAD
+=======
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/collect2"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/edit_collect"/>
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
             <ToggleButton
                 android:layout_weight="0"
                 android:id="@+id/btn_activity_edithome_collect"
                 android:layout_width="wrap_content"
+<<<<<<< HEAD
+=======
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="-4dp"
+                android:textColor="@color/colorBlack"
+                android:background="@drawable/btn_change1"
+                android:layout_below="@+id/edit_collect"
+                android:text=""
+                android:textOff="收藏"
+                android:textOn="已收藏" />
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="收藏"-->
+                <!--android:textSize="17dp"-->
+                <!--android:layout_marginTop="-5dp"-->
+                <!--android:layout_marginLeft="25dp"-->
+                <!--android:layout_below="@+id/btn_activity_edithome_collect"-->
+                <!--android:background="@drawable/btn_change1"/>-->
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:background="@drawable/btn_change1"
+            android:layout_weight="1">
+            <ToggleButton
+                android:layout_weight="0"
+                android:id="@+id/btn_activity_edithome_move"
+                android:layout_width="wrap_content"
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="30dp"
@@ -115,6 +163,7 @@
             android:layout_below="@+id/btn_activity_edithome_collect"
             android:background="@drawable/btn_change1"/>
         </RelativeLayout>
+<<<<<<< HEAD
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -169,6 +218,8 @@
         <!--android:layout_below="@+id/btn_activity_edithome_edit"-->
         <!--android:background="@drawable/btn_change1"/>-->
         <!--</RelativeLayout>-->
+=======
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
 
 
         <RelativeLayout

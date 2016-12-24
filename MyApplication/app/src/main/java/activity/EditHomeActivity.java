@@ -10,9 +10,14 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
+<<<<<<< HEAD
 import android.text.SpannableString;
 import android.text.format.DateFormat;
 import android.util.Log;
+=======
+import android.text.Html;
+import android.text.format.DateFormat;
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +62,7 @@ public class EditHomeActivity extends Activity {
     private TextView TvTitle;
     private TextView TvTime;
     private TextView TvContent;
+<<<<<<< HEAD
 
 
     private DBCollect dm = null;
@@ -76,6 +82,8 @@ public class EditHomeActivity extends Activity {
     private CollectionAdapter item;
     private CollectionAdapter adapter;
     private int position;
+=======
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,7 +173,11 @@ public class EditHomeActivity extends Activity {
        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
         this.TvTitle.setText(title);
         this.TvTime.setText(datetime);
+<<<<<<< HEAD
         this.TvContent.setText(content);
+=======
+        this.TvContent.setText(Html.fromHtml(content));
+>>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
 
         preferences = getSharedPreferences("togglebuttonstatus", Context.MODE_PRIVATE);
 		/*
