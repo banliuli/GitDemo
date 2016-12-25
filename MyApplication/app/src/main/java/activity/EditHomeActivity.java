@@ -10,14 +10,14 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
-<<<<<<< HEAD
+
 import android.text.SpannableString;
 import android.text.format.DateFormat;
 import android.util.Log;
-=======
+
 import android.text.Html;
 import android.text.format.DateFormat;
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,9 +62,6 @@ public class EditHomeActivity extends Activity {
     private TextView TvTitle;
     private TextView TvTime;
     private TextView TvContent;
-<<<<<<< HEAD
-
-
     private DBCollect dm = null;
     private String idString;
     private int state = -1;
@@ -82,8 +79,8 @@ public class EditHomeActivity extends Activity {
     private CollectionAdapter item;
     private CollectionAdapter adapter;
     private int position;
-=======
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+    private View collect;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,17 +142,20 @@ public class EditHomeActivity extends Activity {
             }
             dm.close();
         }
+
         BtnCollect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
                     getData();
+//                    collect.setBackgroundResource(R.drawable.collect);
                     Toast.makeText(EditHomeActivity.this, "收藏成功!", Toast.LENGTH_SHORT).show();
                     status.setOne(isChecked);
                 }
                 else{
                     DeleteData();
+//                    collect.setBackgroundResource(R.drawable.collect2);
                     Toast.makeText(EditHomeActivity.this, "取消收藏!", Toast.LENGTH_SHORT).show();
                     status.setOne(false);
                 }
@@ -173,12 +173,8 @@ public class EditHomeActivity extends Activity {
        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
         this.TvTitle.setText(title);
         this.TvTime.setText(datetime);
-<<<<<<< HEAD
         this.TvContent.setText(content);
-=======
         this.TvContent.setText(Html.fromHtml(content));
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
-
         preferences = getSharedPreferences("togglebuttonstatus", Context.MODE_PRIVATE);
 		/*
 		 * 判断是不是第一次运行该程序
@@ -223,11 +219,11 @@ public class EditHomeActivity extends Activity {
     //获取界面控件
     private void getView() {
         BtnCollect = (ToggleButton) findViewById(R.id.btn_activity_edithome_collect);
-        BtnMove = (ToggleButton) findViewById(R.id.btn_activity_edithome_move);
+//        BtnMove = (ToggleButton) findViewById(R.id.btn_activity_edithome_move);
 //        BtnEdit = (ToggleButton) findViewById(R.id.btn_activity_edithome_edit);
         BtnMore = (ToggleButton) findViewById(R.id.btn_activity_edithome_more);
         mIv_back=(ImageView)findViewById(R.id.Iv_activity_edithome_back);
-
+//        collect=(ImageView)findViewById(R.id.edit_collect);
         TvTitle = (TextView)findViewById(R.id.Tv_activity_edithome_title);
         TvTime = (TextView)findViewById(R.id.Tv_acyivity_edithome_time);
         TvContent = (TextView)findViewById(R.id.Tv_activity_edithome_content);
@@ -237,10 +233,11 @@ public class EditHomeActivity extends Activity {
     private void setListener() {
         MyListener listener = new MyListener();
         BtnCollect.setOnClickListener(listener);
-        BtnMove.setOnClickListener(listener);
+     //   BtnMove.setOnClickListener(listener);
 //        BtnEdit.setOnClickListener(listener);
         BtnMore.setOnClickListener(listener);
         mIv_back.setOnClickListener(listener);
+//        collect.setOnClickListener(listener);
     }
 
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -258,11 +255,11 @@ public class EditHomeActivity extends Activity {
         public void onClick(View v) {
             switch (v.getId()) {
 
-                case R.id.btn_activity_edithome_move:      //移动
-                    Intent intent = new Intent();
-                    intent.setClass(getApplicationContext(),MoveActivity.class);
-                    startActivity(intent);
-                    break;
+//                case R.id.btn_activity_edithome_move:      //移动
+//                    Intent intent = new Intent();
+//                    intent.setClass(getApplicationContext(),MoveActivity.class);
+//                    startActivity(intent);
+//                    break;
 //                case R.id.btn_activity_edithome_edit:     //编辑
 //                    Intent intent2 = new Intent();
 //                    intent2.setClass(getApplicationContext(),EditActivity.class);

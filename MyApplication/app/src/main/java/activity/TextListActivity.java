@@ -28,14 +28,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
+
 import DBSql.DBManager;
-=======
+
 
 import DBSql.DBManager;
 import DBSql.HtmlManager;
 
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
 import adapter.TextListAdapter;
 
 /**
@@ -44,17 +44,10 @@ import adapter.TextListAdapter;
 public class TextListActivity extends AppCompatActivity{
 
     private ListView lv;
-    private DBManager dm;
-    private Cursor cursor;
-    private TextListAdapter adapter;
-    public static final String CHECK_STATE = "0";
-    public static final String EDIT_STATE = "1";
-    public static final String ALERT_STATE = "2";
     private ImageView login;
     private Button mine;
     private ImageView refresh;
     private Button add;
-
     private DBManager dm;
     private Cursor cursor;
     public Cursor cursor2;
@@ -81,17 +74,16 @@ public class TextListActivity extends AppCompatActivity{
         setContentView(R.layout.activity_textlist);
         initID();
         setListener();
-<<<<<<< HEAD
+
 
         dm = new DBManager(this);
         initAdapter();
         lv.setAdapter(adapter);
 
-=======
         dm = new DBManager(this);
         initAdapter();
         lv.setAdapter(adapter);
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
         //给ListView设置item点击监听器，实现点击效果
         lv.setOnItemClickListener(new myOnItemClickListener());
         //实现长按出现菜单
@@ -106,16 +98,7 @@ public class TextListActivity extends AppCompatActivity{
         cursor.moveToFirst();//将游标移动到第一条数据，使用前必须调用
         int count = cursor.getCount();//个数
         ArrayList<String> title = new ArrayList<String>();
-<<<<<<< HEAD
-        ArrayList<String> text = new ArrayList<String>();
-        for (int i = 0; i < count; i++) {
-            title.add(cursor.getString(cursor.getColumnIndex("title")));
-            text.add(cursor.getString(cursor.getColumnIndex("content")));
-            cursor.moveToNext();//将游标指向下一个
-        }
-        dm.close();//关闭数据操作对象
-        adapter = new TextListAdapter(this,title, text);//创建数据源
-=======
+
         ArrayList<String> time = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
             title.add(cursor.getString(cursor.getColumnIndex("title")));
@@ -124,7 +107,8 @@ public class TextListActivity extends AppCompatActivity{
         }
         dm.close();//关闭数据操作对象
         adapter = new TextListAdapter(this,title, time);//创建数据源
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
+
     }
 
 
@@ -140,10 +124,7 @@ public class TextListActivity extends AppCompatActivity{
             menu.add(0,0,0,"删除");
             menu.add(0,1,0,"修改");
             menu.add(0,2,0,"查看");
-<<<<<<< HEAD
-=======
             menu.add(0,3,0,"导出到SD卡");
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
         }
 
     }
@@ -157,23 +138,9 @@ public class TextListActivity extends AppCompatActivity{
                 try{
                     Log.i("log", "cursor ready move ");
                     Log.i("log", "menuInfo position "+menuInfo.position);
-<<<<<<< HEAD
-
                     cursor.moveToPosition(menuInfo.position);
-
                     Log.i("log", "cursor move success");
                     int i = dm.delete(Long.parseLong(cursor.getString(cursor.getColumnIndex("_id"))));//删除数据
-
-                    adapter.removeListItem(menuInfo.position);//删除数据
-                    adapter.notifyDataSetChanged();//通知数据源，数据已经改变，刷新界面
-                    dm.close();
-=======
-
-                    cursor.moveToPosition(menuInfo.position);
-
-                    Log.i("log", "cursor move success");
-                    int i = dm.delete(Long.parseLong(cursor.getString(cursor.getColumnIndex("_id"))));//删除数据
-
                     adapter.removeListItem(menuInfo.position);//删除数据
                     adapter.notifyDataSetChanged();//通知数据源，数据已经改变，刷新界面
                     dm.close();
@@ -216,52 +183,11 @@ public class TextListActivity extends AppCompatActivity{
 
                     intent.setClass(TextListActivity.this, EditHomeActivity.class);
                     TextListActivity.this.startActivity(intent);
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
                 }catch(Exception ex){
                     ex.printStackTrace();
                 }
                 break;
-<<<<<<< HEAD
-            case 1://修改
-                //	Log.v("show", "chenggong2");
-                try{
-                    cursor.moveToPosition(menuInfo.position);
-
-                    //用于Activity之间的通讯
-                    Intent intent = new Intent();
-                    //通讯时的数据传送
-                    intent.putExtra("id", cursor.getString(cursor.getColumnIndex("_id")));
-                    intent.putExtra("state", ALERT_STATE);
-                    intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
-                    intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
-                    intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
-                    //设置并启动另一个指定的Activity
-                    intent.setClass(TextListActivity.this, EditActivity.class);
-                    TextListActivity.this.startActivity(intent);
-                    finish();
-                }catch(Exception ex){
-                    ex.printStackTrace();
-                }
-                break;
-            case 2://查看
-                //	Log.v("show", "chenggong3");
-                try{
-                    cursor.moveToPosition(menuInfo.position);
-
-                    Intent intent = new Intent();
-
-                    intent.putExtra("id", cursor.getString(cursor.getColumnIndex("_id")));
-                    intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
-                    intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
-                    intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
-
-                    intent.setClass(TextListActivity.this, EditHomeActivity.class);
-                    TextListActivity.this.startActivity(intent);
-                }catch(Exception ex){
-                    ex.printStackTrace();
-                }
-                break;
-=======
             case 3://导出
                 try{
                     cursor.moveToPosition(menuInfo.position);
@@ -275,13 +201,13 @@ public class TextListActivity extends AppCompatActivity{
                     ex.printStackTrace();
                 }
                 break;
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
             default:;
         }
         dm.close();
         return super.onContextItemSelected(item);
-<<<<<<< HEAD
-=======
+
+
     }
 
 
@@ -310,7 +236,7 @@ public class TextListActivity extends AppCompatActivity{
             }
         }
         return 0;
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
     }
     public int copyfile(String from,String into){
         try
@@ -337,13 +263,13 @@ public class TextListActivity extends AppCompatActivity{
             e.printStackTrace();
             return -1;
 
-<<<<<<< HEAD
-=======
+
+
         }
     }
 
 
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
     //短按，即点击
     public class myOnItemClickListener implements AdapterView.OnItemClickListener {
         public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
@@ -363,7 +289,7 @@ public class TextListActivity extends AppCompatActivity{
     }
 
     private void initID() {
-<<<<<<< HEAD
+
         lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
         login=(ImageView) findViewById(R.id.iv_activtiy_main_login);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
@@ -379,18 +305,8 @@ public class TextListActivity extends AppCompatActivity{
         refresh.setOnClickListener(listener);
 
     }
-=======
-        back = (Button)findViewById(R.id.btn_activtiy_textlist_return);
-        add=(Button)findViewById(R.id.btn_activtiy_textlist_add);
-        lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
-    }
-    private void setListener() {
-        MyListener listener = new MyListener();
-        back.setOnClickListener(listener);
-        add.setOnClickListener(listener);
-    }
 
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
+
     private class MyListener implements View.OnClickListener{
         private int flag;
 
@@ -398,7 +314,7 @@ public class TextListActivity extends AppCompatActivity{
         public void onClick(View v) {
             Intent i = new Intent();
             switch (v.getId()){
-<<<<<<< HEAD
+
                 case R.id.iv_activtiy_main_login:
 //                    if(flag==0){
                         i.setClass(TextListActivity.this,Login.class);
@@ -422,17 +338,8 @@ public class TextListActivity extends AppCompatActivity{
                     Intent intent = new Intent(TextListActivity.this,EditActivity.class) ;    //切换Login Activity至User Activity
                     intent.putExtra("state", EDIT_STATE);
                     startActivity(intent);
-=======
-                case R.id.btn_activtiy_textlist_return:
-                    i.setClass(TextListActivity.this,MainActivity.class);
-                    startActivity(i);
-                    break;
-                case R.id.btn_activtiy_textlist_add:
-                    i.setClass(TextListActivity.this,EditActivity.class);
-                    i.putExtra("state", EDIT_STATE);
-                    startActivity(i);
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
-                    break;
+
+
             }
 
         }

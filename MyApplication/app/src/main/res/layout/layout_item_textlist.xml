@@ -14,29 +14,22 @@
         android:orientation="vertical"
         android:id="@+id/Llyout_textlist"
         android:layout_marginTop="15dp"
-        android:layout_toRightOf="@+id/Tv_item_textlist_text"
-        >
+        android:layout_toRightOf="@+id/Tv_item_textlist_text">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Tv_item_textlist_title"
-
             android:layout_marginRight="10dp"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Tv_item_textlist_date"
-<<<<<<< HEAD
             android:layout_below="@+id/Tv_item_textlist_title"
             android:layout_toRightOf="@+id/Tv_item_textlist_text"
-=======
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"

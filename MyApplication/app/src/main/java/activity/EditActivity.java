@@ -37,7 +37,7 @@ public class EditActivity extends Activity {
     private EditText mtitle;
     private TextView mPreview;
 
-    private ImageView IvBullet,IvNumber,IvLeft,IvRight,IvPicture,IvWord;
+    private ImageView IvBullet, IvNumber, IvLeft, IvRight, IvPicture, IvWord;
 
     private LinearLayout HideWord;
 
@@ -51,15 +51,12 @@ public class EditActivity extends Activity {
     private boolean isVisbile = true;
     int flag = 0;
 
-    private ImageView IvBlack,IvGray,IvBlue,IvRed,IvYellow,IvGreen;    //字体颜色
-    private ImageView IvBold,IvItalic,IvUnderline,IvStrikethrough;    //字体格式
-    private ImageView IvLeft1,IvRight1,IvCenter1;    //文本对齐
+    private ImageView IvBlack, IvGray, IvBlue, IvRed, IvYellow, IvGreen;    //字体颜色
+    private ImageView IvBold, IvItalic, IvUnderline, IvStrikethrough;    //字体格式
+    private ImageView IvLeft1, IvRight1, IvCenter1;    //文本对齐
 
-<<<<<<< HEAD
 
-=======
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
-    private DBManager dm=null;
+    private DBManager dm = null;
     private String idString;
     private int state = -1;
     private EditText EtTitle;
@@ -67,10 +64,11 @@ public class EditActivity extends Activity {
     private String text;
     private String time;
     private int id2;
-    public Cursor cursor=null;
-    public String namestr="";
+    public Cursor cursor = null;
+    public String namestr = "";
     private String path = null;
     private String mtime;
+    private Throwable ex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,65 +79,13 @@ public class EditActivity extends Activity {
         getView();
         //注册监听事件
         setListener();
-        dm=new DBManager(this);
-        Intent intent = getIntent();
-        state = Integer.parseInt(intent.getStringExtra("state"));
-        Log.i("log", "state---->"+state);
-        if (state==2) {
-            idString = intent.getStringExtra("id");
-            Log.i("log", "id---->" + idString);
-            id2 = Integer.parseInt(idString);
-            title = intent.getStringExtra("title");
-            text = intent.getStringExtra("content");
-            time = intent.getStringExtra("time");
-            EtTitle.setText(title);
-            dm.open();
-            int i = 0;
-            int start = 0;
-            int end = 0;
-            String str1 = null;
-            String str2 = "[";
-            String str4 = "]";
-            String iconname=null;
-            SpannableString travelsSpan = new SpannableString(text);
-            for (i = 0; i < text.length(); i++) {
-                str1 = text.substring(i, i + 1);
-                //travelsString+=str1;
-                Log.i("log", str1);
-                if (str1.equals(str2)) {
-                    start = i + 1;
-                }
-                if (str1.equals(str4)) {
-                    end = i;
-                    namestr = text.substring(start, end);
-                    Log.i("log", namestr);
-                    cursor = dm.selcetPathByName(namestr);
-                    cursor.moveToFirst();
-                    path = cursor.getString(cursor.getColumnIndex("path"));
-                    cursor.close();
-                    namestr = null;
-                    Log.i("log", path);
-
-                    if (!(cursor == null)) {
-                        int count = cursor.getCount();
-                        Log.i("log", "count----->" + count);
-                    } else {
-                        Log.i("log", "insert icon faile");
-                    }
-                }
-
-            }
-            dm.close();
-            mEditor.setPlaceholder(String.valueOf(travelsSpan));
-        }
-
         //获取RichEditor界面
         getEditor();
-        dm=new DBManager(this);
+        dm = new DBManager(this);
         Intent intent = getIntent();
         state = Integer.parseInt(intent.getStringExtra("state"));
-        Log.i("log", "state---->"+state);
-        if (state==2) {
+        Log.i("log", "state---->" + state);
+        if (state == 2) {
             idString = intent.getStringExtra("id");
             Log.i("log", "id---->" + idString);
             id2 = Integer.parseInt(idString);
@@ -154,7 +100,7 @@ public class EditActivity extends Activity {
             String str1 = null;
             String str2 = "[";
             String str4 = "]";
-            String iconname=null;
+            String iconname = null;
             SpannableString travelsSpan = new SpannableString(text);
             for (i = 0; i < text.length(); i++) {
                 str1 = text.substring(i, i + 1);
@@ -189,7 +135,6 @@ public class EditActivity extends Activity {
     }
 
 
-
     /**
      * 获取RichEditor界面
      */
@@ -197,12 +142,13 @@ public class EditActivity extends Activity {
         mEditor.setEditorHeight(200);    //起始编辑设置高度
         mEditor.setEditorFontSize(20);   //设置字体大小
         mEditor.setEditorFontColor(Color.BLACK);  //设置字体颜色
-        mEditor.setPadding(10,10,10,10);
+        mEditor.setPadding(10, 10, 10, 10);
 //        mEditor.setPlaceholder("欢迎使用随手记......");
 
         //获取文本
         mEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
-            @Override public void onTextChange(String text) {
+            @Override
+            public void onTextChange(String text) {
                 mPreview.setText(text);
             }
         });
@@ -214,7 +160,7 @@ public class EditActivity extends Activity {
     private void getView() {
 //        IvBack = (ImageView) findViewById(R.id.Iv_activity_edit_back);
         TvFinish = (TextView) findViewById(R.id.Tv_activity_edit_finish);
-        EtTitle = (EditText)findViewById(R.id.Ed_activity_edit_title);
+        EtTitle = (EditText) findViewById(R.id.Ed_activity_edit_title);
 
         IvBullet = (ImageView) findViewById(R.id.Iv_activity_edit_bullet);
         IvNumber = (ImageView) findViewById(R.id.Iv_activity_edit_number);
@@ -229,7 +175,7 @@ public class EditActivity extends Activity {
 
         mEditor = (RichEditor) findViewById(R.id.activity_edit_editor);  //文本编辑器
         mPreview = (TextView) findViewById(R.id.activity_edit_preview);
-        EtTitle=(EditText)findViewById(R.id.Ed_activity_edit_title);
+        EtTitle = (EditText) findViewById(R.id.Ed_activity_edit_title);
 
         //字体颜色
         IvBlack = (ImageView) findViewById(R.id.Iv_activity_edit_black);
@@ -269,9 +215,9 @@ public class EditActivity extends Activity {
     }
 
     /**
-     *剪切图片
+     * 剪切图片
      */
-   private void crop(Uri uri) {
+    private void crop(Uri uri) {
         // 裁剪图片意图
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image");
@@ -299,10 +245,10 @@ public class EditActivity extends Activity {
         Intent localIntent2 = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         localIntent2.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
 
-        startActivityForResult(localIntent2,PHOTO_PICKED_WITH_DATA);
+        startActivityForResult(localIntent2, PHOTO_PICKED_WITH_DATA);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != RESULT_OK)
             return;
         switch (requestCode) {
@@ -347,34 +293,21 @@ public class EditActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-<<<<<<< HEAD
-//                case R.id.Iv_activity_edit_back:         //返回
-//                    Intent intent = new Intent();
-//                    intent.setClass(getApplication(),EditHomeActivity.class);
-//                    startActivity(intent);
-//                    break;
-=======
-                case R.id.Iv_activity_edit_back:         //返回
-                    Intent intent = new Intent();
-                    intent.setClass(getApplication(),TextListActivity.class);
-                    startActivity(intent);
-                    break;
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
                 case R.id.Tv_activity_edit_finish:    //完成
                     getData();
                     Intent intent2 = new Intent();
-                    intent2.setClass(getApplication(),TextListActivity.class);
+                    intent2.setClass(getApplication(), TextListActivity.class);
                     startActivity(intent2);
                     break;
 
                 case R.id.Iv_activity_edit_bullet:       //无数字列项
                     mEditor.setBullets();
-                    
+
                     if (flag == 0) {
                         IvBullet.setImageResource(0);
                         IvBullet.setImageResource(R.drawable.bullet1);
                         flag = 1;
-                    }else {
+                    } else {
                         IvBullet.setImageResource(0);
                         IvBullet.setImageResource(R.drawable.bullet);
                         flag = 0;
@@ -387,7 +320,7 @@ public class EditActivity extends Activity {
                         IvNumber.setImageResource(0);
                         IvNumber.setImageResource(R.drawable.number1);
                         flag = 1;
-                    }else {
+                    } else {
                         IvNumber.setImageResource(0);
                         IvNumber.setImageResource(R.drawable.number);
                         flag = 0;
@@ -404,7 +337,7 @@ public class EditActivity extends Activity {
                         IvPicture.setImageResource(0);
                         IvPicture.setImageResource(R.drawable.epicture1);
                         flag = 1;
-                    }else {
+                    } else {
                         IvPicture.setImageResource(0);
                         IvPicture.setImageResource(R.drawable.epicture);
                         flag = 0;
@@ -418,7 +351,7 @@ public class EditActivity extends Activity {
                         IvWord.setImageResource(0);
                         IvWord.setImageResource(R.drawable.word1);
                         flag = 1;
-                    }else {
+                    } else {
                         IvWord.setImageResource(0);
                         IvWord.setImageResource(R.drawable.word);
                         flag = 0;
@@ -426,11 +359,11 @@ public class EditActivity extends Activity {
 
                     if (isVisbile) {
                         //隐藏软键盘
-                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(mEditor.getWindowToken(),0);
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(mEditor.getWindowToken(), 0);
                         isVisbile = false;
                         HideWord.setVisibility(View.VISIBLE);//显示布局
-                    }else {
+                    } else {
                         HideWord.setVisibility(View.GONE);//隐藏布局
                         isVisbile = true;
                     }
@@ -444,7 +377,7 @@ public class EditActivity extends Activity {
                                 IvBold.setImageResource(0);
                                 IvBold.setImageResource(R.drawable.bold1);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvBold.setImageResource(0);
                                 IvBold.setImageResource(R.drawable.bold);
                                 flag = 0;
@@ -453,7 +386,7 @@ public class EditActivity extends Activity {
                     });
 
                     //斜体
-                   IvItalic.setOnClickListener(new View.OnClickListener() {
+                    IvItalic.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             mEditor.setItalic();
@@ -461,7 +394,7 @@ public class EditActivity extends Activity {
                                 IvItalic.setImageResource(0);
                                 IvItalic.setImageResource(R.drawable.italic1);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvItalic.setImageResource(0);
                                 IvItalic.setImageResource(R.drawable.italic);
                                 flag = 0;
@@ -478,7 +411,7 @@ public class EditActivity extends Activity {
                                 IvUnderline.setImageResource(0);
                                 IvUnderline.setImageResource(R.drawable.underline1);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvUnderline.setImageResource(0);
                                 IvUnderline.setImageResource(R.drawable.underline);
                                 flag = 0;
@@ -487,7 +420,7 @@ public class EditActivity extends Activity {
                     });
 
                     //中划线
-                   IvStrikethrough.setOnClickListener(new View.OnClickListener() {
+                    IvStrikethrough.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             mEditor.setStrikeThrough();
@@ -495,7 +428,7 @@ public class EditActivity extends Activity {
                                 IvStrikethrough.setImageResource(0);
                                 IvStrikethrough.setImageResource(R.drawable.strikethrough1);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvStrikethrough.setImageResource(0);
                                 IvStrikethrough.setImageResource(R.drawable.strikethrough);
                                 flag = 0;
@@ -512,7 +445,7 @@ public class EditActivity extends Activity {
                                 IvLeft1.setImageResource(0);
                                 IvLeft1.setImageResource(R.drawable.left11);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvLeft1.setImageResource(0);
                                 IvLeft1.setImageResource(R.drawable.left1);
                                 flag = 0;
@@ -529,7 +462,7 @@ public class EditActivity extends Activity {
                                 IvCenter1.setImageResource(0);
                                 IvCenter1.setImageResource(R.drawable.center11);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvCenter1.setImageResource(0);
                                 IvCenter1.setImageResource(R.drawable.center1);
                                 flag = 0;
@@ -546,7 +479,7 @@ public class EditActivity extends Activity {
                                 IvRight1.setImageResource(0);
                                 IvRight1.setImageResource(R.drawable.right11);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvRight1.setImageResource(0);
                                 IvRight1.setImageResource(R.drawable.right1);
                                 flag = 0;
@@ -605,7 +538,7 @@ public class EditActivity extends Activity {
 
 
                     //字体颜色为黑色
-                     IvBlack.setOnClickListener(new View.OnClickListener() {
+                    IvBlack.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             mEditor.setTextColor(Color.BLACK);
@@ -613,7 +546,7 @@ public class EditActivity extends Activity {
                                 IvBlack.setImageResource(0);
                                 IvBlack.setImageResource(R.drawable.color11);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvBlack.setImageResource(0);
                                 IvBlack.setImageResource(R.drawable.color1);
                                 flag = 0;
@@ -630,7 +563,7 @@ public class EditActivity extends Activity {
                                 IvGray.setImageResource(0);
                                 IvGray.setImageResource(R.drawable.color22);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvGray.setImageResource(0);
                                 IvGray.setImageResource(R.drawable.color2);
                                 flag = 0;
@@ -647,7 +580,7 @@ public class EditActivity extends Activity {
                                 IvBlue.setImageResource(0);
                                 IvBlue.setImageResource(R.drawable.color33);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvBlue.setImageResource(0);
                                 IvBlue.setImageResource(R.drawable.color3);
                                 flag = 0;
@@ -664,7 +597,7 @@ public class EditActivity extends Activity {
                                 IvRed.setImageResource(0);
                                 IvRed.setImageResource(R.drawable.color44);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvRed.setImageResource(0);
                                 IvRed.setImageResource(R.drawable.color4);
                                 flag = 0;
@@ -681,7 +614,7 @@ public class EditActivity extends Activity {
                                 IvYellow.setImageResource(0);
                                 IvYellow.setImageResource(R.drawable.color55);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvYellow.setImageResource(0);
                                 IvYellow.setImageResource(R.drawable.color5);
                                 flag = 0;
@@ -698,7 +631,7 @@ public class EditActivity extends Activity {
                                 IvGreen.setImageResource(0);
                                 IvGreen.setImageResource(R.drawable.color66);
                                 flag = 1;
-                            }else {
+                            } else {
                                 IvGreen.setImageResource(0);
                                 IvGreen.setImageResource(R.drawable.color6);
                                 flag = 0;
@@ -709,38 +642,34 @@ public class EditActivity extends Activity {
             }
         }
     }
-<<<<<<< HEAD
-    public void getData(){
-=======
 
     private void getData() {
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
         title = EtTitle.getText().toString();
-        text= mPreview.getText().toString();
-        Log.i("log","title---->"+title);
-        Log.i("log", "travels---->"+text);
-        try{
+        text = mPreview.getText().toString();
+        Log.i("log", "title---->" + title);
+        Log.i("log", "travels---->" + text);
+        try {
             dm.open();
-            if(state==1) {
+            if (state == 1) {
                 dm.insert(title, text);
-                Toast.makeText(EditActivity.this,"chenggong",Toast.LENGTH_SHORT).show();
+                Toast.makeText(EditActivity.this, "chenggong", Toast.LENGTH_SHORT).show();
             }
-<<<<<<< HEAD
-          if (state==2) {
-=======
-            if (state==2) {
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
-                Log.i("log", "ready to alter");
-                dm.update(id2, title, text);
-            }
-            dm.close();
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-<<<<<<< HEAD
-=======
 
->>>>>>> db1c7067c1a3e34717bc4db2dfa85e87227d238c
-}
+
+
+                if (state == 2) {
+
+                    Log.i("log", "ready to alter");
+                    dm.update(id2, title, text);
+                }
+                dm.close();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        }
+
+
+    }
+
 

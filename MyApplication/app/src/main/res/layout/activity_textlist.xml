@@ -116,7 +116,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#edebed">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,7 +137,7 @@
                 android:text="随手记"
                 android:textSize="12sp"
                 android:textColor="@color/colorBlack"
-                android:background="@color/colorWhite"/>
+                android:background="@null"/>
         </RelativeLayout>
         <Button
             android:layout_width="52dp"
@@ -164,7 +165,7 @@
                 android:text="我的"
                 android:textSize="12sp"
                 android:textColor="@color/colorBlack"
-                android:background="@color/colorWhite"/>
+                android:background="@null"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
