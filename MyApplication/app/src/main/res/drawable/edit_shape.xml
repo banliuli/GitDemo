@@ -8,10 +8,15 @@
         android:color="#bab5b5" />
     <!-- 内填充颜色 -->
     <padding
+<<<<<<< HEAD
+        android:left="10dp"
+         />
+=======
         android:bottom="10dp"
         android:left="10dp"
         android:right="10dp"
         android:top="10dp" />
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     <!-- 圆角 -->
     <corners android:radius="10dp" />
 

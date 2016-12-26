@@ -2,6 +2,10 @@ package activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+<<<<<<< HEAD
+import android.content.ContentValues;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,7 +16,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
 
 import android.text.SpannableString;
+<<<<<<< HEAD
+import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+=======
+import android.text.format.DateFormat;
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.util.Log;
 
 import android.text.Html;
@@ -23,6 +34,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+<<<<<<< HEAD
+import android.widget.CheckBox;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,6 +52,10 @@ import android.view.MenuItem;
 import com.example.administrator.suishouji.R;
 import com.example.administrator.suishouji.ToggleStatus;
 
+<<<<<<< HEAD
+import DBSql.DBAdapter;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import DBSql.DBCollect;
 import DBSql.DBManager;
 import adapter.CollectionAdapter;
@@ -51,7 +70,11 @@ public class EditHomeActivity extends Activity {
     private ToggleButton BtnEdit;
     private ToggleButton BtnMore;
     private ImageView mIv_back;
+<<<<<<< HEAD
+    private DBAdapter da=null;
+=======
 
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     private PopupWindow popupWindow;
     private View view;
 
@@ -63,6 +86,10 @@ public class EditHomeActivity extends Activity {
     private TextView TvTime;
     private TextView TvContent;
     private DBCollect dm = null;
+<<<<<<< HEAD
+
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     private String idString;
     private int state = -1;
     private EditText EtTitle;
@@ -93,6 +120,10 @@ public class EditHomeActivity extends Activity {
         setListener();
         setData();
         dm = new DBCollect(this);
+<<<<<<< HEAD
+        da=new DBAdapter(this);
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         Intent intent = getIntent();
         state = Integer.parseInt(intent.getStringExtra("state"));
         Log.i("log", "state---->"+state);
@@ -359,8 +390,12 @@ public class EditHomeActivity extends Activity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.Rlayout_popup1://阅读密码
+<<<<<<< HEAD
+                    dialog();
+=======
                     Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
                     startActivity(i);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
                     break;
                 case R.id.Rlayout_popup2:     //删除
                     new AlertDialog.Builder(EditHomeActivity.this).setTitle("确认删除？")//设置对话框标题
@@ -384,6 +419,88 @@ public class EditHomeActivity extends Activity {
             }
         }
     }
+<<<<<<< HEAD
+    private void dialog(){
+        final AlertDialog.Builder builder=new AlertDialog.Builder(EditHomeActivity.this);
+        final AlertDialog dialog=builder.create();
+        final View view=View.inflate(this,R.layout.layout_setpwd,null);
+        dialog.setView(view);
+        dialog.show();
+        Button submit = (Button) view.findViewById(R.id.btn_activity_setpwd_finish);
+        Button cancel = (Button) view.findViewById(R.id.btn_activity_setpwd_cancel);
+        CheckBox checkBox=(CheckBox)view.findViewById(R.id.Cb_activity_setpwd_check);
+        final EditText setpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_set);
+        final EditText enpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_ensure);
+        setpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        enpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        CompoundButton.OnCheckedChangeListener listener=new CompoundButton.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    setpwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    enpwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    //如果选中，显示密码
+                }else{
+                    enpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    setpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    //否则隐藏密码
+                }
+            }
+
+        };
+        checkBox.setOnCheckedChangeListener(listener);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText setpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_set);
+                EditText enpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_ensure);
+                String pwd = setpwd.getText().toString();
+                String ensure = enpwd.getText().toString();
+                DBAdapter da = new DBAdapter(EditHomeActivity.this);
+
+                //db.close();
+                if(!TextUtils.isEmpty(pwd) && !TextUtils.isEmpty(ensure)){
+                    //进入用户手机防盗模块
+                    if(pwd.equals(ensure)) {
+                        da.open();
+
+                        ContentValues values=new ContentValues();
+                        //cursor =da.getId(cursor.getLong(cursor.getColumnIndex("_id")));
+
+                        values.put("id", 1);
+                        values.put("password",pwd);
+                        values.put("repassword",ensure);
+
+                        da.insert(pwd,ensure);
+                        values.clear();
+                        Intent i=new Intent();
+                        i.setClass(EditHomeActivity.this,TextListActivity.class);
+                        startActivity(i);
+
+                        //跳转到新的界面以后需要去隐藏对话框
+                        dialog.dismiss();
+                        da.close();
+                    } else {
+                        Toast.makeText(EditHomeActivity.this,"密码不一致",Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    //提示用户密码输入为空的情况
+                    Toast.makeText(EditHomeActivity.this,"请输入密码",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     public void getData()
     {
         Log.i("log","title---->"+title);

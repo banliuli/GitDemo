@@ -5,6 +5,19 @@
     android:background="#ffffff">
     <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设置密码"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+
+=======
         android:layout_height="wrap_content"
         android:background="#5677fc">
         <ImageView
@@ -31,6 +44,7 @@
             android:textSize="20sp"
             android:gravity="center"/>
     </LinearLayout>
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +52,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
+<<<<<<< HEAD
+            android:text="     输入密码   "
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"/>
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_shape"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/Et_setpwd_activity_set"
+=======
             android:text="设置阅读密码"
             android:textSize="18sp"
             android:gravity="center"
@@ -47,6 +73,7 @@
             android:layout_height="35dp"
             android:background="@drawable/edit_shape"
             android:layout_marginLeft="10dp"
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
             />
     </LinearLayout>
     <LinearLayout
@@ -57,6 +84,64 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="     确认密码   "
+<<<<<<< HEAD
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"/>
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_shape"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/Et_setpwd_activity_ensure"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="显示密码"
+            android:id="@+id/Cb_activity_setpwd_check"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="18sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="3dp"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:layout_weight="0.5"
+            android:background="@drawable/btn_cancel"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/btn_activity_setpwd_cancel"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="确认"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="3dp"
+            android:textSize="18sp"
+            android:layout_weight="0.5"
+            android:layout_marginTop="6dp"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_finish"
+            android:id="@+id/btn_activity_setpwd_finish"
+            />
+=======
             android:textSize="18sp"
             android:gravity="center"
             android:layout_marginLeft="20dp"/>
@@ -80,5 +165,6 @@
             android:layout_gravity="center"
             android:textColor="#ffffff"
             android:background="@drawable/btn_finish"/>
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     </LinearLayout>
 </LinearLayout>

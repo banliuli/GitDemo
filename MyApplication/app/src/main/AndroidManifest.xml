@@ -46,7 +46,10 @@
         <activity android:name="activity.PersonalIntroduceActivity" />
         <activity android:name="activity.EditAddActivity" />
         <activity android:name="activity.RealNameActivity" />
+<<<<<<< HEAD
+=======
         <activity android:name="activity.SetpwdActivity"/>
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         <activity android:name="activity.ConcealPwd"/>
         <activity android:name="activity.CollectionActivity"/>
 
