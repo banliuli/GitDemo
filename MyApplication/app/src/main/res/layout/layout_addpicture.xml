@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:background="@color/colorTitle">
+
+            <ImageView
+                android:layout_weight="0.1"
+                android:layout_marginTop="5dp"
+                android:id="@+id/Iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back" />
+            <TextView
+                android:id="@+id/Tv_finish"
+                android:layout_weight="0.9"
+                android:gravity="right"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完成"
+                android:textSize="20dp"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="随手记笔记"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/camera"
+            android:background="@color/colorGray"
+            android:layout_marginTop="90dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。
+-- 阿尔伯特·爱因斯坦"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
+            android:textColor="@color/colorBlack"/>
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:background="@drawable/home_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/Ibtn_spot"
+            android:background="@drawable/btn_change"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bullet"/>
+        <ImageButton
+            android:id="@+id/Ibtn_number"
+            android:background="@drawable/btn_change"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/number"/>
+        <ImageButton
+            android:id="@+id/Ibtn_left"
+            android:background="@drawable/btn_change"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/left"/>
+        <ImageButton
+            android:id="@+id/Ibtn_right"
+            android:background="@drawable/btn_change"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/right"/>
+        <ImageButton
+            android:id="@+id/Ibtn_picture"
+            android:background="@drawable/btn_change"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/picture1"/>
+        <ImageButton
+            android:id="@+id/Ibtn_word"
+            android:background="@drawable/btn_change"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/word"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/picture"
+            android:src="@drawable/picture"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="来自相册"
+            android:layout_marginLeft="185dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#101010"
+            android:textSize="17sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/picture"
+            android:background="#BBBBBB"
+            android:layout_marginTop="5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/camera"
+            android:id="@+id/camera"
+            android:layout_below="@+id/picture"
+            android:layout_marginLeft="123dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机拍照"
+            android:layout_below="@+id/picture"
+            android:layout_marginLeft="185dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#101010"
+            android:textSize="17sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/camera"
+            android:background="#BBBBBB"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

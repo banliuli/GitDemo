@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Llyout_popup"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack">
+
+    <RelativeLayout
+        android:id="@+id/Rlayout_popup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/Iv_popup_readpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/read_password"/>
+
+        <TextView
+            android:id="@+id/Tv_popup_readpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/Iv_popup_readpwd"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:text="阅读密码"
+            android:textSize="20dp"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Rlayout_popup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/Iv_popup_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/delete"/>
+
+        <TextView
+            android:id="@+id/Tv_popup_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/Iv_popup_delete"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:text="删除"
+            android:textSize="20dp"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Rlayout_popup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/Iv_popup_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/detail"/>
+
+        <TextView
+            android:id="@+id/Tv_popup_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/Iv_popup_detail"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:text="详细信息"
+            android:textSize="20dp"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+</LinearLayout>
