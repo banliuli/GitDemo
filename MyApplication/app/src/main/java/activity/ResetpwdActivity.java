@@ -3,7 +3,10 @@ package activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.text.method.PasswordTransformationMethod;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,11 +46,14 @@ public class ResetpwdActivity extends Activity {
                 mUserDataManager = new UserDataManager(this);
                 mUserDataManager.openDataBase();                              //建立本地数据库
             }
+<<<<<<< HEAD
 
         //设置密码为隐藏
         pwd1.setTransformationMethod(PasswordTransformationMethod.getInstance());
         pwd2.setTransformationMethod(PasswordTransformationMethod.getInstance());
         spwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         }
         View.OnClickListener m_resetpwd_Listener = new View.OnClickListener() {    //不同按钮按下的监听事件选择
             public void onClick(View v) {

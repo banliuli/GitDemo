@@ -2,7 +2,10 @@ package activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+<<<<<<< HEAD
 import android.content.ContentValues;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,10 +16,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
 
 import android.text.SpannableString;
+<<<<<<< HEAD
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+=======
+import android.text.format.DateFormat;
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.util.Log;
 
 import android.text.Html;
@@ -27,7 +34,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.CheckBox;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,7 +52,10 @@ import android.view.MenuItem;
 import com.example.administrator.suishouji.R;
 import com.example.administrator.suishouji.ToggleStatus;
 
+<<<<<<< HEAD
 import DBSql.DBAdapter;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import DBSql.DBCollect;
 import DBSql.DBManager;
 import adapter.CollectionAdapter;
@@ -57,7 +70,11 @@ public class EditHomeActivity extends Activity {
     private ToggleButton BtnEdit;
     private ToggleButton BtnMore;
     private ImageView mIv_back;
+<<<<<<< HEAD
     private DBAdapter da=null;
+=======
+
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     private PopupWindow popupWindow;
     private View view;
 
@@ -69,7 +86,10 @@ public class EditHomeActivity extends Activity {
     private TextView TvTime;
     private TextView TvContent;
     private DBCollect dm = null;
+<<<<<<< HEAD
 
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     private String idString;
     private int state = -1;
     private EditText EtTitle;
@@ -100,7 +120,10 @@ public class EditHomeActivity extends Activity {
         setListener();
         setData();
         dm = new DBCollect(this);
+<<<<<<< HEAD
         da=new DBAdapter(this);
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         Intent intent = getIntent();
         state = Integer.parseInt(intent.getStringExtra("state"));
         Log.i("log", "state---->"+state);
@@ -367,7 +390,12 @@ public class EditHomeActivity extends Activity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.Rlayout_popup1://阅读密码
+<<<<<<< HEAD
                     dialog();
+=======
+                    Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
+                    startActivity(i);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
                     break;
                 case R.id.Rlayout_popup2:     //删除
                     new AlertDialog.Builder(EditHomeActivity.this).setTitle("确认删除？")//设置对话框标题
@@ -391,6 +419,7 @@ public class EditHomeActivity extends Activity {
             }
         }
     }
+<<<<<<< HEAD
     private void dialog(){
         final AlertDialog.Builder builder=new AlertDialog.Builder(EditHomeActivity.this);
         final AlertDialog dialog=builder.create();
@@ -470,6 +499,8 @@ public class EditHomeActivity extends Activity {
             }
         });
     }
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     public void getData()
     {
         Log.i("log","title---->"+title);

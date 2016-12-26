@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="E:\Grade3.1\java\workspace\GitDemo4\MyApplication\richeditor\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\Grade3.1\java\workspace\GitDemo4\MyApplication\richeditor\src\debug\jniLibs"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main"><source path="E:\PakeageSuishoujiGit\Suishouji\MyApplication\richeditor\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\PakeageSuishoujiGit\Suishouji\MyApplication\richeditor\src\debug\jniLibs"/></dataSet></merger>
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62

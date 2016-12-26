@@ -110,11 +110,21 @@ public class UserDataManager {
         }
         return result;
     }
+<<<<<<< HEAD
     //更新用户信息，如修改密码
     public boolean updateUserData(UserData userData) {
         //int id = userData.getUserId();
         String userName = userData.getUsername();
         String userPwd = userData.getPassword();
+=======
+    //修改用户信息
+    public boolean updateUserData(UserData userData) {
+
+        //int id = userData.getUserId();
+        String userName = userData.getUsername();
+        String userPwd = userData.getPassword();
+
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         ContentValues values = new ContentValues();
         values.put(USER_NAME, userName);
         values.put(USER_PWD, userPwd);
@@ -123,6 +133,7 @@ public class UserDataManager {
     }
     //读取用户信息
     public Cursor fetchAllUserDatas() {
+<<<<<<< HEAD
         return mSQLiteDatabase.query(TABLE_NAME, null, null, null, null, null,
                 null);
     }
@@ -135,6 +146,12 @@ public class UserDataManager {
 
         return mCursor;
     }
+=======
+
+        return mSQLiteDatabase.query(TABLE_NAME, null, null, null, null, null,
+                null);
+    }
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
    //根据ID修改用户信息
     public boolean updateUserDataById(String columnName, int id,
                                       String columnValue) {

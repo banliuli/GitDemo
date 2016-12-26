@@ -7,17 +7,23 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,7 +40,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+<<<<<<< HEAD
 import DBSql.DBAdapter;
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import DBSql.DBManager;
 
 
@@ -86,7 +95,13 @@ public class TextListActivity extends AppCompatActivity{
         initAdapter();
         lv.setAdapter(adapter);
 
+<<<<<<< HEAD
 
+=======
+        dm = new DBManager(this);
+        initAdapter();
+        lv.setAdapter(adapter);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 
         //给ListView设置item点击监听器，实现点击效果
         lv.setOnItemClickListener(new myOnItemClickListener());
@@ -127,7 +142,12 @@ public class TextListActivity extends AppCompatActivity{
             Log.i("log", "chooseing menu");
             menu.add(0,0,0,"删除");
             menu.add(0,1,0,"修改");
+<<<<<<< HEAD
             menu.add(0,2,0,"导出到SD卡");
+=======
+            menu.add(0,2,0,"查看");
+            menu.add(0,3,0,"导出到SD卡");
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         }
 
     }
@@ -172,7 +192,30 @@ public class TextListActivity extends AppCompatActivity{
                     ex.printStackTrace();
                 }
                 break;
+<<<<<<< HEAD
             case 2://导出
+=======
+            case 2://查看
+                //	Log.v("show", "chenggong3");
+                try{
+                    cursor.moveToPosition(menuInfo.position);
+
+                    Intent intent = new Intent();
+
+                    intent.putExtra("id", cursor.getString(cursor.getColumnIndex("_id")));
+                    intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
+                    intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
+                    intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
+
+                    intent.setClass(TextListActivity.this, EditHomeActivity.class);
+                    TextListActivity.this.startActivity(intent);
+
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+                break;
+            case 3://导出
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
                 try{
                     cursor.moveToPosition(menuInfo.position);
                     String itemtitle=cursor.getString(cursor.getColumnIndex("title"));
@@ -267,6 +310,7 @@ public class TextListActivity extends AppCompatActivity{
             intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
             intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
             intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
+<<<<<<< HEAD
             if(id==1){
                 dialog();
             }
@@ -350,6 +394,13 @@ public class TextListActivity extends AppCompatActivity{
             }
         });
     }
+=======
+            intent.setClass(TextListActivity.this, EditHomeActivity.class);
+            TextListActivity.this.startActivity(intent);
+        }
+    }
+
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     private void initID() {
 
         lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);

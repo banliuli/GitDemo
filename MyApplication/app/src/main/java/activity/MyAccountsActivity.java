@@ -89,7 +89,11 @@ public class MyAccountsActivity extends AppCompatActivity {
     private ActionBar.Tab etname;
     private ActionBar.Tab etpwd;
     private UserDataManager mUserDataManager;
+<<<<<<< HEAD
 
+=======
+    private EditText username;
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 
 
 
@@ -117,6 +121,11 @@ public class MyAccountsActivity extends AppCompatActivity {
         fh = (Button) findViewById(R.id.btn_my_accounts_fh);
         save = (Button) findViewById(R.id.btn_my_accounts_save);
         gd1 = (Button) findViewById(R.id.btn_my_accounts_gd1);
+<<<<<<< HEAD
+=======
+        cancle = (Button) findViewById(R.id.btn_my_accounts_cancle);
+       // username = (EditText) findViewById(R.id.et_my_accounts_username);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         nickname = (EditText) findViewById(R.id.et_my_accounts_nickname);
         sex = (EditText) findViewById(R.id.et_my_accounts_sex);
         area = (EditText) findViewById(R.id.et_my_accounts_area);
@@ -128,17 +137,28 @@ public class MyAccountsActivity extends AppCompatActivity {
         fh.setOnClickListener(listener);
         gd1.setOnClickListener(listener);
         save.setOnClickListener(listener);
+<<<<<<< HEAD
+=======
+        cancle.setOnClickListener(listener);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         nickname.setOnClickListener(listener);
         sex.setOnClickListener(listener);
         area.setOnClickListener(listener);
         truename.setOnClickListener(listener);
+<<<<<<< HEAD
 
+=======
+        //username.setOnClickListener(listener);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     }
     class MyListener implements View.OnClickListener {
         private UserData userData;
         String username;
+<<<<<<< HEAD
         private Context context;
 
+=======
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -150,7 +170,13 @@ public class MyAccountsActivity extends AppCompatActivity {
                     //显示修改头像的对话框
                     showChoosePicDialog();
                     break;
+<<<<<<< HEAD
 
+=======
+                case R.id.btn_my_accounts_cancle:        //登录界面的注销按钮
+                    cancel();
+                    break;
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
                 case R.id.btn_my_accounts_save:         //保存个人资料的修改
                     SharedPreferences spf = getSharedPreferences("UNAME_EDIT", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = spf.edit();
@@ -164,7 +190,14 @@ public class MyAccountsActivity extends AppCompatActivity {
                     Intent intent = new Intent(MyAccountsActivity.this, MineActivity.class);
                     startActivity(intent);
                     break;
+<<<<<<< HEAD
 
+=======
+               // case R.id.et_my_accounts_username:
+                   // String username=username.getText().toString().trim();
+                   // int count=mUserDataManager.findUserByName(username);
+                   // mUserDataManager.updatePersonalData(personalData);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
                 //清空用户名EditText
                 case R.id.et_my_accounts_nickname:
                     nickname.setText("");
@@ -188,6 +221,38 @@ public class MyAccountsActivity extends AppCompatActivity {
         }
     }
 
+<<<<<<< HEAD
+=======
+        public void cancel() {           //注销
+        if (isUserNameAndPwdValid()) {
+            String userName = etname.getText().toString().trim();    //获取当前输入的用户名和密码信息
+            String userPwd = etpwd.getText().toString().trim();
+            int result=mUserDataManager.findUserByNameAndPwd(userName, userPwd);
+            if(result==1){                                             //返回1说明用户名和密码均正确
+                Toast.makeText(this, "注销成功提示",Toast.LENGTH_SHORT).show();//注销成功提示
+                etname.setText("");
+                etpwd.setText("");
+                mUserDataManager.deleteUserDatabyname(userName);
+            }else if(result==0){
+                Toast.makeText(this, "注销失败提示",Toast.LENGTH_SHORT).show();  //注销失败提示
+            }
+        }
+
+    }
+    public boolean isUserNameAndPwdValid() {
+        if (etname.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "账户为空",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (etpwd.getText().toString().trim().equals("")) {
+            Toast.makeText(this, "密码为空",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     /**
      * 获取用户信息
      */
@@ -199,6 +264,10 @@ public class MyAccountsActivity extends AppCompatActivity {
         String Uarea = spf.getString("AREA", "");
         String Utruename = spf.getString("TRUENAME", "");
 
+<<<<<<< HEAD
+=======
+        username.setText(Username);
+>>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         nickname.setText(Unickname );
         sex.setText(Usex );
         area.setText(Uarea );
