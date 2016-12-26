@@ -123,8 +123,7 @@ public class TextListActivity extends AppCompatActivity{
             Log.i("log", "chooseing menu");
             menu.add(0,0,0,"删除");
             menu.add(0,1,0,"修改");
-            menu.add(0,2,0,"查看");
-            menu.add(0,3,0,"导出到SD卡");
+            menu.add(0,2,0,"导出到SD卡");
         }
 
     }
@@ -169,26 +168,7 @@ public class TextListActivity extends AppCompatActivity{
                     ex.printStackTrace();
                 }
                 break;
-            case 2://查看
-                //	Log.v("show", "chenggong3");
-                try{
-                    cursor.moveToPosition(menuInfo.position);
-
-                    Intent intent = new Intent();
-
-                    intent.putExtra("id", cursor.getString(cursor.getColumnIndex("_id")));
-                    intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
-                    intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
-                    intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
-
-                    intent.setClass(TextListActivity.this, EditHomeActivity.class);
-                    TextListActivity.this.startActivity(intent);
-
-                }catch(Exception ex){
-                    ex.printStackTrace();
-                }
-                break;
-            case 3://导出
+            case 2://导出
                 try{
                     cursor.moveToPosition(menuInfo.position);
                     String itemtitle=cursor.getString(cursor.getColumnIndex("title"));
