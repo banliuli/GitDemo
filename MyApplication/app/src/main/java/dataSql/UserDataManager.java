@@ -1,4 +1,4 @@
-package data;
+package dataSql;
 
 /**
  * Created by Administrator on 2016/12/12.
@@ -110,27 +110,11 @@ public class UserDataManager {
         }
         return result;
     }
-<<<<<<< HEAD
-    //更新用户信息，如修改密码
-=======
-<<<<<<< HEAD
     //更新用户信息，如修改密码
     public boolean updateUserData(UserData userData) {
         //int id = userData.getUserId();
         String userName = userData.getUsername();
         String userPwd = userData.getPassword();
-=======
-    //修改用户信息
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
-    public boolean updateUserData(UserData userData) {
-        //int id = userData.getUserId();
-        String userName = userData.getUsername();
-        String userPwd = userData.getPassword();
-<<<<<<< HEAD
-=======
-
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         ContentValues values = new ContentValues();
         values.put(USER_NAME, userName);
         values.put(USER_PWD, userPwd);
@@ -139,7 +123,6 @@ public class UserDataManager {
     }
     //读取用户信息
     public Cursor fetchAllUserDatas() {
-<<<<<<< HEAD
         return mSQLiteDatabase.query(TABLE_NAME, null, null, null, null, null,
                 null);
     }
@@ -152,27 +135,6 @@ public class UserDataManager {
 
         return mCursor;
     }
-=======
-<<<<<<< HEAD
-        return mSQLiteDatabase.query(TABLE_NAME, null, null, null, null, null,
-                null);
-    }
-    public Cursor fetchUserName(String userName ) {
-
-        Log.i(TAG, "findUserByNameAndPwd, userName=" + userName );
-
-        Cursor mCursor = mSQLiteDatabase.query(TABLE_NAME, null, USER_NAME + "=" + userName  ,
-                null, null, null, null);
-
-        return mCursor;
-    }
-=======
-
-        return mSQLiteDatabase.query(TABLE_NAME, null, null, null, null, null,
-                null);
-    }
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
    //根据ID修改用户信息
     public boolean updateUserDataById(String columnName, int id,
                                       String columnValue) {

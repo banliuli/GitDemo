@@ -1,8 +1,6 @@
 package activity;
 
 import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,31 +11,20 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.administrator.suishouji.CircleImageView;
+import uil.CircleImageView;
 import com.example.administrator.suishouji.R;
 
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -46,24 +33,10 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import data.UserDataManager;
-import data.UserData;
-import data.UserDataManager;
+import dataSql.UserDataManager;
+import dataSql.UserData;
 
 public class MyAccountsActivity extends AppCompatActivity {
 
@@ -89,15 +62,7 @@ public class MyAccountsActivity extends AppCompatActivity {
     private ActionBar.Tab etname;
     private ActionBar.Tab etpwd;
     private UserDataManager mUserDataManager;
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-    private EditText username;
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
 
 
 
@@ -125,14 +90,6 @@ public class MyAccountsActivity extends AppCompatActivity {
         fh = (Button) findViewById(R.id.btn_my_accounts_fh);
         save = (Button) findViewById(R.id.btn_my_accounts_save);
         gd1 = (Button) findViewById(R.id.btn_my_accounts_gd1);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-        cancle = (Button) findViewById(R.id.btn_my_accounts_cancle);
-       // username = (EditText) findViewById(R.id.et_my_accounts_username);
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         nickname = (EditText) findViewById(R.id.et_my_accounts_nickname);
         sex = (EditText) findViewById(R.id.et_my_accounts_sex);
         area = (EditText) findViewById(R.id.et_my_accounts_area);
@@ -144,40 +101,17 @@ public class MyAccountsActivity extends AppCompatActivity {
         fh.setOnClickListener(listener);
         gd1.setOnClickListener(listener);
         save.setOnClickListener(listener);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-        cancle.setOnClickListener(listener);
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         nickname.setOnClickListener(listener);
         sex.setOnClickListener(listener);
         area.setOnClickListener(listener);
         truename.setOnClickListener(listener);
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-        //username.setOnClickListener(listener);
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
     }
     class MyListener implements View.OnClickListener {
         private UserData userData;
         String username;
-<<<<<<< HEAD
         private Context context;
 
-=======
-<<<<<<< HEAD
-        private Context context;
-
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
@@ -189,17 +123,7 @@ public class MyAccountsActivity extends AppCompatActivity {
                     //显示修改头像的对话框
                     showChoosePicDialog();
                     break;
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-                case R.id.btn_my_accounts_cancle:        //登录界面的注销按钮
-                    cancel();
-                    break;
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
                 case R.id.btn_my_accounts_save:         //保存个人资料的修改
                     SharedPreferences spf = getSharedPreferences("UNAME_EDIT", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = spf.edit();
@@ -213,18 +137,7 @@ public class MyAccountsActivity extends AppCompatActivity {
                     Intent intent = new Intent(MyAccountsActivity.this, MineActivity.class);
                     startActivity(intent);
                     break;
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-               // case R.id.et_my_accounts_username:
-                   // String username=username.getText().toString().trim();
-                   // int count=mUserDataManager.findUserByName(username);
-                   // mUserDataManager.updatePersonalData(personalData);
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
                 //清空用户名EditText
                 case R.id.et_my_accounts_nickname:
                     nickname.setText("");
@@ -248,41 +161,6 @@ public class MyAccountsActivity extends AppCompatActivity {
         }
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-        public void cancel() {           //注销
-        if (isUserNameAndPwdValid()) {
-            String userName = etname.getText().toString().trim();    //获取当前输入的用户名和密码信息
-            String userPwd = etpwd.getText().toString().trim();
-            int result=mUserDataManager.findUserByNameAndPwd(userName, userPwd);
-            if(result==1){                                             //返回1说明用户名和密码均正确
-                Toast.makeText(this, "注销成功提示",Toast.LENGTH_SHORT).show();//注销成功提示
-                etname.setText("");
-                etpwd.setText("");
-                mUserDataManager.deleteUserDatabyname(userName);
-            }else if(result==0){
-                Toast.makeText(this, "注销失败提示",Toast.LENGTH_SHORT).show();  //注销失败提示
-            }
-        }
-
-    }
-    public boolean isUserNameAndPwdValid() {
-        if (etname.getText().toString().trim().equals("")) {
-            Toast.makeText(this, "账户为空",
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (etpwd.getText().toString().trim().equals("")) {
-            Toast.makeText(this, "密码为空",
-                    Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
     /**
      * 获取用户信息
      */
@@ -294,13 +172,6 @@ public class MyAccountsActivity extends AppCompatActivity {
         String Uarea = spf.getString("AREA", "");
         String Utruename = spf.getString("TRUENAME", "");
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-        username.setText(Username);
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         nickname.setText(Unickname );
         sex.setText(Usex );
         area.setText(Uarea );
@@ -447,7 +318,7 @@ public class MyAccountsActivity extends AppCompatActivity {
     protected void setImageToView(Intent data) {
         Bundle extras = data.getExtras();
         if (extras != null) {
-            Bitmap photo = extras.getParcelable("data");
+            Bitmap photo = extras.getParcelable("dataSql");
             photo = toRoundBitmap(photo);//将头像设置成圆形
             Drawable drawable = new BitmapDrawable(photo);
             iv_personal_icon.setImageDrawable(drawable);
@@ -496,7 +367,7 @@ public class MyAccountsActivity extends AppCompatActivity {
     private void setImageToHeadView(Intent intent) {
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            Bitmap photo = extras.getParcelable("data");
+            Bitmap photo = extras.getParcelable("dataSql");
             headImage.setImageBitmap(photo);
             //新建文件夹 先选好路径 再调用mkdir函数 现在是根目录下面的Ask文件夹
             File nf = new File(Environment.getExternalStorageDirectory()+"/Ask");

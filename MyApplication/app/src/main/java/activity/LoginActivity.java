@@ -14,17 +14,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.administrator.suishouji.R;
-import data.UserDataManager;
+import dataSql.UserDataManager;
 
-public class Login extends AppCompatActivity {                 //登录界面活动
+public class LoginActivity extends AppCompatActivity {                 //登录界面活动
 
     public int pwdresetFlag=0;
-
-    private Button fh;
     private Button login;
     private Button register;
     private EditText etpwd;
@@ -72,7 +69,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
 
 //    获取监听控件
     private void initId() {
-        fh = (Button) findViewById(R.id.btn_login_page_fh);
+
         login = (Button) findViewById(R.id.btn_login_page_login);
         register = (Button) findViewById(R.id.btn_login_page_register);
         resetpwd = (Button) findViewById(R.id.btn_login_page_resetpwd);
@@ -83,7 +80,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
     }
 //    设置监听
     private void setListener() {
-        fh.setOnClickListener(mylistener);
+//        fh.setOnClickListener(mylistener);
         login.setOnClickListener(mylistener);
         register.setOnClickListener(mylistener);
         resetpwd.setOnClickListener(mylistener);
@@ -95,12 +92,8 @@ public class Login extends AppCompatActivity {                 //登录界面活
     OnClickListener mylistener = new OnClickListener() {                  //不同按钮按下的监听事件选择
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.btn_login_page_fh:                             //登录界面的注销按钮
-                    Intent fh = new Intent(Login.this,TextListActivity.class) ;    //切换Login Activity至User Activity
-                    startActivity(fh);
-                    break;
                 case R.id.btn_login_page_register:                            //登录界面的注册按钮
-                    Intent intent_Login_to_Register = new Intent(Login.this,RegisterActivity.class) ;    //切换Login Activity至User Activity
+                    Intent intent_Login_to_Register = new Intent(LoginActivity.this,RegisterActivity.class) ;    //切换Login Activity至User Activity
                     startActivity(intent_Login_to_Register);
                     finish();
                     break;
@@ -109,7 +102,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
                     break;
 
                 case R.id.btn_login_page_resetpwd:                             //登录界面的注销按钮
-                    Intent intent_Login_to_reset = new Intent(Login.this,ResetpwdActivity.class) ;    //切换Login Activity至User Activity
+                    Intent intent_Login_to_reset = new Intent(LoginActivity.this,ResetpwdActivity.class) ;    //切换Login Activity至User Activity
                     startActivity(intent_Login_to_reset);
                     finish();
                     break;
@@ -139,7 +132,7 @@ public class Login extends AppCompatActivity {                 //登录界面活
                 }
                 editor.commit();
 
-                Intent intent = new Intent(Login.this,TextListActivity.class) ;    //切换Login Activity至User Activity
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class) ;    //切换Login Activity至User Activity
                 startActivity(intent);
                 finish();
                 Toast.makeText(this, "登陆成功",Toast.LENGTH_SHORT).show();//登录成功提示

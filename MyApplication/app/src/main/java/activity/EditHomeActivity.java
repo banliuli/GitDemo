@@ -2,42 +2,30 @@ package activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
-<<<<<<< HEAD
 import android.content.ContentValues;
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ActionBarOverlayLayout;
 
 import android.text.SpannableString;
-<<<<<<< HEAD
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-=======
-import android.text.format.DateFormat;
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.util.Log;
-
-import android.text.Html;
-import android.text.format.DateFormat;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.CheckBox;
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -47,17 +35,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.view.ContextMenu;
-import android.view.MenuItem;
 
 import com.example.administrator.suishouji.R;
-import com.example.administrator.suishouji.ToggleStatus;
+import uil.ToggleStatus;
 
-<<<<<<< HEAD
 import DBSql.DBAdapter;
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
 import DBSql.DBCollect;
-import DBSql.DBManager;
 import adapter.CollectionAdapter;
 import jp.wasabeef.richeditor.RichEditor;
 
@@ -70,11 +53,7 @@ public class EditHomeActivity extends Activity {
     private ToggleButton BtnEdit;
     private ToggleButton BtnMore;
     private ImageView mIv_back;
-<<<<<<< HEAD
-    private DBAdapter da=null;
-=======
 
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     private PopupWindow popupWindow;
     private View view;
 
@@ -86,10 +65,7 @@ public class EditHomeActivity extends Activity {
     private TextView TvTime;
     private TextView TvContent;
     private DBCollect dm = null;
-<<<<<<< HEAD
-
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
+    private DBAdapter da=null;
     private String idString;
     private int state = -1;
     private EditText EtTitle;
@@ -107,6 +83,7 @@ public class EditHomeActivity extends Activity {
     private CollectionAdapter adapter;
     private int position;
     private View collect;
+    private RichEditor mRicheditor;
 
 
     @Override
@@ -118,12 +95,10 @@ public class EditHomeActivity extends Activity {
         getView();
         //注册监听事件
         setListener();
+        getEditor();
         setData();
         dm = new DBCollect(this);
-<<<<<<< HEAD
         da=new DBAdapter(this);
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
         Intent intent = getIntent();
         state = Integer.parseInt(intent.getStringExtra("state"));
         Log.i("log", "state---->"+state);
@@ -204,8 +179,9 @@ public class EditHomeActivity extends Activity {
        String datetime = DateFormat.format("yyyy-MM-dd kk:mm:ss", t).toString();
         this.TvTitle.setText(title);
         this.TvTime.setText(datetime);
-        this.TvContent.setText(content);
-        this.TvContent.setText(Html.fromHtml(content));
+//        this.TvContent.setText(content);
+        mRicheditor.setHtml(content);
+//        this.TvContent.setText(Html.fromHtml(content));
         preferences = getSharedPreferences("togglebuttonstatus", Context.MODE_PRIVATE);
 		/*
 		 * 判断是不是第一次运行该程序
@@ -257,7 +233,8 @@ public class EditHomeActivity extends Activity {
 //        collect=(ImageView)findViewById(R.id.edit_collect);
         TvTitle = (TextView)findViewById(R.id.Tv_activity_edithome_title);
         TvTime = (TextView)findViewById(R.id.Tv_acyivity_edithome_time);
-        TvContent = (TextView)findViewById(R.id.Tv_activity_edithome_content);
+//        TvContent = (TextView)findViewById(R.id.Tv_activity_edithome_content);
+        mRicheditor = (RichEditor)findViewById(R.id.activity_edithome_richeditor);
     }
 
     //注册监听事件
@@ -285,22 +262,11 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-
-//                case R.id.btn_activity_edithome_move:      //移动
-//                    Intent intent = new Intent();
-//                    intent.setClass(getApplicationContext(),MoveActivity.class);
-//                    startActivity(intent);
-//                    break;
-//                case R.id.btn_activity_edithome_edit:     //编辑
-//                    Intent intent2 = new Intent();
-//                    intent2.setClass(getApplicationContext(),EditActivity.class);
-//                    startActivity(intent2);
-//                    break;
                 case R.id.btn_activity_edithome_more:      //更多
                     popup();
                     break;
                 case R.id.Iv_activity_edithome_back:       //返回
-                    Intent i=new Intent(EditHomeActivity.this,TextListActivity.class);
+                    Intent i=new Intent(EditHomeActivity.this, MainActivity.class);
                     startActivity(i);
                     break;
             }
@@ -390,12 +356,7 @@ public class EditHomeActivity extends Activity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.Rlayout_popup1://阅读密码
-<<<<<<< HEAD
                     dialog();
-=======
-                    Intent i=new Intent(EditHomeActivity.this,SetpwdActivity.class);
-                    startActivity(i);
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
                     break;
                 case R.id.Rlayout_popup2:     //删除
                     new AlertDialog.Builder(EditHomeActivity.this).setTitle("确认删除？")//设置对话框标题
@@ -419,7 +380,6 @@ public class EditHomeActivity extends Activity {
             }
         }
     }
-<<<<<<< HEAD
     private void dialog(){
         final AlertDialog.Builder builder=new AlertDialog.Builder(EditHomeActivity.this);
         final AlertDialog dialog=builder.create();
@@ -475,7 +435,7 @@ public class EditHomeActivity extends Activity {
                         da.insert(pwd,ensure);
                         values.clear();
                         Intent i=new Intent();
-                        i.setClass(EditHomeActivity.this,TextListActivity.class);
+                        i.setClass(EditHomeActivity.this, MainActivity.class);
                         startActivity(i);
 
                         //跳转到新的界面以后需要去隐藏对话框
@@ -499,8 +459,6 @@ public class EditHomeActivity extends Activity {
             }
         });
     }
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
     public void getData()
     {
         Log.i("log","title---->"+title);
@@ -533,4 +491,14 @@ public class EditHomeActivity extends Activity {
             ex.printStackTrace();
         }
     }
-}
+    /**
+     * 获取RichEditor界面
+     */
+    private void getEditor() {
+        mRicheditor.setEditorHeight(200);    //起始编辑设置高度
+        mRicheditor.setEditorFontSize(20);   //设置字体大小
+        mRicheditor.setEditorFontColor(Color.BLACK);  //设置字体颜色
+        mRicheditor.setPadding(10, 10, 10, 10);
+//        mEditor.setPlaceholder("欢迎使用随手记......");
+    }
+    }

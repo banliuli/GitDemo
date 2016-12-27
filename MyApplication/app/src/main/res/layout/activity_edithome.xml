@@ -32,12 +32,6 @@
             android:layout_marginRight="18dp"/>
     </LinearLayout>
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5">
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,16 +59,14 @@
                 android:layout_height="1dp"
                 android:background="@color/colorGray"
                 android:layout_margin="5dp"/>
-            <TextView
-                android:id="@+id/Tv_activity_edithome_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="随手记笔记内容"
-                android:layout_marginLeft="20dp"
-                android:textSize="20sp"/>
-        </LinearLayout>
 
-    </FrameLayout>
+        </LinearLayout>
+    <jp.wasabeef.richeditor.RichEditor
+        android:id="@+id/activity_edithome_richeditor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,6 +90,7 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="60dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/colorBlack"
                 android:background="@null"
                 android:button="@drawable/btn_collect"
@@ -128,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:button="@drawable/more"
                 android:background="@null"
                 android:text=""

@@ -106,7 +106,7 @@ public class DBCollect {
             cv.put("content", content);
             cv.put("time", datetime);
             Log.i("log", "data----->" + title + content + datetime);
-            l = mSQLiteDatabase.insert("data", null, cv);
+            l = mSQLiteDatabase.insert("dataSql", null, cv);
             Log.i("log", cv.toString());
             Log.i("log", datetime + "" + l);
         } catch (Exception ex) {
@@ -136,7 +136,7 @@ public class DBCollect {
         int affect = 0;
         try {
             Log.i("log", "try to delete the data in databases");
-            affect = mSQLiteDatabase.delete("data", "_id=?", new String[]{id + ""});
+            affect = mSQLiteDatabase.delete("dataSql", "_id=?", new String[]{id + ""});
             Log.i("log", "delete success");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -156,7 +156,7 @@ public class DBCollect {
             cv.put("title", title);
             cv.put("content", content);
             cv.put("time",datetime);
-            affect = mSQLiteDatabase.update("data", cv, "_id=?", new String[]{id + ""});
+            affect = mSQLiteDatabase.update("dataSql", cv, "_id=?", new String[]{id + ""});
         } catch (Exception ex) {
             ex.printStackTrace();
             affect = -1;

@@ -1,21 +1,16 @@
 package adapter;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.administrator.suishouji.R;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import activity.ItemText;
 
 public class TextListAdapter extends BaseAdapter {
     private Context context;

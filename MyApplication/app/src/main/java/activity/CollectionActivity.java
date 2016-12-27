@@ -120,13 +120,11 @@ public class CollectionActivity extends Activity {
 //    }
     private void getView(){
         mIv_back=(ImageView)findViewById(R.id.img_activity_collection_back);
-        mTv_edit = (TextView)findViewById(R.id.activity_collection_edit);
         lv = (ListView)findViewById(R.id.Lv_activtiy_collection);
     }
     private void setListener(){
         MyListener listener=new MyListener();
         mIv_back.setOnClickListener(listener);
-        mTv_edit.setOnClickListener(listener);
     }
     private class MyListener implements View.OnClickListener {
         @Override
@@ -136,10 +134,6 @@ public class CollectionActivity extends Activity {
                     Intent i=new Intent(CollectionActivity.this,MineActivity.class);
                     startActivity(i);
                     break;
-                case R.id.activity_collection_edit:
-//                    Intent i1 = new Intent(CollectionActivity.this,TextListActivity.class);
-//                    startActivity(i1);
-//                    break;
                 case R.id.Lv_activtiy_collection:
                     Intent i2 = new Intent(CollectionActivity.this,EditHomeActivity.class);
                     startActivity(i2);

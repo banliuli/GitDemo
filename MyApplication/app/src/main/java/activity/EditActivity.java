@@ -131,6 +131,7 @@ public class EditActivity extends Activity {
             }
             dm.close();
             mEditor.setPlaceholder(String.valueOf(travelsSpan));
+            mEditor.setHtml(text);
         }
     }
 
@@ -296,7 +297,7 @@ public class EditActivity extends Activity {
                 case R.id.Tv_activity_edit_finish:    //完成
                     getData();
                     Intent intent2 = new Intent();
-                    intent2.setClass(getApplication(), TextListActivity.class);
+                    intent2.setClass(getApplication(), MainActivity.class);
                     startActivity(intent2);
                     break;
 

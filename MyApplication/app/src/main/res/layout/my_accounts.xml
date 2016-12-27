@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activity.Login"
+    tools:context="activity.LoginActivity"
     android:background="#e8ecfa"
     android:orientation="vertical">
 
@@ -45,32 +45,19 @@
         android:layout_marginTop="25dp"
         android:background="#ffffff">
 
-        <com.example.administrator.suishouji.CircleImageView
+        <uil.CircleImageView
             android:id="@+id/Iv_my_accounts_touxiang"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/img"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"/>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-        <!--<ImageView-->
-            <!--android:id="@+id/Iv_my_accounts_touxiang"-->
-            <!--android:layout_width="80dp"-->
-            <!--android:layout_height="80dp"-->
-            <!--android:src="@drawable/img"-->
-            <!--android:layout_marginRight="15dp"/>-->
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="修改头像"
+            android:text="头像"
             android:textSize="25dp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
@@ -89,42 +76,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#ffffff"
-<<<<<<< HEAD
         android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp">
-=======
-<<<<<<< HEAD
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="10dp">
-=======
-        android:layout_marginBottom="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="wrap_content"
-                android:text="用户名"
-                android:textSize="25dp" />
-            <EditText
-                android:id="@+id/et_my_accounts_username"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:hint="未填写"
-                android:textSize="22dp"
-                android:gravity="left"
-                android:background="@null" />
-
-        </LinearLayout>
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -241,23 +194,5 @@
             android:layout_height="wrap_content"
             android:background="@drawable/xian"/>
     </LinearLayout>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-    <Button
-        android:id="@+id/btn_my_accounts_cancle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="注销"
-        android:textSize="23dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/button_shape_delete"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="40dp"/>
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
 </LinearLayout>

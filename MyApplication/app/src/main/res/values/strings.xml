@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Suishouji</string>
+    <string name="app_name">随手记</string>
     <drawable name="home_bg">#d4d4d2</drawable>
     <drawable name="btn_pressed">#2828FF</drawable>
     <drawable name="btn_press">#F75000</drawable>

@@ -3,21 +3,14 @@ package activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.text.method.PasswordTransformationMethod;
-=======
-<<<<<<< HEAD
-import android.text.method.PasswordTransformationMethod;
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.administrator.suishouji.R;
-import data.UserData;
-import data.UserDataManager;
+import dataSql.UserData;
+import dataSql.UserDataManager;
 
 /**
  * Created by lenovo on 2016/11/18.
@@ -50,20 +43,11 @@ public class ResetpwdActivity extends Activity {
                 mUserDataManager = new UserDataManager(this);
                 mUserDataManager.openDataBase();                              //建立本地数据库
             }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
 
         //设置密码为隐藏
         pwd1.setTransformationMethod(PasswordTransformationMethod.getInstance());
         pwd2.setTransformationMethod(PasswordTransformationMethod.getInstance());
         spwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-<<<<<<< HEAD
-=======
-=======
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
         }
         View.OnClickListener m_resetpwd_Listener = new View.OnClickListener() {    //不同按钮按下的监听事件选择
             public void onClick(View v) {
@@ -72,7 +56,7 @@ public class ResetpwdActivity extends Activity {
                         resetpwd_check();
                         break;
                     case R.id.btn_resetpwd_cancle:                     //取消按钮的监听事件,由注册界面返回登录界面
-                        Intent intent_Resetpwd_to_Login = new Intent(ResetpwdActivity.this,Login.class) ;    //切换Resetpwd Activity至Login Activity
+                        Intent intent_Resetpwd_to_Login = new Intent(ResetpwdActivity.this, LoginActivity.class) ;    //切换Resetpwd Activity至Login Activity
                         startActivity(intent_Resetpwd_to_Login);
                         finish();
                         break;
@@ -99,7 +83,7 @@ public class ResetpwdActivity extends Activity {
                         }else{
                             Toast.makeText(this, "修改密码成功",Toast.LENGTH_SHORT).show();
                             mUser.pwdresetFlag=1;
-                            Intent intent_Register_to_Login = new Intent(ResetpwdActivity.this,Login.class) ;    //切换User Activity至Login Activity
+                            Intent intent_Register_to_Login = new Intent(ResetpwdActivity.this, LoginActivity.class) ;    //切换User Activity至Login Activity
                             startActivity(intent_Register_to_Login);
                             finish();
                         }

@@ -10,8 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
+import uil.ConcealPwd;
 import com.example.administrator.suishouji.R;
-import com.example.administrator.suishouji.ToggleStatus;
+import uil.ToggleStatus;
 
 public class ConcealActivity extends Activity {
     private ImageView mIv_back;

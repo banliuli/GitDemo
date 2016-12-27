@@ -6,11 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="9">
+        android:layout_weight="9"
+        android:background="@drawable/bacg">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorTitle"
+             android:background="@color/colorTitle"
             android:orientation="vertical">
             <Button
                 android:layout_width="wrap_content"
@@ -23,7 +24,7 @@
                 android:background="@null"
                 android:layout_alignParentRight="true"
                 android:id="@+id/btn_mine_shezhi"/>
-            <com.example.administrator.suishouji.CircleImageView
+            <uil.CircleImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:id="@+id/Iv_layout_mine_login1"

@@ -1,10 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="E:\2016.9.4Android-studio\studio\GitDemo2\MyApplication\richeditor\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\2016.9.4Android-studio\studio\GitDemo2\MyApplication\richeditor\src\debug\jniLibs"/></dataSet></merger>
-=======
-<<<<<<< HEAD
-<merger version="3"><dataSet config="main"><source path="E:\Grade3.1\java\workspace\GitDemo4\MyApplication\richeditor\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\Grade3.1\java\workspace\GitDemo4\MyApplication\richeditor\src\debug\jniLibs"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main"><source path="E:\PakeageSuishoujiGit\Suishouji\MyApplication\richeditor\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\PakeageSuishoujiGit\Suishouji\MyApplication\richeditor\src\debug\jniLibs"/></dataSet></merger>
->>>>>>> eca444ff2d41dc03deaba6405ce4fffab06a2c62
->>>>>>> d880a9a4ee84d9570aadf4edb7986a228c9d2e35
