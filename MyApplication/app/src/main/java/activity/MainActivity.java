@@ -1,12 +1,15 @@
 package activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -21,16 +24,26 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.example.administrator.suishouji.R;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+
 import DBSql.DBAdapter;
 import DBSql.DBManager;
+
+
+import DBSql.DBManager;
 import DBSql.HtmlManager;
+
+
 import adapter.TextListAdapter;
 
 /**
@@ -61,26 +74,81 @@ public class MainActivity extends AppCompatActivity{
     private File copyintofile=null;
     private FileOutputStream copyinto=null;
     private FileInputStream copyfrom=null;
+    private EditText Etsearch;
+    private ListView lvSearch;
+    private TextListAdapter adapter1;
+    private ImageView Ivdeletetext;
+    private Cursor cursor1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_textlist);
+        //初始化控件
         initID();
+        //控件监听事件
         setListener();
-
-
+        //列表显示页
         dm = new DBManager(this);
         initAdapter();
         lv.setAdapter(adapter);
-
-
-
         //给ListView设置item点击监听器，实现点击效果
         lv.setOnItemClickListener(new myOnItemClickListener());
         //实现长按出现菜单
         lv.setOnCreateContextMenuListener(new myOnCreateContextMenuListener());
+        //搜索实现
+        getSearch();
 
+
+    }
+    //搜索实现
+    private void getSearch() {
+        Etsearch.addTextChangedListener(new TextWatcher() {
+            //文本改变前
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            //文本改变时
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length()==0){
+                    lvSearch.setVisibility(View.GONE);
+                }else {
+                    Ivdeletetext.setVisibility(View.VISIBLE);
+                    showListView();
+                    lvSearch.setAdapter(adapter1);
+                    //给搜索ListView设置item点击监听器，实现点击效果
+                    lvSearch.setOnItemClickListener(new setOnItemClickListener());
+                }
+            }
+            //文本改变后
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+    }
+
+
+    //搜索list实现
+    private void showListView() {
+        lvSearch.setVisibility(View.VISIBLE);
+        String letter = Etsearch.getText().toString().trim();
+        dm.open();//打开数据库操作对象
+        cursor2 = dm.selectItem(letter);
+        cursor2.moveToFirst();//将游标移动到第一条数据，使用前必须调用
+        int count1 = cursor2.getCount();//个数
+        ArrayList<String> title1 = new ArrayList<String>();
+        ArrayList<String> time1 = new ArrayList<String>();
+        for (int i = 0; i < count1; i++) {
+            title1.add(cursor2.getString(cursor2.getColumnIndex("title")));
+            time1.add(cursor2.getString(cursor2.getColumnIndex("time")));
+            cursor2.moveToNext();//将游标指向下一个
+        }
+        dm.close();//关闭数据操作对象
+        adapter1 = new TextListAdapter(this,title1, time1);//创建数据源
     }
 
     //在listview中显示数据库中的对象
@@ -90,7 +158,6 @@ public class MainActivity extends AppCompatActivity{
         cursor.moveToFirst();//将游标移动到第一条数据，使用前必须调用
         int count = cursor.getCount();//个数
         ArrayList<String> title = new ArrayList<String>();
-
         ArrayList<String> time = new ArrayList<String>();
         for (int i = 0; i < count; i++) {
             title.add(cursor.getString(cursor.getColumnIndex("title")));
@@ -102,7 +169,6 @@ public class MainActivity extends AppCompatActivity{
 
 
     }
-
 
     //选择菜单
     public class myOnCreateContextMenuListener implements View.OnCreateContextMenuListener {
@@ -119,7 +185,7 @@ public class MainActivity extends AppCompatActivity{
         }
 
     }
-
+    //长按弹出框实现
     public boolean onContextItemSelected(MenuItem item){
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
         dm.open();
@@ -181,8 +247,7 @@ public class MainActivity extends AppCompatActivity{
 
 
     }
-
-
+    //导出到SD卡
     public int copyicon(String title1,String content1){
         for(i=0;i<content1.length();i++)
         {
@@ -240,43 +305,40 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-
-
     //短按，即点击
     public class myOnItemClickListener implements AdapterView.OnItemClickListener {
         public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
             // TODO Auto-generated method stub
             //super.onListItemClick(l, v, position, id);
             Log.i("log", "position--->"+position);
-            cursor.moveToPosition(position);
-            Intent intent = new Intent();
-            intent.putExtra("state", CHECK_STATE);
-            intent.putExtra("id", cursor.getString(cursor.getColumnIndex("_id")));
-            intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
-            intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
-            intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
-            if(id==1){
-                dialog();
-            }
-            else{
-                intent.setClass(MainActivity.this, EditHomeActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
+                cursor.moveToPosition(position);
+                Intent intent = new Intent();
+                intent.putExtra("state", CHECK_STATE);
+                intent.putExtra("id", cursor.getString(cursor.getColumnIndex("_id")));
+                intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
+                intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
+                intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
+                if(id==1){
+                    dialog();
+                }
+                else{
+                    intent.setClass(MainActivity.this, EditHomeActivity.class);
+                    MainActivity.this.startActivity(intent);
+                }
         }
     }
+    //弹出框
     private void dialog(){
         final AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
         final AlertDialog dialog=builder.create();
         final View view=View.inflate(this,R.layout.layout_setpwd,null);
         dialog.setView(view);
         dialog.show();
-        //获取控件（阅读密码）
         Button submit = (Button) view.findViewById(R.id.btn_activity_setpwd_finish);
         Button cancel = (Button) view.findViewById(R.id.btn_activity_setpwd_cancel);
         CheckBox checkBox=(CheckBox)view.findViewById(R.id.Cb_activity_setpwd_check);
         final EditText setpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_set);
         final EditText enpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_ensure);
-
         setpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
         enpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
         CompoundButton.OnCheckedChangeListener listener=new CompoundButton.OnCheckedChangeListener(){
@@ -340,41 +402,84 @@ public class MainActivity extends AppCompatActivity{
             }
         });
     }
+    //控件初始化
     private void initID() {
-
+        //列表显示
         lv = (ListView)findViewById(R.id.Lv_activtiy_textlist);
+        //登录
         login=(ImageView) findViewById(R.id.iv_activtiy_main_login);
+        //我的
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
+        //添加日记
         add=(Button)findViewById(R.id.btn_activtiy_main_add);
+        //注册搜索框
+        Etsearch=(EditText) findViewById(R.id.Et_activity_textlist_search);
+        //清除搜索框中的文字
+        Ivdeletetext = (ImageView)findViewById(R.id.Iv_activity_textlist_deletetext);
+        //注册textlist显示列表
+        lvSearch = (ListView)findViewById(R.id.lv1_activity_textlist_searchlist);
+
     }
+    //监听事件
     private void setListener() {
         MyListener listener = new MyListener();
         login.setOnClickListener(listener);
         mine.setOnClickListener(listener);
         add.setOnClickListener(listener);
+        Ivdeletetext.setOnClickListener(listener);
     }
 
+    //点击事件
     private class MyListener implements View.OnClickListener{
         private int flag;
-
         @Override
         public void onClick(View v) {
             Intent i = new Intent();
             switch (v.getId()){
+                //登录
                 case R.id.iv_activtiy_main_login:
-                    i.setClass(MainActivity.this, LoginActivity.class);
-                    startActivity(i);
+                        i.setClass(MainActivity.this,LoginActivity.class);
+                   startActivity(i);
                     break;
+                //我的
                 case R.id.btn_activtiy_main_mine:
                     i.setClass(MainActivity.this,MineActivity.class);
-                    startActivity(i);
+                  startActivity(i);
                     break;
+                //添加
                 case R.id.btn_activtiy_main_add:
                     Intent intent = new Intent(MainActivity.this,EditActivity.class) ;    //切换Login Activity至User Activity
                     intent.putExtra("state", EDIT_STATE);
                     startActivity(intent);
+                    break;
+                //一键删除搜索框内容
+                case R.id.Iv_activity_textlist_deletetext:
+                    //把EditText内容设置为空
+                    Etsearch.setText("");
+                    //把ListView隐藏
+                    lvSearch.setVisibility(View.GONE);
+                    break;
             }
 
         }
     }
+
+
+    private class setOnItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Log.i("log", "position--->"+position);
+            cursor2.moveToPosition(position);
+            Intent intent = new Intent();
+            intent.putExtra("state", CHECK_STATE);
+            intent.putExtra("id", cursor2.getString(cursor2.getColumnIndex("_id")));
+            intent.putExtra("title", cursor2.getString(cursor2.getColumnIndex("title")));
+            intent.putExtra("content", cursor2.getString(cursor2.getColumnIndex("content")));
+            intent.putExtra("time", cursor2.getString(cursor2.getColumnIndex("time")));
+            intent.setClass(MainActivity.this, EditHomeActivity.class);
+            MainActivity.this.startActivity(intent);
+
+        }
+    }
+
 }
