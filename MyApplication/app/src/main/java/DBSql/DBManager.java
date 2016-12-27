@@ -163,4 +163,17 @@ public class DBManager {
         }
         return affect;
     }
+    //查询数据
+    public Cursor selectItem(String text){
+        Cursor cursor = null;
+        try {
+            String sql = "select * from data where title like '%"+ text + "%'";
+            cursor = mSQLiteDatabase.rawQuery(sql, null);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            cursor = null;
+        }
+
+        return cursor;
+    }
 }
