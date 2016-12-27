@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.administrator.suishouji.R;
-import dataSql.UserData;
-import dataSql.UserDataManager;
+import data.UserData;
+import data.UserDataManager;
 
 /**
  * Created by lenovo on 2016/11/18.
@@ -56,7 +56,7 @@ public class ResetpwdActivity extends Activity {
                         resetpwd_check();
                         break;
                     case R.id.btn_resetpwd_cancle:                     //取消按钮的监听事件,由注册界面返回登录界面
-                        Intent intent_Resetpwd_to_Login = new Intent(ResetpwdActivity.this, LoginActivity.class) ;    //切换Resetpwd Activity至Login Activity
+                        Intent intent_Resetpwd_to_Login = new Intent(ResetpwdActivity.this,Login.class) ;    //切换Resetpwd Activity至Login Activity
                         startActivity(intent_Resetpwd_to_Login);
                         finish();
                         break;
@@ -83,7 +83,7 @@ public class ResetpwdActivity extends Activity {
                         }else{
                             Toast.makeText(this, "修改密码成功",Toast.LENGTH_SHORT).show();
                             mUser.pwdresetFlag=1;
-                            Intent intent_Register_to_Login = new Intent(ResetpwdActivity.this, LoginActivity.class) ;    //切换User Activity至Login Activity
+                            Intent intent_Register_to_Login = new Intent(ResetpwdActivity.this,Login.class) ;    //切换User Activity至Login Activity
                             startActivity(intent_Register_to_Login);
                             finish();
                         }

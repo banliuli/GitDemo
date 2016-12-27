@@ -1,6 +1,8 @@
 package activity;
 
 import android.app.AlertDialog;
+import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,20 +13,31 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import uil.CircleImageView;
+import com.example.administrator.suishouji.CircleImageView;
 import com.example.administrator.suishouji.R;
 
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -33,10 +46,24 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import dataSql.UserDataManager;
-import dataSql.UserData;
+import data.UserDataManager;
+import data.UserData;
+import data.UserDataManager;
 
 public class MyAccountsActivity extends AppCompatActivity {
 
@@ -318,7 +345,7 @@ public class MyAccountsActivity extends AppCompatActivity {
     protected void setImageToView(Intent data) {
         Bundle extras = data.getExtras();
         if (extras != null) {
-            Bitmap photo = extras.getParcelable("dataSql");
+            Bitmap photo = extras.getParcelable("data");
             photo = toRoundBitmap(photo);//将头像设置成圆形
             Drawable drawable = new BitmapDrawable(photo);
             iv_personal_icon.setImageDrawable(drawable);
@@ -367,7 +394,7 @@ public class MyAccountsActivity extends AppCompatActivity {
     private void setImageToHeadView(Intent intent) {
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            Bitmap photo = extras.getParcelable("dataSql");
+            Bitmap photo = extras.getParcelable("data");
             headImage.setImageBitmap(photo);
             //新建文件夹 先选好路径 再调用mkdir函数 现在是根目录下面的Ask文件夹
             File nf = new File(Environment.getExternalStorageDirectory()+"/Ask");

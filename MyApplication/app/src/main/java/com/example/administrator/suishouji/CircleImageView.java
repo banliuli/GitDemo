@@ -1,4 +1,4 @@
-package uil;
+package com.example.administrator.suishouji;
 
 import android.widget.ImageView;
 import android.content.Context;
@@ -15,8 +15,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-
-import com.example.administrator.suishouji.R;
 
 /**
  * Created by lenovo on 2016/11/21.

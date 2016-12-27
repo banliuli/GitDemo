@@ -1,5 +1,6 @@
 package activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -21,26 +22,37 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.example.administrator.suishouji.R;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+
 import DBSql.DBAdapter;
 import DBSql.DBManager;
+
+
+import DBSql.DBManager;
 import DBSql.HtmlManager;
+
+
 import adapter.TextListAdapter;
 
 /**
  * Created by lenovo on 2016/11/28.
  */
-public class MainActivity extends AppCompatActivity{
+public class TextListActivity extends AppCompatActivity{
 
     private ListView lv;
     private ImageView login;
     private Button mine;
+    private ImageView refresh;
     private Button add;
     private DBManager dm;
     private Cursor cursor;
@@ -153,8 +165,8 @@ public class MainActivity extends AppCompatActivity{
                     intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
                     intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
                     //设置并启动另一个指定的Activity
-                    intent.setClass(MainActivity.this, EditActivity.class);
-                    MainActivity.this.startActivity(intent);
+                    intent.setClass(TextListActivity.this, EditActivity.class);
+                    TextListActivity.this.startActivity(intent);
                     finish();
                 }catch(Exception ex){
                     ex.printStackTrace();
@@ -167,9 +179,9 @@ public class MainActivity extends AppCompatActivity{
                     String itemcontent=cursor.getString(cursor.getColumnIndex("content"));
                     //HM.htmlmanager(itemtitle, itemcontent);
                     copyicon(itemtitle,itemcontent);
-                    Toast.makeText(MainActivity.this, "导出成功，快去SD卡的\" 随手记 \"里找出来分享吧！！", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TextListActivity.this, "导出成功，快去SD卡的\" 随手记 \"里找出来分享吧！！", Toast.LENGTH_LONG).show();
                 }catch(Exception ex){
-                    Toast.makeText(MainActivity.this, "Sorry!!!导出失败！！", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TextListActivity.this, "Sorry!!!导出失败！！", Toast.LENGTH_LONG).show();
                     ex.printStackTrace();
                 }
                 break;
@@ -259,24 +271,22 @@ public class MainActivity extends AppCompatActivity{
                 dialog();
             }
             else{
-                intent.setClass(MainActivity.this, EditHomeActivity.class);
-                MainActivity.this.startActivity(intent);
+                intent.setClass(TextListActivity.this, EditHomeActivity.class);
+                TextListActivity.this.startActivity(intent);
             }
         }
     }
     private void dialog(){
-        final AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        final AlertDialog.Builder builder=new AlertDialog.Builder(TextListActivity.this);
         final AlertDialog dialog=builder.create();
         final View view=View.inflate(this,R.layout.layout_setpwd,null);
         dialog.setView(view);
         dialog.show();
-        //获取控件（阅读密码）
         Button submit = (Button) view.findViewById(R.id.btn_activity_setpwd_finish);
         Button cancel = (Button) view.findViewById(R.id.btn_activity_setpwd_cancel);
         CheckBox checkBox=(CheckBox)view.findViewById(R.id.Cb_activity_setpwd_check);
         final EditText setpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_set);
         final EditText enpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_ensure);
-
         setpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
         enpwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
         CompoundButton.OnCheckedChangeListener listener=new CompoundButton.OnCheckedChangeListener(){
@@ -303,7 +313,7 @@ public class MainActivity extends AppCompatActivity{
                 EditText enpwd = (EditText) view.findViewById(R.id.Et_setpwd_activity_ensure);
                 String pwd = setpwd.getText().toString();
                 String ensure = enpwd.getText().toString();
-                DBAdapter da = new DBAdapter(MainActivity.this);
+                DBAdapter da = new DBAdapter(TextListActivity.this);
 
                 //db.close();
                 if(!TextUtils.isEmpty(pwd) && !TextUtils.isEmpty(ensure)){
@@ -315,20 +325,20 @@ public class MainActivity extends AppCompatActivity{
                         intent.putExtra("title", cursor.getString(cursor.getColumnIndex("title")));
                         intent.putExtra("content", cursor.getString(cursor.getColumnIndex("content")));
                         intent.putExtra("time", cursor.getString(cursor.getColumnIndex("time")));
-                        intent.setClass(MainActivity.this, EditHomeActivity.class);
-                        MainActivity.this.startActivity(intent);
+                        intent.setClass(TextListActivity.this, EditHomeActivity.class);
+                        TextListActivity.this.startActivity(intent);
 
 
                         //跳转到新的界面以后需要去隐藏对话框
                         dialog.dismiss();
                         da.close();
                     } else {
-                        Toast.makeText(MainActivity.this,"密码不一致",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TextListActivity.this,"密码不一致",Toast.LENGTH_SHORT).show();
                     }
 
                 }else{
                     //提示用户密码输入为空的情况
-                    Toast.makeText(MainActivity.this,"请输入密码",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TextListActivity.this,"请输入密码",Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -346,13 +356,18 @@ public class MainActivity extends AppCompatActivity{
         login=(ImageView) findViewById(R.id.iv_activtiy_main_login);
         mine = (Button)findViewById(R.id.btn_activtiy_main_mine);
         add=(Button)findViewById(R.id.btn_activtiy_main_add);
+        refresh = (ImageView) findViewById(R.id.iv_activtiy_main_refresh);
+
     }
     private void setListener() {
         MyListener listener = new MyListener();
         login.setOnClickListener(listener);
         mine.setOnClickListener(listener);
-        add.setOnClickListener(listener);
+       add.setOnClickListener(listener);
+        refresh.setOnClickListener(listener);
+
     }
+
 
     private class MyListener implements View.OnClickListener{
         private int flag;
@@ -361,18 +376,32 @@ public class MainActivity extends AppCompatActivity{
         public void onClick(View v) {
             Intent i = new Intent();
             switch (v.getId()){
+
                 case R.id.iv_activtiy_main_login:
-                    i.setClass(MainActivity.this, LoginActivity.class);
-                    startActivity(i);
+//                    if(flag==0){
+                        i.setClass(TextListActivity.this,Login.class);
+//                        flag=1;
+//                    }else{
+//                        i.setClass(TextListActivity.this,MyAccountsActivity.class);
+//                        flag=0;
+//                    }
+                   startActivity(i);
                     break;
                 case R.id.btn_activtiy_main_mine:
-                    i.setClass(MainActivity.this,MineActivity.class);
+                    i.setClass(TextListActivity.this,MineActivity.class);
+                  startActivity(i);
+                    break;
+                case R.id.iv_activtiy_main_refresh:
+                    finish();
+                    i.setClass(TextListActivity.this,TextListActivity.class);
                     startActivity(i);
                     break;
                 case R.id.btn_activtiy_main_add:
-                    Intent intent = new Intent(MainActivity.this,EditActivity.class) ;    //切换Login Activity至User Activity
+                    Intent intent = new Intent(TextListActivity.this,EditActivity.class) ;    //切换Login Activity至User Activity
                     intent.putExtra("state", EDIT_STATE);
                     startActivity(intent);
+
+
             }
 
         }

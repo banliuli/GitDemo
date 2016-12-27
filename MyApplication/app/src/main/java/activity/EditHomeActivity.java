@@ -20,6 +20,9 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 
+import android.text.Html;
+import android.text.format.DateFormat;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,12 +38,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.view.ContextMenu;
+import android.view.MenuItem;
 
 import com.example.administrator.suishouji.R;
-import uil.ToggleStatus;
+import com.example.administrator.suishouji.ToggleStatus;
 
 import DBSql.DBAdapter;
 import DBSql.DBCollect;
+import DBSql.DBManager;
 import adapter.CollectionAdapter;
 import jp.wasabeef.richeditor.RichEditor;
 
@@ -262,11 +267,22 @@ public class EditHomeActivity extends Activity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+
+//                case R.id.btn_activity_edithome_move:      //移动
+//                    Intent intent = new Intent();
+//                    intent.setClass(getApplicationContext(),MoveActivity.class);
+//                    startActivity(intent);
+//                    break;
+//                case R.id.btn_activity_edithome_edit:     //编辑
+//                    Intent intent2 = new Intent();
+//                    intent2.setClass(getApplicationContext(),EditActivity.class);
+//                    startActivity(intent2);
+//                    break;
                 case R.id.btn_activity_edithome_more:      //更多
                     popup();
                     break;
                 case R.id.Iv_activity_edithome_back:       //返回
-                    Intent i=new Intent(EditHomeActivity.this, MainActivity.class);
+                    Intent i=new Intent(EditHomeActivity.this,TextListActivity.class);
                     startActivity(i);
                     break;
             }
@@ -435,7 +451,7 @@ public class EditHomeActivity extends Activity {
                         da.insert(pwd,ensure);
                         values.clear();
                         Intent i=new Intent();
-                        i.setClass(EditHomeActivity.this, MainActivity.class);
+                        i.setClass(EditHomeActivity.this,TextListActivity.class);
                         startActivity(i);
 
                         //跳转到新的界面以后需要去隐藏对话框

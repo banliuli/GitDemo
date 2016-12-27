@@ -14,12 +14,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.administrator.suishouji.R;
-import dataSql.UserDataManager;
+import data.UserDataManager;
 
-public class LoginActivity extends AppCompatActivity {                 //登录界面活动
+public class Login extends AppCompatActivity {                 //登录界面活动
 
     public int pwdresetFlag=0;
     private Button login;
@@ -92,8 +93,12 @@ public class LoginActivity extends AppCompatActivity {                 //登录�
     OnClickListener mylistener = new OnClickListener() {                  //不同按钮按下的监听事件选择
         public void onClick(View v) {
             switch (v.getId()) {
+//                case R.id.btn_login_page_fh:                             //登录界面的注销按钮
+//                    Intent fh = new Intent(Login.this,TextListActivity.class) ;    //切换Login Activity至User Activity
+//                    startActivity(fh);
+//                    break;
                 case R.id.btn_login_page_register:                            //登录界面的注册按钮
-                    Intent intent_Login_to_Register = new Intent(LoginActivity.this,RegisterActivity.class) ;    //切换Login Activity至User Activity
+                    Intent intent_Login_to_Register = new Intent(Login.this,RegisterActivity.class) ;    //切换Login Activity至User Activity
                     startActivity(intent_Login_to_Register);
                     finish();
                     break;
@@ -102,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {                 //登录�
                     break;
 
                 case R.id.btn_login_page_resetpwd:                             //登录界面的注销按钮
-                    Intent intent_Login_to_reset = new Intent(LoginActivity.this,ResetpwdActivity.class) ;    //切换Login Activity至User Activity
+                    Intent intent_Login_to_reset = new Intent(Login.this,ResetpwdActivity.class) ;    //切换Login Activity至User Activity
                     startActivity(intent_Login_to_reset);
                     finish();
                     break;
@@ -132,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {                 //登录�
                 }
                 editor.commit();
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class) ;    //切换Login Activity至User Activity
+                Intent intent = new Intent(Login.this,TextListActivity.class) ;    //切换Login Activity至User Activity
                 startActivity(intent);
                 finish();
                 Toast.makeText(this, "登陆成功",Toast.LENGTH_SHORT).show();//登录成功提示

@@ -1,4 +1,4 @@
-package dataSql;
+package data;
 
 /**
  * Created by Administrator on 2016/12/12.

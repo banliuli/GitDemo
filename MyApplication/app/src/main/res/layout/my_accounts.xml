@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activity.LoginActivity"
+    tools:context="activity.Login"
     android:background="#e8ecfa"
     android:orientation="vertical">
 
@@ -45,7 +45,7 @@
         android:layout_marginTop="25dp"
         android:background="#ffffff">
 
-        <uil.CircleImageView
+        <com.example.administrator.suishouji.CircleImageView
             android:id="@+id/Iv_my_accounts_touxiang"
             android:layout_width="80dp"
             android:layout_height="80dp"

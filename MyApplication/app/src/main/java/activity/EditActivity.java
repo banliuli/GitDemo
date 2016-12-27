@@ -297,7 +297,7 @@ public class EditActivity extends Activity {
                 case R.id.Tv_activity_edit_finish:    //完成
                     getData();
                     Intent intent2 = new Intent();
-                    intent2.setClass(getApplication(), MainActivity.class);
+                    intent2.setClass(getApplication(), TextListActivity.class);
                     startActivity(intent2);
                     break;
 

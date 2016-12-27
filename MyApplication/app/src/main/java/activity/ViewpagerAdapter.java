@@ -1,4 +1,4 @@
-package adapter;
+package activity;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;

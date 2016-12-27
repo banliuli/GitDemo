@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.administrator.suishouji.R;
-import dataSql.UserData;
-import dataSql.UserDataManager;
+import data.UserData;
+import data.UserDataManager;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
             switch (v.getId()){
 
                 case R.id.btn_register_page_fh:
-                    i.setClass(RegisterActivity.this, LoginActivity.class);
+                    i.setClass(RegisterActivity.this,Login.class);
                     startActivity(i);
                     break;
             }
@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(this,"注册成功", Toast.LENGTH_SHORT).show();
 
-                    Intent i =new Intent(RegisterActivity.this, LoginActivity.class);
+                    Intent i =new Intent(RegisterActivity.this,Login.class);
                     startActivity(i);
                     finish();
                 }

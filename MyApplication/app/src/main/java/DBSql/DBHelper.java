@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DBHelper extends SQLiteOpenHelper{
 
-    private String tablename = "dataSql";
+    private String tablename = "data";
     private String icontable = "icons";
     private Context mcontext=null;
     private String sql = " create table if not exists "+tablename+
